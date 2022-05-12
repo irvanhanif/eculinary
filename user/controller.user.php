@@ -13,7 +13,7 @@ class c_user{
     public function register($username, $email, $password){
         $this->model->dataLogin($email, $password);
         $result = $this->model->selectUserWithEmail($this->conn);
-        if($result["id_user"]) {
+        if(isset($result["id_user"])) {
             echo "email already exist";
             return false;
         }
