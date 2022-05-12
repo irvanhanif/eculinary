@@ -3,6 +3,7 @@
 $request = $_SERVER['REQUEST_URI'];
 
 $request = explode("/eculinary2/", $request)[1];
+
 switch (explode("/", $request)[0]) {
     case '' :
         header("Location: home");
@@ -11,9 +12,12 @@ switch (explode("/", $request)[0]) {
         require "view/homepage.php";
         break;
     case 'user' :
-        require "view/homepage.php";
+        require "user/index.php";
+        break;
+    case 'toko' :
+        require "toko/index.php";
         break;
     default:
-        // http_response_code(404);
+        http_response_code(404);
         break;
 }

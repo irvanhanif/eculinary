@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../view/css/register.css">
 </head>
-<?php require_once '../view/header.html'; ?>
+<?php require_once './view/header.html'; ?>
     <form method="post" action="" method="post">
 <p class="daftar"><b>Daftar</b></p>
 <p>Username</p>
@@ -38,6 +38,6 @@ if(isset($_POST["daftar"])){
   require "user/controller.user.php";
   $user = new c_user();
   if($user->register($_POST["username"], $_POST["email"], $_POST["password"])){
-    header("Location: home");
+    header("Location: ../");
   }
 }

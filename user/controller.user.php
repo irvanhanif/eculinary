@@ -50,6 +50,15 @@ class c_user{
         session_destroy();
     }
 
+    public function getDetailAkun(){
+        if(isset($this->model)){
+            $id_user = $_SESSION["user-culinary"]["id_user"];
+            $result = $this->model->getInfoAkun($this->conn, $id_user);
+            unset($result["password"]);
+            return $result;
+        }return false;
+    }
+
     public function updateAkun($username, $nama, $email, $nomorTelepon, $alamat, $jenisKelamin, $tanggalLahir){
         if(isset($this->model)){
             $id_user = $_SESSION["user-culinary"]["id_user"];

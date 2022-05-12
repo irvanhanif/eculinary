@@ -1,6 +1,7 @@
 <?php
 require_once "./config.php";
 require "model.toko.php";
+require "./menu/model.menu.php";
 
 class c_toko{
     private $model;
@@ -28,7 +29,8 @@ class c_toko{
 
     public function getToko($id_toko){
         $detailToko = $this->model->getDetailToko($this->conn, $id_toko);
-        return $detailToko;
+        $totalMenu = (new m_menu())->getAllMenuToko($this->conn, $id_toko, '', '');
+        return array($detailToko, $totalMenu);
     }
 
     public function updateToko($namaToko, $alamat, $kota, $email, $nomorTelepon, $jamAwal, $jamAkhir, $id_toko){
@@ -54,4 +56,12 @@ class c_toko{
         $allToko = $this->model->filterLokasiToko($this->conn, $kota);
         return $allToko;
     }   
+
+    public function getMyToko(){
+        if(isset($_SESSION["user-culinary"])){
+            $id_toko = $this->model->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"]);
+            $result = $this->getToko($id_toko);
+            return $result;
+        }else return false;
+    }
 }

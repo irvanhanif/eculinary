@@ -30,8 +30,7 @@ class m_toko{
     }
 
     public function getDetailToko($db, $id_toko) {
-        $result = $db->query("SELECT t.nama_toko, t.alamat, t.kota, t.email, t.nomor_telepon, t.jam_awal, t.jam_akhir, COUNT(*) as total_menu 
-        FROM $this->tabel t JOIN menu m ON t.id_toko = m.id_toko GROUP BY t.id_toko WHERE t.id_toko = $id_toko");
+        $result = $db->query("SELECT * FROM $this->tabel WHERE id_toko = $id_toko");
         return $result;
     }
 

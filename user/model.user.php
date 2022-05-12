@@ -75,5 +75,9 @@ class m_user{
         return $result;
     }
 
+    public function getInfoAkun($db, $id_user){
+        $result = $db->query("SELECT * FROM $this->tabel WHERE id_user = $id_user");
+        return $result;
+    }
     
 }
