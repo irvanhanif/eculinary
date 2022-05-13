@@ -1,12 +1,29 @@
-<?php require_once 'header.html'; ?>
-<p>Urutan Berdasarkan</p>
-<p>Terbaru</p>
-<div class="toko">
-    <img src="toko.png" alt="toko">
-    <p>Mie Gacoan</p>
-    <p>1rb</p>
-    <img src="chat.png" alt="komentar">
-    <p>Malang</p>
-    <img src="bintang.png" alt="rating">
-</div>
-<?php require_once 'footer.html'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+        h2 {
+            margin-left : 48px;
+        }
+    </style>
+</head>
+<body>
+<div class="filter-wrapper">
+            <h2>Urutkan Berdasarkan</h2>
+            <form action="">
+                <input type="button" name="terbaru" value="Terbaru">
+            </form>
+        </div>
+        <div>
+        <?php 
+            for ($i = 0; $i <= 10; $i++) {
+                require 'toko.php';
+            }
+        ?>
+        </div>
+</body>
