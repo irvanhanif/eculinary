@@ -1,0 +1,146 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: "roboto";
+    background-color: #f5f5f5;
+    margin: 0;
+}
+.content-wrapper {
+    padding: 72px;
+}
+.detail-toko {
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 2px 2px 20px 0px #00000040;
+    height: 288px;
+    width: 864px;
+    margin: auto;
+    display: flex;
+    padding: 48px 77px;
+}
+h1 {
+    font-size: 36px;
+    margin: 0px;
+}
+h2 {
+    font-size: 20px;
+    margin-left: 24px;
+}
+h3 {
+    font-size: 20px;
+    color: #8b8b8b;
+    font-weight: normal;
+    margin-top: 6px;
+    margin-bottom: 0px;
+}
+.informasi {
+    margin-left: 96px;
+    margin: auto;
+}
+.informasi h2 {
+    margin-top: 6px;
+    margin-bottom: 0px;
+}
+.total-menu {
+    margin-top: 6px;
+    display: flex;
+}
+.total-menu h2 {
+    margin-left: 16px;
+}
+.total-menu span {
+    color: #7e8661;
+}
+.filter-wrapper {
+    margin: 48px 0px;
+    display: flex;
+}
+.filter-wrapper h2 {
+    text-align: center;
+}
+input[type=button], select {
+    margin-left: 24px;
+    font-family: "roboto";
+    font-size: 20px;
+    font-weight: bold;
+    height: 48px;
+    width: 144px;
+    border-radius: 24px;
+    box-shadow: 2px 2px 20px 0px #00000040;
+    background-color: #ffffff;
+    border: none;
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    background-image: url(assets/down_arrow.png);
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: auto;
+    width: 336px;
+    padding: 0px 24px;
+}
+.makanan-wrapper {
+    float: left;
+    width: 25%;
+    margin-bottom: 48px;
+}
+.makanan {
+    margin: auto;
+    height: 336px;
+    width: 240px;
+    border-radius: 24px;
+    background-color: #ffffff;
+    box-shadow: 2px 2px 20px 0px #00000040;
+    padding: 24px;
+}
+.makanan img {
+    margin-bottom: 24px;
+}
+h4 {
+    margin: 0px;
+}
+h5 {
+    margin: 0px;
+    font-weight: normal;
+    color: #8b8b8b;
+}
+.informasi-makanan {
+    display: flex;
+}
+.informasi-makanan h4, .komentar, .rating {
+    font-weight: normal;
+    width: 50%;
+    margin-top: 6px;
+}
+.komentar h5, .komentar img, .rating img {
+    float: right;
+    margin: auto;
+}
+.toko-wrapper {
+    float: left;
+    width: 25%;
+    margin-bottom: 48px;
+}
+.toko {
+    margin: auto;
+    height: 336px;
+    width: 240px;
+    border-radius: 24px;
+    background-color: #ffffff;
+    box-shadow: 2px 2px 20px 0px #00000040;
+    padding: 24px;
+}
+.toko img {
+    margin-bottom: 24px;
+}
+.informasi-toko {
+    display: flex;
+}
+.informasi-toko h4, .komentar, .rating {
+    font-weight: normal;
+    width: 50%;
+    margin-top: 6px;
+}
