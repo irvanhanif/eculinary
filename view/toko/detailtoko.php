@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
+<?php require 'header.html'?>
     <div class="content-wrapper">
         <div class="detail-toko">
             <div class="logo">
