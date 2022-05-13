@@ -1,7 +1,6 @@
 <?php require_once './view/header.html'; 
 require "user/controller.user.php";
 $data = (new c_user())->getDetailAkun();
-// var_dump($data);
 ?>
 <div class="profil">
     <img src="../view/asset/profile.png" alt="Profil">
