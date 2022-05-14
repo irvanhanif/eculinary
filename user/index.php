@@ -1,5 +1,6 @@
 <?php
 if(isset($request)){
+    $path = "../";
     $request = explode("user/", $request)[1];
     switch (explode("/", $request)[0]) {
         case 'register' :

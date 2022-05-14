@@ -2,7 +2,7 @@
 
 $request = $_SERVER['REQUEST_URI'];
 
-$request = explode("/eculinary/", $request)[1];
+$request = explode("/eculinary2/", $request)[1];
 
 switch (explode("/", $request)[0]) {
     case '' :

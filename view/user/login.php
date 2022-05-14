@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../view/css/login.css">
 </head>
 <body>
-<?php require_once './view/header.html'; ?>
+<?php require_once './view/header.php'; ?>
     <form method="post" action="" method="post">
 <p class="masuk"><b>Masuk</b></p>
 <p>Email</p>

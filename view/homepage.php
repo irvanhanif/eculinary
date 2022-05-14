@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="view/css/homepage.css">
 </head>
 <body>
-<?php require_once 'view/header.html'; ?>
+<?php require_once 'view/header.php'; ?>
 <img class="banner" src="view/asset/banner.png" alt="banner">
 
 
