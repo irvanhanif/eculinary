@@ -17,11 +17,11 @@ required="required"><br>
 required="required"><br>
 <input class="submit" type="submit" value="Masuk" name="masuk">
         </input>
-  <div class="kembali">
+  <div class="kembali" onclick="location.href='../'">
       <p class="back">Kembali</p>
   </div>
   <p class="forget">Lupa kata sandi?</p>
-    <p class="tidakpunya">Tidak mempunyai akun? <span style="color : #FFAB65"> Daftar</span></p>
+    <p class="tidakpunya">Tidak mempunyai akun? <span style="color : #FFAB65" onclick="location.href='register'" > Daftar</span></p>
 </form>
 <footer>
   <p class="footer">© E-Culinary 2022. Hak Cipta Dilindungi</p>

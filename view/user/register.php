@@ -21,10 +21,10 @@
       <p class="kebijakan">Saya menerima syarat dan ketentuan yang berlaku</p>
     </div>
     <input class="submit" type="submit" value="Daftar" name="daftar">
-    <div class="kembali">
+    <div class="kembali" onclick="location.href='../'">
       <p class="back">Kembali</p>
     </div>
-    <p class="punya">Sudah mempunyai akun? <span style="color : #FFAB65" > Masuk</span></p>
+    <p class="punya">Sudah mempunyai akun? <span style="color : #FFAB65" onclick="location.href='login'" >Masuk</span></p>
   </form>
   <footer>
   <p class="footer">© E-Culinary 2022. Hak Cipta Dilindungi</p>
