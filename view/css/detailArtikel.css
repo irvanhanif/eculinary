@@ -1,0 +1,43 @@
+img {
+    height: 432px;
+    margin: 72px;
+}
+
+.author {
+    display: flex;
+    margin-top: 0px;
+    text-align: center;
+    color: #8B8B8B;
+    font-weight: 400;
+}
+
+h3 {
+    text-align: center;
+}
+
+.isi {
+    font-family: 'Nunito';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 27px;
+text-align: justify;
+text-indent: 48px;
+color: #000000;
+}
+
+.isi-wrapper {
+    padding-right: 160px;
+    padding-left: 120px;
+    padding-bottom: 72px;
+}
+
+.artikel {
+    position: absolute;
+width: 1000px;
+height: 1320px;
+background: #FFFFFF;
+box-shadow: 4px 4px 40px rgba(0, 0, 0, 0.25);
+border-radius: 48px;
+margin-left: 116px;
+}
