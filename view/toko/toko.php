@@ -47,14 +47,13 @@ h5 {
 }
 .informasi-toko h4, .komentar, .rating {
     font-weight: normal;
-    width: 50%;
+    width: 100%;
     margin-top: 6px;
 }
 .toko img {
     margin-bottom: 24px;
 }
 .komentar h5, .komentar img {
-    float: right;
     margin: auto;
 }
 .rating img{
