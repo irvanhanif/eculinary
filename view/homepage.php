@@ -86,7 +86,10 @@
 </div>
 
 <div class="menu-wrapper">
-<h2>Makanan & Minuman Populer</h2>
+    <div class="text">
+    <h2>Makanan & Minuman Populer</h2>
+    <h2 class="liat">Lihat Semua</h2>
+    </div>
 <?php 
 for ($i = 0; $i <= 3; $i++) {
                 require 'makanan.php';
@@ -95,7 +98,10 @@ for ($i = 0; $i <= 3; $i++) {
 </div>
 
 <div class="menu-wrapper">
-<h2>Rekomendasi Makanan & Minuman</h2>
+<div class="text">
+    <h2>Rekomendasi Makanan & Minuman</h2>
+    <h2 class="liat">Lihat Semua</h2>
+    </div>
 <?php 
 for ($i = 0; $i <= 3; $i++) {
                 require 'makanan.php';
@@ -104,7 +110,10 @@ for ($i = 0; $i <= 3; $i++) {
 </div>
 
 <div class="menu-wrapper">
+<div class="text">
 <h2>Artikel</h2>
+    <h2 class="liat">Lihat Semua</h2>
+    </div>
 <?php 
 for ($i = 0; $i <= 3; $i++) {
                 require 'makanan.php';
