@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../view/css/login.css">
 </head>
+<body>
 <?php require_once './view/header.html'; ?>
     <form method="post" action="" method="post">
 <p class="masuk"><b>Masuk</b></p>
@@ -23,9 +24,8 @@ required="required"><br>
   <p class="forget">Lupa kata sandi?</p>
     <p class="tidakpunya">Tidak mempunyai akun? <span style="color : #FFAB65" onclick="location.href='register'" > Daftar</span></p>
 </form>
-<footer>
-  <p class="footer">© E-Culinary 2022. Hak Cipta Dilindungi</p>
-</footer>
+<?php require_once './view/footer.html'; ?>
+</body>
 </html>
 <?php
 if(isset($_POST["masuk"])){

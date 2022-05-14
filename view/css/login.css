@@ -1,8 +1,19 @@
+html{
+    display: flex;
+}
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
 form {
     width: 576px;
     height: 600px;
-    margin-left: 372px;
-    margin-top: 16px;
+    /* margin-left: 372px; */
+    margin: auto;
+    margin-top: 150px;
+    margin-bottom: 50px;
+    /* margin-top: 16px; */
     background: #FFFFFF;
     box-shadow: 5px 5px 40px rgba(0, 0, 0, 0.25);
     border-radius: 48px;
@@ -101,7 +112,7 @@ p{
     cursor: pointer;
 }
 
-            footer {
+            /* footer {
                 width: 1920px;
                 height: 72px;
                 left: 0px;
@@ -114,7 +125,7 @@ p{
                     padding-top: 30px;
                     font-weight: 400;
                     padding-left: 500px;
-                }
+                } */
 
 .forget {
     font-weight: 400;

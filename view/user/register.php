@@ -26,9 +26,10 @@
     </div>
     <p class="punya">Sudah mempunyai akun? <span style="color : #FFAB65" onclick="location.href='login'" >Masuk</span></p>
   </form>
-  <footer>
+  <!-- <footer>
   <p class="footer">© E-Culinary 2022. Hak Cipta Dilindungi</p>
-  </footer>  
+  </footer>   -->
+<?php require_once './view/footer.html';?>
 </body>
 </html>
 <?php
