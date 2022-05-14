@@ -7,33 +7,33 @@
     <body>
         <div class="makanan-wrapper">
         <div class="makanan">
-        <img class="gambar"src="detailmakanan.png" alt="detailmakanan">
-    <p>Es Campur Dempo</p>
+        <img class="gambar"src="../asset/detailmakanan.png" alt="detailmakanan">
+    <h2>Es Campur Dempo</h2>
     <p>Malang</p>
-    <img src="bintang.png" alt="rating">
+    <img src="../asset/bintang.png" alt="rating">
     <p>Rp 10.000</p>
         </div class="text">
     <p>Silakan berikan bintang!</p>
-    <img src="bintang.png" alt="rating">
+    <img src="../asset/bintang.png" alt="rating">
     </div>
 
     <p>Komentar</p>
 
 
-    <img src="profile.png" alt="profil">
+    <img src="../asset/profile.png" alt="profil">
     <input type="text" name="komentar" placeholder="Tambahkan komentar...">
-    <img src="plus.png" alt="tambahkan">
+    <img src="../asset/plus.png" alt="tambahkan">
 
-    <div class="komentar1"><img src="profil1.png" alt="profil">
+    <div class="komentar1"><img src="../asset/profil1.png" alt="profil">
     <p>Enak banget, pasti bakal kesinii lagii</p></div>
 
-    <div class="komentar2"><img src="profil1.png" alt="profil">
+    <div class="komentar2"><img src="../asset/profil1.png" alt="profil">
         <p>Esnya Segerrr</p></div>
 
-    <div class="komentar3"><img src="profil1.png" alt="profil">
+    <div class="komentar3"><img src="../asset/profil1.png" alt="profil">
         <p>Enak banget, pasti bakal kesinii lagii</p></div>
 
-    <div class="komentar4"><img src="profil1.png" alt="profil">
+    <div class="komentar4"><img src="../asset/profil1.png" alt="profil">
         <p>Esnya Segerrr</p></div>
 
     
