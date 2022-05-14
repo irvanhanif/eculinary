@@ -1,3 +1,4 @@
+<?php echo $id?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

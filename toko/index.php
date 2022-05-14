@@ -7,6 +7,7 @@ if(isset($request)){
             require "./view/toko/pendaftaranpenjual.php";
             break;
         case 'detail' :
+            $id = explode("/", $request)[1];
             require "./view/toko/detailToko.php";
             break;
         default:

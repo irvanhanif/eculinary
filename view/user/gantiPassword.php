@@ -1,4 +1,7 @@
-<?php require_once 'header.html'; ?>
+<?php
+if(isset($_SESSION["user-culinary"])){
+?>
+<?php require_once 'view/header.html'; ?>
 <div class="profil">
     <img src="profile.png" alt="Profil">
     <p>Hi, Jong Un!</p>
@@ -36,7 +39,7 @@
 <p>Lupa Password?</p>
 <input type="submit" name="submit">
 </form>
-<?php require_once 'footer.html'; 
+<?php require_once 'view/footer.html'; 
 if(isset($_POST["submit"])){
     require "user/controller.user.php";
     $user_1 = new c_user();
@@ -44,4 +47,7 @@ if(isset($_POST["submit"])){
     if($token){
         $user_1->inputToken($token);
     }
-  }
+}
+}else{
+    header("Location: ../");
+}

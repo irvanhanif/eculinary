@@ -11,6 +11,9 @@ if(isset($request)){
         case 'setting' :
             require "./view/user/akun.php";
             break;
+        case 'setpw' :
+            require "./view/user/gantiPassword.php";
+            break;
         default:
             http_response_code(404);
             break;
