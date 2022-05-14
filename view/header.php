@@ -81,6 +81,19 @@ header {
     color: black;
     text-decoration: none;
 }
+.akun .daftarbtn{
+    border: 2px solid #7E8661;
+    color: #7E8661;
+    padding: 10px 15px;
+    border-radius: 25px;
+}
+.akun .masukbtn{
+    background-color: #7E8661;
+    border: 2px solid #7E8661;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 25px;
+}
     </style>
 </head>
 <header>
@@ -98,8 +111,12 @@ header {
         <div class="akun">
             <a href="">Makanan & Minuman</a>
             <a href="">Artikel</a>
+            <a href="<?php if(isset($url)) echo $url ?>register" class="daftarbtn">Daftar</a>
+            <a href="<?php if(isset($url)) echo $url ?>login" class="masukbtn">Masuk</a>           
+        <?php if(isset($_SESSION["user-culinary"])){ ?>
             <img src="<?php if(isset($path)) echo $path ?>view/asset/wishlist.png" alt="wishlist">
             <img src="<?php if(isset($path)) echo $path ?>view/asset/account.png" alt="akun">
+        <?php } ?>
         </div>
     </div>
 </header>
