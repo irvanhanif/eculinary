@@ -5,7 +5,7 @@ height: 432px;
 
 .kategori {
     display: flex;
-    margin: 0px 24px 80px 24px;
+    margin: 0px 24px 0px 24px;
 }
 
 .cattegories {
@@ -16,6 +16,7 @@ height: 432px;
     box-shadow: 2px 2px 20px 0px #00000040;
     margin-right: 24px;
     padding: 24px;
+    cursor: pointer;
 }
 
 .tulisan {
@@ -26,11 +27,21 @@ font-size: 16px;
 line-height: 22px;
 align-items: center;
 color: #000000;
+text-decoration: none;
 }
 
 h2 {
     margin-top: 72px;
 }
 
+.text {
+    display : flex;
+    justify-content: space-between;
+    margin-right: 34px;
+}
+
+a {
+    text-decoration: none;
+}
 
 
