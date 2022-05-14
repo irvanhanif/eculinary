@@ -28,6 +28,9 @@
         </div>
     </div>
 
+    <div class="komentar-wrapper">
+
+    </div>
     <div class="komentar">
         <p class="komen">Komentar</p>
         <div class="isi">
@@ -67,5 +70,7 @@
 <input type="button" value="Lihat Detail Toko"
 onclick="window.open('detailtoko.php')">
         </div> 
+
+
     </body>
 </html>
