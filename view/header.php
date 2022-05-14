@@ -32,8 +32,10 @@ header {
     margin:0;
     width: 100%;
     /* height: 110px; */
+    <?php if(!isset($login) && !isset($register)){ ?>
     background: #FFFFFF;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    <?php } ?>
     /* margin-top: -23px; */
     /* margin-left: -10px; */
     position: fixed;
@@ -108,6 +110,7 @@ header {
         />
         <h1 class="appname">E-<span style="color: #FFAB65">Culinary</span></h1>
         </div>
+        <?php if(!isset($login) && !isset($register)){ ?>
         <div class="search">
             <input type="text" id="searchbox" placeholder="Cari disini">
             <div class="searchbtn"><i class="fa-solid fa-magnifying-glass"></i></div>
@@ -124,5 +127,6 @@ header {
             <a href="<?php if(isset($url)) echo $url ?>login" class="masukbtn">Masuk</a>
         <?php } ?>
         </div>
+        <?php } ?>
     </div>
 </header>

@@ -15,6 +15,7 @@ if(isset($_POST["daftar"])){
     header("Location: ../");
   }
 } 
+$register = true;
 require_once './view/header.php'; ?>
   <form method="post" action="" method="post">
     <p class="daftar"><b>Daftar</b></p>
