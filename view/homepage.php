@@ -93,11 +93,13 @@
     <h2>Makanan & Minuman Populer</h2>
     <h2 class="liat">Lihat Semua</h2>
     </div>
+    <div class="makanan-list">
 <?php 
 for ($i = 0; $i <= 3; $i++) {
                 require 'view/menu/makanan.php';
             }
             ?>
+    </div>
 </div>
 
 <div class="menu-wrapper">
@@ -105,11 +107,13 @@ for ($i = 0; $i <= 3; $i++) {
     <h2>Rekomendasi Makanan & Minuman</h2>
     <h2 class="liat">Lihat Semua</h2>
     </div>
+    <div class="makanan-list">
 <?php 
 for ($i = 0; $i <= 3; $i++) {
                 require 'menu/makanan.php';
             }
             ?>  
+    </div>
 </div>
 
 <div class="menu-wrapper">
@@ -117,11 +121,13 @@ for ($i = 0; $i <= 3; $i++) {
 <h2>Artikel</h2>
     <h2 class="liat">Lihat Semua</h2>
     </div>
+    <div class="makanan-list">
 <?php 
 for ($i = 0; $i <= 3; $i++) {
                 require 'menu/makanan.php';
             }
             ?>  
+    </div>
 </div>
 </body>
 </html>

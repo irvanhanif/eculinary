@@ -83,8 +83,11 @@ select {
     width: 336px;
     padding: 0px 24px;
 }
+.makanan-list{
+    display: flex;
+}
 .makanan-wrapper {
-    float: left;
+    /* float: left; */
     width: 25%;
     margin-bottom: 48px;
 }
