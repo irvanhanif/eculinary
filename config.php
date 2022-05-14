@@ -16,7 +16,7 @@ class database{
     }
 
     public function query($query){
-        // echo $query . "<br>";
+        echo $query . "<br>";
         $data = array();
         $result = mysqli_query($this->conn, $query);
         // var_dump($result);

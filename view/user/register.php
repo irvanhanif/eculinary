@@ -29,9 +29,6 @@
   <!-- <footer>
   <p class="footer">© E-Culinary 2022. Hak Cipta Dilindungi</p>
   </footer>   -->
-<?php require_once './view/footer.html';?>
-</body>
-</html>
 <?php
 if(isset($_POST["daftar"])){
   require "user/controller.user.php";
@@ -40,3 +37,6 @@ if(isset($_POST["daftar"])){
     header("Location: ../");
   }
 }
+require_once './view/footer.html';?>
+</body>
+</html>

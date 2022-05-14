@@ -1,8 +1,9 @@
-<?php require_once './view/header.html'; 
+<?php require_once './view/header.php'; 
 if(isset($_SESSION["user-culinary"])){
 require "user/controller.user.php";
 $data = (new c_user())->getDetailAkun();
 ?>
+<body style="margin: 0">
 <div class="profil">
     <img src="../view/asset/profile.png" alt="Profil">
     <p>Hi, <?php echo $data["username"] ?>!</p>
@@ -59,6 +60,7 @@ required="required"><br>
 <p>Pilih Gambar</p>
 <input type="file" id="profilepicture"
   accept=".jpg,.jpeg,.png">
+</body>
 <?php require_once './view/footer.html';
 
 if(isset($_POST["submit"])){

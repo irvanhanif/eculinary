@@ -4,6 +4,7 @@ $request = $_SERVER['REQUEST_URI'];
 
 $request = explode("/eculinary2/", $request)[1];
 
+if (!isset($_SESSION)) session_start();
 switch (explode("/", $request)[0]) {
     case '' :
         header("Location: home");

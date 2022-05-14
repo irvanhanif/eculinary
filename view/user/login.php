@@ -24,14 +24,15 @@ required="required"><br>
   <p class="forget">Lupa kata sandi?</p>
     <p class="tidakpunya">Tidak mempunyai akun? <span style="color : #FFAB65" onclick="location.href='register'" > Daftar</span></p>
 </form>
-<?php require_once './view/footer.html'; ?>
-</body>
-</html>
-<?php
+<?php 
 if(isset($_POST["masuk"])){
   require "user/controller.user.php";
   $user_1 = new c_user();
   if($user_1->login($_POST["email"], $_POST["password"])){
-    header("Location: homepage.php");
+    header("Location: ../");
   }
 }
+require_once './view/footer.html'; 
+?>
+</body>
+</html>

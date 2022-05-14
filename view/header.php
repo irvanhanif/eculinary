@@ -29,6 +29,7 @@
     }
 header {
     /* width: 101.2%; */
+    margin:0;
     width: 100%;
     /* height: 110px; */
     background: #FFFFFF;
@@ -94,6 +95,9 @@ header {
     padding: 10px 15px;
     border-radius: 25px;
 }
+.imgbtn{
+    cursor: pointer;
+}
     </style>
 </head>
 <header>
@@ -110,12 +114,14 @@ header {
         </div>
         <div class="akun">
             <a href="">Makanan & Minuman</a>
-            <a href="">Artikel</a>
-            <a href="<?php if(isset($url)) echo $url ?>register" class="daftarbtn">Daftar</a>
-            <a href="<?php if(isset($url)) echo $url ?>login" class="masukbtn">Masuk</a>           
+            <a href="">Artikel</a>           
         <?php if(isset($_SESSION["user-culinary"])){ ?>
-            <img src="<?php if(isset($path)) echo $path ?>view/asset/wishlist.png" alt="wishlist">
-            <img src="<?php if(isset($path)) echo $path ?>view/asset/account.png" alt="akun">
+            <img src="<?php if(isset($path)) echo $path ?>view/asset/wishlist.png" alt="wishlist" class="imgbtn">
+            <img src="<?php if(isset($path)) echo $path ?>view/asset/account.png" alt="akun"
+            onclick="location.href='user/setting'" class="imgbtn">
+        <?php }else{ ?>
+            <a href="<?php if(isset($url)) echo $url ?>register" class="daftarbtn">Daftar</a>
+            <a href="<?php if(isset($url)) echo $url ?>login" class="masukbtn">Masuk</a>
         <?php } ?>
         </div>
     </div>
