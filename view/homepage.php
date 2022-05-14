@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="view/css/homepage.css">
 </head>
 <body>
-<?php require_once './view/header.html'; ?>
+<?php require_once 'view/header.html'; ?>
 <img class="banner" src="view/asset/banner.png" alt="banner">
 
 
@@ -107,7 +107,7 @@ for ($i = 0; $i <= 3; $i++) {
     </div>
 <?php 
 for ($i = 0; $i <= 3; $i++) {
-                require 'view/menu/makanan.php';
+                require 'menu/makanan.php';
             }
             ?>  
 </div>
@@ -119,7 +119,7 @@ for ($i = 0; $i <= 3; $i++) {
     </div>
 <?php 
 for ($i = 0; $i <= 3; $i++) {
-                require 'view/menu/makanan.php';
+                require 'menu/makanan.php';
             }
             ?>  
 </div>
