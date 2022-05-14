@@ -41,6 +41,9 @@ header {
 .search{
     display: flex;
     position: relative;
+    padding: 0 15px;
+    width: 100%;
+    max-width: 350px;
 }
 #searchbox{
     padding: 10px;
@@ -50,12 +53,13 @@ header {
     background-color: #DEDEDE;
     text-indent: 10px;
     margin: auto;
+    width: 100%;
 }
 .search .searchbtn{
     position: absolute;
     height: 35px;
     width: 35px;
-    right: 2px;
+    right: 17px;
     color: #DEDEDE;
     /* padding: 10px; */
     border-radius: 50%;
