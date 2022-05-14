@@ -1,28 +1,57 @@
-<?php require_once 'header.html'; ?>
-<div class="profil">
-    <img src="profile.png" alt="Profil">
-    <p>Hi, Jong Un!</p>
-    <p>Kota Malang</p>
-
-    <div class="profil"><img src="account.png" alt="profil">
-    <p>Profil</p></div>
-
-    <div class="password"><img src="lock.png" alt="password">
-    <p>Ubah Password</p></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="wishlist.css">
+</head>
+<body>
+    <div class="menu-wrapper">
+    <div class="menu">
+    <div class="user">
+    <img class="profilepic" src="profile.png" alt="Profil">
+    <div class="text">
+    <h3>Hi, Jong Un!</h3>
+    <p class="kota">Kota Malang</p>
+    </div>
+    </div>
     
-    <div class="wishlist"><img src="favorite-file.png" alt="wishlist">
-    <p>Wishlist</p></div>
-    
-    <div class="toko"><img src="shop.png" alt="toko">
-    <p>Toko</p></div>
-    
-    <div class="tulisArtikel"><img src="edit-file.png" alt="tulisArtikel">
-    <p>Tulis Artikel</p></div>
-    
-    <div><img src="Logout.png" alt="logout">
-    <p>Logout</p></div>
+    <div class="group">
+        <img class="gambar"src="account.png" alt="profil">
+    <a class="text1"><b>Profil</b></a>
 </div>
 
-<p>Wishlist</p>
+    <div class="group1">
+        <img class="gambar" src="lock.png" alt="password">
+    <a class="text1"><b>Ubah Password<b></a>
+</div>
+    
+    <div class="group1">
+        <img class="gambar"src="favorite-file.png" alt="wishlist">
+    <a class="text1"><b>Wishlist<b></a>
+</div>
+    
+    <div class="group1">
+        <img class="gambar" src="shop.png" alt="toko">
+    <a class="text1"><b>Toko<b></a>
+</div>
+    
+    <div class="group1">
+        <img class="gambar"src="edit-file.png" alt="tulisArtikel">
+    <a class="text1"><b>Tulis Artikel<b></a>
+</div>
+    
+    <div class="group1">
+        <img class="gambar" src="Logout.png" alt="logout">
+    <a class="text1"><b>Logout<b></a>
+</div>
+</div>
+    </div>
+    <div class="wishlist-wrapper">
+    <div class="wishlist">
+    <h2>Wishlist</h2>
+    </div>
+    </div>
+</body>
 
-<?php require_once 'footer.html'; ?>
