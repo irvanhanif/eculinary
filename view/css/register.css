@@ -66,6 +66,11 @@ height: 48px;
 margin-left: 48px;
 background: #7E8661;
 border-radius: 48px;
+color: white;
+border: none;
+font-size: 16px;
+letter-spacing: 1.5px;
+cursor: pointer;
 }
 
 .regist {
@@ -83,16 +88,25 @@ background: #FFFFFF;
 border: 0.6px solid #7E8661;
 border-radius: 48px;
 margin-top: 20px;
+display: flex;
+cursor: pointer;
 }
 
 .back {
-    padding-left: 200px;
+    margin: auto;
+    padding-left: 0;
+    /* padding-left: 200px; */
 }
 
 .punya {
 font-weight: 400;
 font-size: 16px;
 margin-left : 160px;
+padding-left: 0;
+}
+.punya span{
+    margin-left: 5px;
+    cursor: pointer;
 }
 
 footer {
