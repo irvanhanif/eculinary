@@ -6,8 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../view/css/register.css">
 </head>
-<?php require_once './view/header.php'; ?>
 <body>
+<?php
+if(isset($_POST["daftar"])){
+  require "user/controller.user.php";
+  $user = new c_user();
+  if($user->register($_POST["username"], $_POST["email"], $_POST["password"])){
+    header("Location: ../");
+  }
+} 
+require_once './view/header.php'; ?>
   <form method="post" action="" method="post">
     <p class="daftar"><b>Daftar</b></p>
     <p>Username</p>
@@ -30,13 +38,6 @@
   <p class="footer">© E-Culinary 2022. Hak Cipta Dilindungi</p>
   </footer>   -->
 <?php
-if(isset($_POST["daftar"])){
-  require "user/controller.user.php";
-  $user = new c_user();
-  if($user->register($_POST["username"], $_POST["email"], $_POST["password"])){
-    header("Location: ../");
-  }
-}
 require_once './view/footer.html';?>
 </body>
 </html>
