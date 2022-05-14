@@ -1,6 +1,5 @@
 <p>Menu Toko</p>
-<form class="menuToko" action="" method="post" enctype="multipart/form-data">
-    <div id="kolom">
+<form class="menuToko" action="">
     <p>Menu Toko</p>
     <p>Nama</p>
     <input class="kolom" type="text" name="nama" placeholder="Masukan nama makanan/minuman"
@@ -18,21 +17,11 @@ required="required"><br>
     <label for="minuman">Minuman</label><br>
     <input type="radio" id="lainnya" name="jenismakanan" value="Lainnya">
     <label for="lainnya">Lainnya</label><br>
-  <input type="submit" name="tambah" value="Tambahkan">
-    </div>
-    <p>Pilih Gambar</p>
-  <input type="file" id="profilepicture" name="photo"
-  accept=".jpg,.jpeg,.png">
+  <input type="submit" name="submit" value="Tambahkan">
 </form>
-<?php
-if(isset($_POST["tambah"])){
-    require "menu/controller.menu.php";
-    $menu_1 = new c_menu();
-    if($menu_1->createMenu($_POST["nama"], $_POST["harga"], $_POST["jenismakanan"], $_POST["kategori"], $_FILES["photo"])){
-    //   header("Location: homepage.php");
-    }
-  }
-?>
+<p>Pilih Gambar</p>
+<input type="file" id="profilepicture"
+  accept=".jpg,.jpeg,.png">
 <div class="makanan">
     <img src="makanan.png" alt="makanan">
     <img src="wish1.png" alt="wish">
