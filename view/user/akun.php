@@ -1,4 +1,5 @@
 <?php require_once './view/header.html'; 
+if(isset($_SESSION["user-culinary"])){
 require "user/controller.user.php";
 $data = (new c_user())->getDetailAkun();
 ?>
@@ -63,4 +64,7 @@ required="required"><br>
 if(isset($_POST["submit"])){
   $user_1 = new c_user();
   $user_1->updateAkun($_POST["username"], $_POST["nama"], $_POST["email"], $_POST["telepon"], $_POST["alamat"], $_POST["jeniskelamin"], $_POST["tanggallahir"]);
+}
+}else{
+    header("Location: register");
 }
