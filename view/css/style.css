@@ -1,46 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Nunito&display=swap');
+
 * {
     box-sizing: border-box;
 }
 body {
-    font-family: "roboto";
+    font-family: "nunito";
     background-color: #f5f5f5;
-    margin: 0;
 }
 .content-wrapper {
-    padding: 72px;
+    padding: 48px;
 }
+input[type=button]:hover, select:hover {
+    cursor: pointer;
+}
+input[type=button]:active, select:active, input[type=submit]:active, .pilih-gambar:hover {
+    opacity: 75%;
+}
+
+/* Detail Toko */
 .detail-toko {
     background-color: #ffffff;
     border-radius: 24px;
     box-shadow: 2px 2px 20px 0px #00000040;
-    height: 288px;
-    width: 864px;
+    height: fit-content;
+    width: fit-content;
     margin: auto;
     display: flex;
     padding: 48px 77px;
 }
 h1 {
-    font-size: 36px;
+    font-size: 24px;
     margin: 0px;
 }
 h2 {
-    font-size: 20px;
-    margin-left: 24px;
+    font-size: 16px;
 }
 h3 {
-    font-size: 20px;
+    font-size: 12px;
     color: #8b8b8b;
     font-weight: normal;
     margin-top: 6px;
     margin-bottom: 0px;
 }
 .informasi {
-    margin-left: 96px;
-    margin: auto;
+    margin: auto 48px;
 }
 .informasi h2 {
     margin-top: 6px;
-    margin-left: 0;
     margin-bottom: 0px;
 }
 .total-menu {
@@ -60,10 +66,10 @@ h3 {
 .filter-wrapper h2 {
     text-align: center;
 }
-input[type=button], select {
+.filter-wrapper input[type=button], select {
     margin-left: 24px;
-    font-family: "roboto";
-    font-size: 20px;
+    font-family: "nunito";
+    font-size: 16px;
     font-weight: bold;
     height: 48px;
     width: 144px;
@@ -76,15 +82,11 @@ select {
     -webkit-appearance: none;
     -moz-appearance: none;
     background: transparent;
-    background-image: url(assets/down_arrow.png);
+    background-image: url(../imgs/down_arrow.png);
     background-repeat: no-repeat;
     background-position-x: 100%;
-    background-position-y: auto;
     width: 336px;
     padding: 0px 24px;
-}
-.makanan-list{
-    display: flex;
 }
 .makanan-wrapper {
     /* float: left; */
@@ -104,10 +106,9 @@ select {
     margin-bottom: 24px;
 }
 h4 {
-    margin: 0px;
+    margin: 0;
 }
 h5 {
-    margin: 0px;
     font-weight: normal;
     color: #8b8b8b;
 }
@@ -117,34 +118,167 @@ h5 {
 .informasi-makanan h4, .komentar, .rating {
     font-weight: normal;
     width: 50%;
-    margin-top: 6px;
 }
-.komentar h5, .komentar img, .rating img {
+.komentar h5, .rating h5, .komentar img, .rating img {
     float: right;
     margin: auto;
 }
-.toko-wrapper {
-    float: left;
-    width: 25%;
-    margin-bottom: 48px;
+.button-wishlist {
+    position: absolute;
+    margin-top: 144px;
+    margin-left: 137px;
 }
-.toko {
-    margin: auto;
-    height: 336px;
-    width: 240px;
+.button-wishlist input[type=button] {
+    background-image: url(../imgs/wish.png);
+    border: none;
+    background-color: transparent;
+    height: 48px;
+    width: 48px;
+}
+
+/* Daftar Konten */
+.list-content {
+    width: 20%;
+    height: fit-content;
     border-radius: 24px;
     background-color: #ffffff;
     box-shadow: 2px 2px 20px 0px #00000040;
-    padding: 24px;
+    padding: 36px;
 }
-.toko img {
-    margin-bottom: 24px;
+.profil {
+    display: flex;
+    margin-bottom: 36px;
 }
-.informasi-toko {
+.profil img {
+    width: 48px;
+    height: 48px;
+}
+.content-option {
+    display: flex;
+    margin-bottom: 12px;
+}
+.content-option img {
+    width: 32px;
+    height: 32px;
+}
+.list-content a, .list-content p{
+    margin: auto 6px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.list-content a:hover {
+    cursor: pointer;
+}
+.list-content p {
+    font-weight: normal;
+}
+.hi {
+    margin: auto;
+}
+
+/* Penambahan Artikel, Pendaftaran Penjual, Akun */
+.wrapper {
+    padding: 48px;
     display: flex;
 }
-.informasi-toko h4, .komentar, .rating {
-    font-weight: normal;
-    width: 50%;
-    margin-top: 6px;
+.content {
+    margin-left: 48px;
+    display: flex;
 }
+.left-content {
+    border-radius: 24px;
+    background-color: #ffffff;
+    box-shadow: 2px 2px 20px 0px #00000040;
+    width: auto;
+    height: auto;
+    padding: 36px;
+}
+.left-content h1 {
+    margin-bottom: 24px;
+}
+.form {
+    display: flex;
+    margin-bottom: 24px;
+}
+.form p {
+    text-align: right;    
+    width: 150px;
+    font-weight: bold;
+}
+input[type=radio] {
+    margin: auto 0px auto 24px;
+}
+.form label {
+    margin: auto 6px;
+}
+input[type=text], input[type=email], input[type=time], input[type=date], #isi-artikel {
+    font-family: "nunito";
+    margin-left: 24px;
+    width: 420px;
+    height: 48px;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    border-radius: 24px;
+    text-indent: 16px;
+    font-size: 16px;
+}
+input[type=date] {
+    padding-right: 16px;
+    text-indent: 8px;
+}
+input[type=time] {
+    width: 25%;
+    padding-right: 16px;
+    text-indent: 8px;
+}
+input[type=text]::placeholder, #isi-artikel::placeholder {
+    text-indent: 16px;
+    color: #8b8b8b;
+    font-family: "nunito";
+    border: #8b8b8b;
+}
+input:focus, textarea:focus {
+    outline: none;
+    background-color: #e5e5e5;
+}
+#isi-artikel {
+    height: 480px;
+    padding-top: 12px;
+}
+.right-content {
+    margin-left: 96px;
+    width: 150px
+}
+input[type=file] {
+    display: none;
+}
+.pilih-gambar {
+    border: 1px solid #C4C4C4;
+    border-radius: 24px;
+    background: #FFFFFF;
+    display: block;
+    box-shadow: 2px 2px 20px 0px #00000040;
+    padding: 6px 18px;
+    margin: 24px auto;
+    text-align: center;
+    cursor: pointer;
+}
+.right-content img {
+    display: block;
+    margin: auto;
+    width: 150px;
+    height: 150px;
+}
+input[type=submit] {
+    width: 240px;
+    height: 48px;
+    background: #7E8661;
+    border-radius: 24px;
+    cursor: pointer;
+    color: #FFFFFF;
+    font-family: "nunito";
+    font-size: 16px;
+    border: none;
+    margin-top: 24px;
+}
+

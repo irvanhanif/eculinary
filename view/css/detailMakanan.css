@@ -114,3 +114,87 @@ text-decoration: underline;
 color: #7E8661;
 align-items: center;
 }
+
+.tersedia {
+    width: 558px;
+height: 667.6px;
+background: #FFFFFF;
+box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.25);
+border-radius: 24px;
+margin-left: 200px;
+}
+
+.komen-kategori {
+    display: flex;
+}
+
+.kategori {
+    font-family: 'Nunito';
+font-style: normal;
+font-weight: 400;
+font-size: 36px;
+line-height: 22px;
+text-decoration: underline;
+color: #7E8661;
+align-items: center;
+padding-top: 37px;
+margin-left: 180px;
+}
+
+.konten{
+    margin-top: 10px;
+    margin-left: 92px;
+    text-decoration: none;
+    color: black;
+}
+
+.jamOperasional {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 22px;
+    text-decoration: underline;
+    color: #7E8661;
+    align-items: center;
+    margin-left: 132px;
+}
+
+.weekday {
+    display: flex;
+}
+
+.hari {
+    margin-top: 0px;
+    margin-left: 92px;
+    color: black;
+}
+
+.jam-weekday {
+    margin-top: 0px;
+    margin-left: 46px;
+    color: black;
+}
+
+.weekend {
+    display: flex;
+}
+
+.jam-weekend {
+    margin-top: 0px;
+    margin-left: 34px;
+    color: black;
+}
+
+.submit {
+    width: 214px;
+    height: 48px;
+    margin-left: 48px;
+    background: #FFAB65;
+    border-radius: 80px;
+    color: black;
+    border: none;
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+}

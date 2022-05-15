@@ -31,6 +31,7 @@
     <div class="komentar-wrapper">
 
     </div>
+    <div class="komen-kategori">
     <div class="komentar">
         <p class="komen">Komentar</p>
         <div class="isi">
@@ -59,17 +60,23 @@
     <div>
 
         <div class="tersedia">
-        <p class="judul">Kategori</p>
-        <p class="konten">Minuman</p>
-        <p class="konten">Es Krim</p>
-        <p class="judul">Jam Operasional</p>
+        <p class="kategori">Kategori</p>
+        <div class="konten">
+        <p>Minuman</p>
+        <p>Es Krim</p>
+        </div>
+        <p class="jamOperasional">Jam Operasional</p>
+        <div class="weekday">
         <p class="hari">Senin-Jumat</p>
-        <p class="jam">08.00-21.00</p>
+        <p class="jam-weekday">08.00-21.00</p>
+        </div>
+        <div class="weekend">
         <p class="hari">Sabtu-Minggu</p>
-        <p class="jam">10.00-23.00</p>
-<input type="button" value="Lihat Detail Toko"
-onclick="window.open('detailtoko.php')">
+        <p class="jam-weekend">10.00-23.00</p>
+        </div>
+<input class="lihat" type="button" name="detailToko" value="Lihat Detail Toko">
         </div> 
+        </div>
 
 
     </body>
