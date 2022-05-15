@@ -1,9 +1,22 @@
+<?php require_once './view/header.php'; 
+if(isset($_SESSION["user-culinary"])){
+    require "user/controller.user.php";
+    $data = (new c_user())->getDetailAkun();
+?>
 <html>
     <head>
         <link rel="stylesheet" href="assets/css/style.css">
+        <style>
+            body{
+                margin: 0;
+            }
+            .wrapper{
+                margin-top: 150px;
+            }
+        </style>
     </head>
     <body>
-        <?php require_once 'header.html'; ?>
+        <?php require_once 'view/header.php'; ?>
         <div class="wrapper">
             <?php include 'daftarKonten.php'; ?>
                 <form class="content" action="" method="post">
@@ -50,19 +63,16 @@
                     </div>     
                 </form>          
         </div>      
-        <?php //require_once 'footer.html'; ?>
+        <?php require_once 'view/footer.html'; ?>
     </body>
 </html>
 
 <?php
-if(isset($_POST["submit"])){
-    require "user/controller.user.php";
-    $user_1 = new c_user();
-    echo $_SESSION["user-culinary"]["id_user"];
-    if($user_1->updateAkun($_POST["username"], $_POST["nama"], $_POST["email"], $_POST["telepon"], $_POST["alamat"], $_POST["jeniskelamin"], $_POST["tanggallahir"])){
-      // header("Location: homepage.php");
-      echo  $_POST["username"], $_POST["nama"], $_POST["email"], $_POST["telepon"], $_POST["alamat"], $_POST["jeniskelamin"], $_POST["tanggallahir"];
-    }else header("Location: login.php");
-    // echo "<h2>ini submit</h2>";
-  }
+    if(isset($_POST["submit"])){
+        $user_1 = new c_user();
+        $user_1->updateAkun($_POST["username"], $_POST["nama"], $_POST["email"], $_POST["telepon"], $_POST["alamat"], $_POST["jeniskelamin"], $_POST["tanggallahir"]);
+    }
+}else{
+      header("Location: register");
+}
 ?>
