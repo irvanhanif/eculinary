@@ -1,72 +1,68 @@
-<?php require_once './view/header.php'; 
-if(isset($_SESSION["user-culinary"])){
-require "user/controller.user.php";
-$data = (new c_user())->getDetailAkun();
-?>
-<body style="margin: 0">
-<div class="profil">
-    <img src="../view/asset/profile.png" alt="Profil">
-    <p>Hi, <?php echo $data["username"] ?>!</p>
-    <p>Kota Malang</p>
+<html>
+    <head>
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    <body>
+        <?php require_once 'header.html'; ?>
+        <div class="wrapper">
+            <?php include 'daftarKonten.php'; ?>
+                <form class="content" action="" method="post">
+                    <div class="left-content">
+                        <h1>Profil Saya</h1>
+                        <div class="form">
+                            <p>Username</p>
+                            <input id="username" type="text" name="username" placeholder="Masukan username Anda" required="required"><br>
+                        </div>
+                        <div class="form">
+                            <p>Nama</p>
+                            <input id="nama" type="text" name="nama" placeholder="Masukan nama Anda" required="required"><br>
+                        </div>
+                        <div class="form">
+                            <p>Email</p>
+                            <input id="email" type="Email" name="email" placeholder="Masukan email Anda" required="required"><br>
+                        </div>
+                        <div class="form">
+                            <p>Nomor Telepon</p>
+                            <input id="telepon" type="text" name="telepon" placeholder="Masukan nomor telepon Anda" required="required"><br>
+                        </div>
+                        <div class="form">
+                            <p>Alamat</p>
+                            <input id="alamat" type="text" name="alamat" placeholder="Masukan alamat Anda" required="required"><br>
+                        </div>
+                        <div class="form">
+                            <p>Jenis Kelamin</p>
+                            <input id="laki" type="radio" name="jenisKelamin">
+                            <label for="laki">Laki-laki</label>
+                            <input id="perempuan" type="radio" name="jenisKelamin">
+                            <label for="perempuan">Perempuan</label>
+                            <input id="lain" type="radio" name="jenisKelamin">
+                            <label for="lain">Lainnya</label><br>
+                        </div>
+                        <div class="form">
+                            <p>Tanggal Lahir</p>
+                            <input id="tgl-lahir" type="date" name="tgl-lahir">
+                        </div>
+                        <input type="submit" name="submit" value="Simpan"> 
+                    </div>
+                    <div class="right-content">
+                        <img src="assets/imgs/photo-profile.png" alt="foto">
+                        <label class="pilih-gambar"><input type="file" accept=".jpg,.jpeg,.png"/>Pilih Gambar</label>
+                    </div>     
+                </form>          
+        </div>      
+        <?php //require_once 'footer.html'; ?>
+    </body>
+</html>
 
-    <div class="profil"><img src="../view/asset/account.png" alt="profil">
-    <p>Profil</p></div>
-
-    <div class="password"><img src="../view/asset/lock.png" alt="password">
-    <p>Ubah Password</p></div>
-    
-    <div class="wishlist"><img src="../view/asset/favorite-file.png" alt="wishlist">
-    <p>Wishlist</p></div>
-    
-    <div class="toko"><img src="../view/asset/shop.png" alt="toko">
-    <p>Toko</p></div>
-    
-    <div class="tulisArtikel"><img src="../view/asset/edit-file.png" alt="tulisArtikel">
-    <p>Tulis Artikel</p></div>
-    
-    <div><img src="../view/asset/Logout.png" alt="logout">
-    <p>Logout</p></div>
-</div>
-
-<form class="profilSaya" action="" method="POST">
-    <p>Profil Saya</p>
-    <p>Username</p>
-    <input class="kolom" type="text" name="username" placeholder="Masukan username" value = '<?php echo $data["username"] ?>'
-required><br>
-    <p>Nama</p>
-    <input class="kolom" type="text" name="nama" placeholder="Masukan nama" value = '<?php echo $data["nama"] ?>'
-required><br>
-    <p>Email</p>
-    <input class="kolom" type="text" name="email" placeholder="Masukan email" value = '<?php echo $data["email"] ?>'
-required><br>
-    <p>Nomor Telepon</p>
-    <input class="kolom" type="text" name="telepon" placeholder="Masukkan nomor telepon" value = '<?php echo $data["nomor_telepon"] ?>'
-required="required"><br>
-    <p>Alamat</p>
-    <input class="kolom" type="text" name="alamat" placeholder="Masukan alamat" value = '<?php echo $data["alamat"] ?>'
-required="required"><br>
-    <p>Jenis Kelamin</p>
-    <input type="radio" id="laki" name="jeniskelamin" value="Laki-Laki" <?php if($data["jenis_kelamin"] == 'Laki-Laki') echo 'checked' ?>>
-    <label for="laki">Laki-Laki</label><br>
-    <input type="radio" id="perempuan" name="jeniskelamin" value="Perempuan" <?php if($data["jenis_kelamin"] == 'Perempuan') echo 'checked' ?> >
-    <label for="perempuan">Perempuan</label><br>
-    <input type="radio" id="lainnya" name="jeniskelamin" value="Lainnya" <?php if($data["jenis_kelamin"] == 'Lainnya') echo 'checked' ?>>
-    <label for="lainnya">Lainnya</label><br>
-  <label for="birthdaytime">Tanggal Lahir</label>
-  <input type="date" id="tanggallahir" name="tanggallahir" value = '<?php echo $data["tanggal_lahir"] ?>'>
-  <input type="submit" name="submit" value="Submit">
-</form>
-
-<p>Pilih Gambar</p>
-<input type="file" id="profilepicture"
-  accept=".jpg,.jpeg,.png">
-</body>
-<?php require_once './view/footer.html';
-
+<?php
 if(isset($_POST["submit"])){
-  $user_1 = new c_user();
-  $user_1->updateAkun($_POST["username"], $_POST["nama"], $_POST["email"], $_POST["telepon"], $_POST["alamat"], $_POST["jeniskelamin"], $_POST["tanggallahir"]);
-}
-}else{
-    header("Location: register");
-}
+    require "user/controller.user.php";
+    $user_1 = new c_user();
+    echo $_SESSION["user-culinary"]["id_user"];
+    if($user_1->updateAkun($_POST["username"], $_POST["nama"], $_POST["email"], $_POST["telepon"], $_POST["alamat"], $_POST["jeniskelamin"], $_POST["tanggallahir"])){
+      // header("Location: homepage.php");
+      echo  $_POST["username"], $_POST["nama"], $_POST["email"], $_POST["telepon"], $_POST["alamat"], $_POST["jeniskelamin"], $_POST["tanggallahir"];
+    }else header("Location: login.php");
+    // echo "<h2>ini submit</h2>";
+  }
+?>

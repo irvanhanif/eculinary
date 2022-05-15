@@ -1,68 +1,58 @@
-<?php require_once './view/header.html';
-require "user/controller.user.php";
-$user = (new c_user())->getDetailAkun();
-require "toko/controller.toko.php"; 
-$data = (new c_toko())->getToko(1);
-var_dump($data);
-?>
-<div class="profil">
-    <img src="../view/asset/profile.png" alt="Profil">
-    <p>Hi, <?php echo $user["username"] ?>!</p>
-    <p>Kota Malang</p>
+<html>
+    <head>
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    <body>
+        <?php require_once 'header.html'; ?>
+        <div class="wrapper">
+            <?php include 'daftarKonten.php'; ?>
+                <form class="content" action="" method="post">
+                    <div class="left-content">
+                        <h1>Informasi Toko</h1>
+                        <div class="form">
+                            <p>Nama Toko</p>
+                            <input id="nama-toko" type="text" name="nama-toko" placeholder="Masukan Nama Toko" required="required"><br>
+                        </div>
+                        <div class="form">
+                            <p>Kota</p>
+                            <input id="kota" type="text" name="kota" placeholder="Masukan Kota Toko Anda" required="required"><br>
+                        </div>
+                        <div class="form">
+                            <p>Alamat Toko</p>
+                            <input id="alamat" type="text" name="alamat" placeholder="Tulis Alamat Lengkap Anda di sini" required="required"><br>
+                        </div>
+                        <div class="form">
+                            <p>Email</p>
+                            <input id="email" type="Email" name="email" placeholder="Tulis Email Anda" required="required"><br>
+                        </div>
+                        <div class="form">
+                            <p>Nomor Telepon</p>
+                            <input id="telepon" type="text" name="telepon" placeholder="Masukkan Nomor Telepon Anda" required="required"><br>
+                        </div>
+                        <div class="form">
+                            <p>Jam Operasi Toko</p>
+                            <input id="buka" type="time" name="buka" required="required"><br>
+                            <input id="tutup" type="time" name="tutup" required="required"><br>
+                        </div>
+                        <input class ="submit" type="submit" name="submit" value="Daftar">
+                    </div>
+                    <div class="right-content">
+                        <img src="assets/imgs/logo_toko.png" alt="logo-toko">
+                        <label class="pilih-gambar"><input type="file" accept=".jpg,.jpeg,.png"/>Pilih Gambar</label>
+                    </div>
+                </form>           
+        </div>      
+        <?php //require_once 'footer.html'; ?>
+    </body>
+</html>
 
-    <div class="profil"><img src="../view/asset/account.png" alt="profil">
-    <p>Profil</p></div>
 
-    <div class="password"><img src="../view/asset/lock.png" alt="password">
-    <p>Ubah Password</p></div>
-    
-    <div class="wishlist"><img src="../view/asset/favorite-file.png" alt="wishlist">
-    <p>Wishlist</p></div>
-    
-    <div class="toko"><img src="../view/asset/shop.png" alt="toko">
-    <p>Toko</p></div>
-    
-    <div class="tulisArtikel"><img src="../view/asset/edit-file.png" alt="tulisArtikel">
-    <p>Tulis Artikel</p></div>
-    
-    <div><img src="../view/asset/Logout.png" alt="logout">
-    <p>Logout</p></div>
-</div>
-
-<form action="" method="post">
-    <p>Informasi Toko</p>
-    <p>Nama Toko</p>
-    <input class="kolom" type="text" name="tokoname" value='<?php echo $data[0]["nama_toko"] ?>'
-required="required"><br>
-    <p>Kota</p>
-    <input class="kolom" type="text" name="kota" value='<?php echo $data[0]["kota"] ?>'
-required="required"><br>
-<p>Alamat Toko</p>
-    <input class="kolom" type="text" name="alamat" value='<?php echo $data[0]["alamat"] ?>'
-required="required"><br>
-<p>Email</p>
-    <input class="kolom" type="text" name="emailtoko" value='<?php echo $data[0]["email"] ?>'
-required="required"><br>
-<p>Nomor Telepon</p>
-    <input class="kolom" type="number" name="telepon" value='<?php echo $data[0]["nomor_telepon"] ?>'
-required="required"><br>
-<p>Jam Operasi Toko </p>
-    <input class="kolom" type="time" name="jambuka" placeholder="Masukkan jam buka (contoh 08.00)" value='<?php echo $data[0]["jam_awal"] ?>'
-required="required"><br>
-<input class="kolom" type="time" name="jamtutup" placeholder="Masukkan jam tutup (contoh 23.00)" value='<?php echo $data[0]["jam_akhir"] ?>'
-required="required"><br>
-<input type="submit" name="submit" value="Submit">
-</form>
-<p>Pilih Gambar</p>
-<input type="file" id="profilepicture"
-  accept=".jpg,.jpeg,.png">
 <?php
 if(isset($_POST["submit"])){
-    $toko_1 = new c_toko();
-    if($toko_1->createToko($_POST["tokoname"], $_POST["alamat"], $_POST["kota"], $_POST["emailtoko"], $_POST["telepon"], $_POST["jambuka"], $_POST["jamtutup"])){
-    //   header("Location: homepage.php");
+    require "artikel/controller.artikel.php";
+    $artikel_1 = new c_artikel();
+    if($artikel_1->postArtikel($_POST["judul"], $_POST["isi"])){
+      header("Location: homepage.php");
     }
   }
 ?>
-<?php include 'view/menu/pendaftaranmakanan.php'; ?>
-<?php require_once 'view/footer.html'; ?>

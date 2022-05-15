@@ -1,25 +1,27 @@
-<?php echo $id?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../view/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Document</title>
 </head>
 <body>
+    <header>
+
+    </header>
     <div class="content-wrapper">
         <div class="detail-toko">
             <div class="logo">
-                <img src="../view/asset/toko.png" alt="foto-toko">
+                <img src="assets/imgs/logo_toko.png" alt="foto-toko">
             </div>
             <div class="informasi">
                 <h1>Mie Gacoan Malang</h1>
                 <h2>Kota Malang</h2>
                 <h3>Ruko Kendalsari Barat, Jl. Kendal Sari Bar. No.2</h3>
                 <div class="total-menu">
-                    <img src="../view/asset/clipboard.png" alt="clipboard">
+                    <img src="assets/imgs/clipboard.png" alt="clipboard">
                     <h2>Menu : <span>20</span></h2>
                 </div>
             </div>
@@ -38,11 +40,10 @@
         </div>
         <?php 
             for ($i = 0; $i <= 10; $i++) {
-                require 'view/menu/makanan.php';
+                require 'makanan.php';
             }
         ?>
     </div>
     <footer></footer>
 </body>
 </html>
-     

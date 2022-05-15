@@ -1,45 +1,39 @@
-<?php require_once 'header.html'; ?>
-<div class="profil">
-    <img src="profile.png" alt="Profil">
-    <p>Hi, Jong Un!</p>
-    <p>Kota Malang</p>
+<html>
+    <head>
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    <body>
+        <?php require_once 'header.html'; ?>
+        <div class="wrapper">
+            <?php include 'daftarKonten.php'; ?>
+                <form class="content" action="" method="post">
+                    <div class="left-content">
+                        <h1>Tulis Artikel</h1>
+                        <div class="form">
+                            <p>Nama Penulis</p>
+                            <input id="nama-penulis" type="text" name="namapenulis" placeholder="Masukan nama Anda" required="required"><br>
+                        </div>
+                        <div class="form">
+                            <p>Judul</p>
+                            <input id="judul-artikel" type="text" name="judul" placeholder="Masukan judul artikel" required="required"><br>
+                        </div>
+                        <div class="form">
+                            <p>Isi</p>
+                            <textarea name="isi" id="isi-artikel" cols="30" rows="10" placeholder="Tuliskan isi artikel disini"></textarea>
+                        </div>
+                        <input type="submit" name="submit" value="Unggah"> 
+                    </div>
+                    <div class="right-content">
+                        <img src="assets/imgs/pilih-gambar.png" alt="gambar">
+                        <label class="pilih-gambar"><input type="file" accept=".jpg,.jpeg,.png"/>Pilih Gambar</label>
+                    </div>     
+                </form>          
+        </div>      
+        <?php //require_once 'footer.html'; ?>
+    </body>
+</html>
 
-    <div class="profil"><img src="account.png" alt="profil">
-    <p>Profil</p></div>
 
-    <div class="password"><img src="lock.png" alt="password">
-    <p>Ubah Password</p></div>
-    
-    <div class="wishlist"><img src="favorite-file.png" alt="wishlist">
-    <p>Wishlist</p></div>
-    
-    <div class="toko"><img src="shop.png" alt="toko">
-    <p>Toko</p></div>
-    
-    <div class="tulisArtikel"><img src="edit-file.png" alt="tulisArtikel">
-    <p>Tulis Artikel</p></div>
-    
-    <div><img src="Logout.png" alt="logout">
-    <p>Logout</p></div>
-</div>
-
-<form class="tulisArtikel" action="" method="post">
-    <p>Tulis Artikel</p>
-    <p>Nama Penulis</p>
-    <input class="kolom" type="text" name="namapenulis" placeholder="Masukan nama Anda"
-required="required"><br>
-    <p>Judul</p>
-    <input class="kolom" type="text" name="judul" placeholder="Masukan judul artikel"
-required="required"><br>
-    <p>Isi</p>
-    <input class="kolom" type="text" name="isi" placeholder="Tulis isi artikel di sini"
-required="required"><br>
-<input type="submit" name="submit" value="Unggah">
-
-<p>Pilih Gambar</p>
-<input type="file" id="profilepicture"
-  accept=".jpg,.jpeg,.png">
-<?php require_once 'footer.html'; ?>
 <?php
 if(isset($_POST["submit"])){
     require "artikel/controller.artikel.php";
