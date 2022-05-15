@@ -1,44 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/akun.css">
+</head>
+<body>
 <?php
-// if(isset($_SESSION["user-culinary"])){
+if(isset($_SESSION["user-culinary"])){
 ?>
-<?php require_once '../header.php'; ?>
-<div class="profil">
-    <img src="profile.png" alt="Profil">
-    <p>Hi, Jong Un!</p>
-    <p>Kota Malang</p>
-
-    <div class="profil"><img src="account.png" alt="profil">
-    <p>Profil</p></div>
-
-    <div class="password"><img src="lock.png" alt="password">
-    <p>Ubah Password</p></div>
-    
-    <div class="wishlist"><img src="favorite-file.png" alt="wishlist">
-    <p>Wishlist</p></div>
-    
-    <div class="toko"><img src="shop.png" alt="toko">
-    <p>Toko</p></div>
-    
-    <div class="tulisArtikel"><img src="edit-file.png" alt="tulisArtikel">
-    <p>Tulis Artikel</p></div>
-    
-    <div><img src="Logout.png" alt="logout">
-    <p>Logout</p></div>
+<?php require_once '../header.php'; ?> 
+<div class="password-wrapper">
+    <?php require_once 'daftarKonten.php'?>
+            <form class="ubahpswd" action="" method="post">
+            <h1 class="header1">Ubah Password</h1>
+                <div class="passwordnow">
+                    <p class="password-now">Password saat ini</p>
+                    <input class="kolom" type="password" name="passwordnow">
+                </div>
+                <div class="passwordlater">
+                    <p class="password-later">Password yang baru</p>
+                    <input class="kolom" type="password" name="passwordlater">
+                </div>
+                <a href="">Lupa Password?</a>
+                <input class="kirim-password" type="submit" name="submit" value="Simpan">
+            </form>
 </div>
-
-<form class="ubahpswd" action="" method="post">
-    <p>Ubah Password</p>
-<div class="passwordnow">
-    <p>Password saat ini</p>
-    <input type="password" name="passwordnow">
-</div>
-<div class="passwordlater">
-    <p>Password yang baru</p>
-    <input type="password" name="passwordlater">
-</div>
-<p>Lupa Password?</p>
-<input type="submit" name="submit">
-</form>
+</body>
 <?php require_once '../footer.html'; 
 if(isset($_POST["submit"])){
     require "user/controller.user.php";
@@ -48,6 +37,6 @@ if(isset($_POST["submit"])){
         $user_1->inputToken($token);
     }
 }
-// }else{
-    // header("Location: ../");
-// }
+}else{
+    header("Location: ../");
+}

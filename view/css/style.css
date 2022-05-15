@@ -145,6 +145,9 @@ h5 {
     background-color: #ffffff;
     box-shadow: 2px 2px 20px 0px #00000040;
     padding: 36px;
+    margin-top: 72px;
+    margin-left: 80px;
+    margin-bottom: 72px;
 }
 .profil {
     display: flex;
@@ -280,6 +283,70 @@ input[type=submit] {
     font-family: "nunito";
     font-size: 16px;
     border: none;
+    margin-top: 24px;
+}
+
+/* Ganti Password */
+.password-wrapper {
+    display: flex;
+}
+
+.ubahpswd {
+    border-radius: 24px;
+    background-color: #ffffff;
+    box-shadow: 2px 2px 20px 0px #00000040;
+    width: auto;
+    height: auto;
+    padding: 36px;
+    margin-left: 120px;
+    margin-top: 72px;
+    margin-bottom: 72px;
+}
+
+.passwordnow {
+    display: flex;
+}
+
+.passwordlater {
+    display: flex;
+    margin-bottom: 24px;
+}
+
+.kolom {
+    box-sizing: border-box;
+    width: 400px;
+    height: 40px;
+    padding-right: 10px;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    border-radius: 24px;
+    margin-top: 8px;
+}
+
+.password-now {
+    margin-right: 40px;
+}
+
+.password-later {
+    margin-right: 20px;
+}
+
+.header1 {
+    margin-bottom: 24px;
+}
+
+a {
+font-family: 'Nunito';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 22px;
+align-items: center;
+color: #333333;
+display: block;
+}
+
+.kirim-password {
     margin-top: 24px;
 }
 
