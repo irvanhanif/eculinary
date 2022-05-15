@@ -1,3 +1,6 @@
+body{
+    margin: 0
+}
 .gambar {
     width: 500px;
 margin: 72px 183px -15px 200px;
@@ -28,6 +31,7 @@ margin: 72px 183px -15px 200px;
 
 .menu-wrapper {
     display: flex;
+    margin-top: 100px;
 }
 
 .makanan-wrapper {
@@ -37,14 +41,25 @@ margin: 72px 183px -15px 200px;
 .text {
     margin-top: 150px;
 }
-
+.kolom-komentar{
+    width: 50%;
+    display: flex;
+}
+.kolom-tersedia{
+    width: 50%;
+    display: flex;
+}
 .komentar {
-    margin-top: 44px;
+    margin: auto;
+    margin-top: 50px;
+    /* margin-top: 44px; */
+    /* margin: 44px 15px; */
     width: 500px;
 height: 500px;
 background: #FFFFFF;
 box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.25);
 border-radius: 24px;
+padding: 10px;
 }
 
 .komen {
@@ -62,8 +77,16 @@ line-height: 22px;
 height: 60px;
 }
 
+.button-submit{
+    display: flex;
+    border-bottom: 2.5px grey solid;
+}
 .kolom {
-    margin-top: 40px;
+    /* margin-top: 40px; */
+    border: none;
+    padding: 10px 15px;
+    margin: auto;
+    outline: none;
 }
 
 .isi {
@@ -88,7 +111,7 @@ margin-bottom: 24px;
 display: flex;
 }
 
-.akun {
+.account {
     margin-top: 6px;
     margin-left: 4px;
     width: 30px;
@@ -117,15 +140,21 @@ align-items: center;
 
 .tersedia {
     width: 480px;
+    margin: auto;
+    margin-top: 50px;
+    /* margin: 44px 25px; */
+    /* width: 50%; */
 height: 500px;
 background: #FFFFFF;
 box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.25);
 border-radius: 24px;
-margin-left: 200px;
+padding: 10px 0;
+/* margin-left: 200px; */
 }
 
 .komen-kategori {
     display: flex;
+    margin-bottom: 50px;
 }
 
 .kategori {
@@ -136,15 +165,15 @@ font-size: 36px;
 line-height: 22px;
 text-decoration: underline;
 color: #7E8661;
-align-items: center;
+/* align-items: center; */
+text-align: center;
 padding-top: 37px;
-margin-left: 180px;
+/* margin-left: 180px; */
 }
 
 .konten{
     margin-top: 10px;
     margin-left: 92px;
-    text-decoration: none;
     color: black;
 }
 
@@ -156,8 +185,9 @@ margin-left: 180px;
     line-height: 22px;
     text-decoration: underline;
     color: #7E8661;
-    align-items: center;
-    margin-left: 132px;
+    /* align-items: center; */
+    text-align: center;
+    /* margin-left: 132px; */
 }
 
 .weekday {
@@ -198,3 +228,11 @@ margin-left: 180px;
     letter-spacing: 1.5px;
     cursor: pointer;
 }
+ .lihat{
+     display: block;
+     border-radius: 25px;
+     padding: 10px 25px;
+     border: none;
+     background-color: #FFAB65;
+     margin: auto;
+ }
