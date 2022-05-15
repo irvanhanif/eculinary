@@ -1,11 +1,11 @@
 <html>
     <head>
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="../view/css/style.css">
     </head>
     <body>
-        <?php require_once 'header.html'; ?>
+        <?php require_once 'view/header.php'; ?>
         <div class="wrapper">
-            <?php include 'daftarKonten.php'; ?>
+            <?php include 'view/user/daftarKonten.php'; ?>
                 <form class="content" action="" method="post">
                     <div class="left-content">
                         <h1>Informasi Toko</h1>
@@ -42,7 +42,7 @@
                     </div>
                 </form>           
         </div>      
-        <?php //require_once 'footer.html'; ?>
+        <?php require_once 'view/footer.html'; ?>
     </body>
 </html>
 

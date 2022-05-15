@@ -10,9 +10,6 @@ if(isset($_SESSION["user-culinary"])){
             body{
                 margin: 0;
             }
-            .wrapper{
-                margin-top: 100px;
-            }
         </style>
     </head>
     <body>

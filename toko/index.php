@@ -10,6 +10,11 @@ if(isset($request)){
             $id = explode("/", $request)[1];
             require "./view/toko/detailToko.php";
             break;
+        case 'own' :
+            require_once "toko/controller.toko.php";
+            $data = (new c_toko())->getMyToko();
+            require "./view/toko/detailToko.php";
+            break;
         default:
             http_response_code(404);
             break;

@@ -23,7 +23,7 @@
                 <img src="../view/asset/favorite-file.png" alt="wishlist">
                 <a>Wishlist</a>
             </div>
-            <div class="content-option">
+            <div class="content-option" onclick = "location.href='../toko/own'">
                 <img src="../view/asset/shop.png" alt="toko">
                 <a>Toko</a>
             </div>
