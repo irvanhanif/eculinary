@@ -28,6 +28,7 @@ input[type=button]:active, select:active, input[type=submit]:active, .pilih-gamb
     margin: auto;
     display: flex;
     padding: 48px 77px;
+    margin-top: 100px;
 }
 h1 {
     font-size: 24px;
@@ -102,6 +103,7 @@ select {
     background-color: #ffffff;
     box-shadow: 2px 2px 20px 0px #00000040;
     padding: 24px;
+    cursor: pointer;
 }
 .makanan img {
     margin-bottom: 24px;
@@ -145,8 +147,8 @@ h5 {
     background-color: #ffffff;
     box-shadow: 2px 2px 20px 0px #00000040;
     padding: 36px;
-    margin-top: 72px;
-    margin-left: 80px;
+    /* margin-top: 72px; */
+    /* margin-left: 80px; */
     margin-bottom: 72px;
 }
 .profil {
@@ -184,6 +186,7 @@ h5 {
 .wrapper {
     padding: 48px;
     display: flex;
+    padding-top: 150px;
 }
 .content {
     margin-left: 48px;
@@ -289,6 +292,7 @@ input[type=submit] {
 /* Ganti Password */
 .password-wrapper {
     display: flex;
+    padding: 150px 50px 0;
 }
 
 .ubahpswd {
@@ -299,7 +303,7 @@ input[type=submit] {
     height: auto;
     padding: 36px;
     margin-left: 120px;
-    margin-top: 72px;
+    /* margin-top: px; */
     margin-bottom: 72px;
 }
 
@@ -350,3 +354,7 @@ display: block;
     margin-top: 24px;
 }
 
+.makanan-list{
+    display: flex;
+    flex-wrap: wrap;
+}

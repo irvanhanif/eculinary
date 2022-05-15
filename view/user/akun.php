@@ -1,4 +1,4 @@
-<?php require_once '../header.php'; 
+<?php require_once 'view/header.php'; 
 if(isset($_SESSION["user-culinary"])){
     require "user/controller.user.php";
     $data = (new c_user())->getDetailAkun();
@@ -10,13 +10,9 @@ if(isset($_SESSION["user-culinary"])){
             body{
                 margin: 0;
             }
-            .wrapper{
-                margin-top: 100px;
-            }
         </style>
     </head>
     <body>
-        <?php require_once '../header.php'; ?>
         <div class="wrapper">
             <?php include 'daftarKonten.php'; ?>
                 <form class="content" action="" method="post" enctype="multipart/form-data">

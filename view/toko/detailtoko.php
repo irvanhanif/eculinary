@@ -4,25 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="<?php if(isset($path)) echo $path ?>view/css/style.css">
     <title>Document</title>
+    <?php if(isset($own)){ ?>
+        <style>
+            .detail-toko {
+                margin-top: 0px;
+            }
+        </style>
+    <?php  }  ?>
 </head>
 <body>
-    <header>
-
-    </header>
+<?php require_once 'view/header.php'; ?> 
     <div class="content-wrapper">
         <div class="detail-toko">
             <div class="logo">
-                <img src="assets/imgs/logo_toko.png" alt="foto-toko">
+                <img src="../view/asset/logo_toko.png" alt="foto-toko">
             </div>
             <div class="informasi">
-                <h1>Mie Gacoan Malang</h1>
-                <h2>Kota Malang</h2>
-                <h3>Ruko Kendalsari Barat, Jl. Kendal Sari Bar. No.2</h3>
+                <h1><?php echo $data[0]["nama_toko"] ?></h1>
+                <h2>Kota <?php echo $data[0]["kota"] ?></h2>
+                <h3><?php echo $data[0]["alamat"] ?></h3>
                 <div class="total-menu">
-                    <img src="assets/imgs/clipboard.png" alt="clipboard">
-                    <h2>Menu : <span>20</span></h2>
+                    <img src="../view/asset/clipboard.png" alt="clipboard">
+                    <h2>Menu : <span><?php if($data[1] != null) echo $data[1]; else echo 0; ?></span></h2>
                 </div>
             </div>
         </div>
@@ -38,11 +43,13 @@
                 </select>
             </form>
         </div>
+        <div class="makanan-list">
         <?php 
             for ($i = 0; $i <= 10; $i++) {
-                require 'makanan.php';
+                require 'view/menu/makanan.php';
             }
         ?>
+        </div>
     </div>
     <footer></footer>
 </body>
