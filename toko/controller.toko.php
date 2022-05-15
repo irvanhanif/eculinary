@@ -59,9 +59,11 @@ class c_toko{
 
     public function getMyToko(){
         if(isset($_SESSION["user-culinary"])){
-            $id_toko = $this->model->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"])[0]["id_toko"];
-            $result = $this->getToko($id_toko);
-            return $result;
+            $id_toko = $this->model->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"]);
+            if($id_toko != null){
+                $result = $this->getToko($id_toko["id_toko"]);
+                return $result;
+            }else return false;
         }else return false;
     }
 }

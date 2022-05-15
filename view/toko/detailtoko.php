@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../view/css/style.css">
+    <link rel="stylesheet" href="<?php if(isset($path)) echo $path ?>view/css/style.css">
     <title>Document</title>
+    <?php if(isset($own)){ ?>
+        <style>
+            .detail-toko {
+                margin-top: 0px;
+            }
+        </style>
+    <?php  }  ?>
 </head>
 <body>
 <?php require_once 'view/header.php'; ?> 
@@ -36,11 +43,13 @@
                 </select>
             </form>
         </div>
+        <div class="makanan-list">
         <?php 
             for ($i = 0; $i <= 10; $i++) {
                 require 'view/menu/makanan.php';
             }
         ?>
+        </div>
     </div>
     <footer></footer>
 </body>

@@ -1,5 +1,6 @@
 <?php
 if(isset($request)){
+    require_once "toko/controller.toko.php";
     $path = "../";
     $request = explode("toko/", $request)[1];
     switch (explode("/", $request)[0]) {
@@ -8,12 +9,16 @@ if(isset($request)){
             break;
         case 'detail' :
             $id = explode("/", $request)[1];
+            $data = (new c_toko())->getToko($id);
+            // var_dump($data);
+            $path = $path . "../";
             require "./view/toko/detailToko.php";
             break;
         case 'own' :
-            require_once "toko/controller.toko.php";
             $data = (new c_toko())->getMyToko();
-            require "./view/toko/detailToko.php";
+            $own = true;
+            require_once "./view/toko/pendaftaranpenjual.php";
+            if($data) require "./view/toko/detailToko.php";
             break;
         default:
             http_response_code(404);
