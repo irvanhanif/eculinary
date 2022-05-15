@@ -4,8 +4,8 @@
         <link rel="stylesheet" href="view/css/style.css">
     </head>
     <body>
-        <div class="makanan-wrapper">
-        <div class="makanan">
+        <div class="makanan-wrapper" >
+        <div class="makanan" onclick="location.href=''">
             <img src="<?php if(isset($path)) echo $path ?>view/asset/makanan.png" alt="foto-makanan">
             <h4><b>Mie Iblis</b></h4>
             <div class="informasi-makanan">

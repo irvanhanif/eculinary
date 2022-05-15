@@ -96,11 +96,9 @@
     <div class="makanan-list">
 <?php 
 for ($i = 0; $i <= 3; $i++) {
-            ?>
-                require 'view/menu/makanan.php';
-            <?php
-            }
-            ?>
+    require 'view/menu/makanan.php'; 
+    }
+?>
     </div>
 </div>
 

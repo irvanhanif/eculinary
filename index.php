@@ -18,6 +18,9 @@ switch (explode("/", $request)[0]) {
     case 'toko' :
         require "toko/index.php";
         break;
+    case 'menu' :
+        require "menu/index.php";
+        break;
     default:
         http_response_code(404);
         break;
