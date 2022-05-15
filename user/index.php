@@ -15,6 +15,9 @@ if(isset($request)){
         case 'setpw' :
             require "./view/user/gantiPassword.php";
             break;
+        case 'wishlist' :
+            require "./view/user/wishlist.php";
+            break;
         default:
             http_response_code(404);
             break;

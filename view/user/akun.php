@@ -5,15 +5,15 @@ if(isset($_SESSION["user-culinary"])){
 ?>
 <html>
     <head>
-        <link rel="stylesheet" href="assets/css/style.css">
-        <style>
+        <link rel="stylesheet" href="../view/css/style.css">
+        <!-- <style>
             body{
                 margin: 0;
             }
             .wrapper{
                 margin-top: 150px;
             }
-        </style>
+        </style> -->
     </head>
     <body>
         <?php require_once 'view/header.php'; ?>

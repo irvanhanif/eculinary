@@ -120,9 +120,10 @@ header {
             <a href="">Makanan & Minuman</a>
             <a href="">Artikel</a>           
         <?php if(isset($_SESSION["user-culinary"])){ ?>
-            <img src="<?php if(isset($path)) echo $path ?>view/asset/wishlist.png" alt="wishlist" class="imgbtn">
+            <img src="<?php if(isset($path)) echo $path ?>view/asset/wishlist.png" alt="wishlist" 
+            onclick="location.href='<?php if(isset($path)) echo $path ?>user/wishlist'" class="imgbtn">
             <img src="<?php if(isset($path)) echo $path ?>view/asset/account.png" alt="akun"
-            onclick="location.href='user/setting'" class="imgbtn">
+            onclick="location.href='<?php if(isset($path)) echo $path ?>user/setting'" class="imgbtn">
         <?php }else{ ?>
             <a href="<?php if(isset($url)) echo $url ?>register" class="daftarbtn">Daftar</a>
             <a href="<?php if(isset($url)) echo $url ?>login" class="masukbtn">Masuk</a>
