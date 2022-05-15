@@ -43,7 +43,7 @@
                 </select>
             </form>
         </div>
-        <div class="makanan-list">
+        <div class="daftar-makanan">
         <?php 
             for ($i = 0; $i <= 10; $i++) {
                 require 'view/menu/makanan.php';

@@ -11,10 +11,21 @@
             header("Location: own");
         }
     }
+    if(isset($_POST["simpan"])){
+        require_once "toko/controller.toko.php";
+        $toko = new c_toko();
+        // echo $_POST["nama-toko"], $_POST["alamat"], $_POST["kota"], $_POST["email"], $_POST["telepon"], $_POST["buka"], $_POST["tutup"], $data[0]["id_toko"];
+        if($toko->updateToko($_POST["nama-toko"], $_POST["alamat"], $_POST["kota"], $_POST["email"], $_POST["telepon"], $_POST["buka"], $_POST["tutup"], $data[0]["id_toko"])){
+            echo true;
+            // header("Location: own");
+        }
+        echo false;
+    }
 ?>
         <?php require_once 'view/header.php'; ?>
         <div class="wrapper">
             <?php include 'view/user/daftarKonten.php'; ?>
+                <div class="contents">
                 <form class="content" action="" method="post">
                     <div class="left-content">
                         <h1>Informasi Toko</h1>
@@ -53,11 +64,13 @@
                         <img src="assets/imgs/logo_toko.png" alt="logo-toko">
                         <label class="pilih-gambar"><input type="file" accept=".jpg,.jpeg,.png"/>Pilih Gambar</label>
                     </div>
-                </form>           
+                </form>
+                <?php if(isset($data[0]["id_toko"])){ 
+                    require "view/menu/penambahanMakanan.php"; }?>
+                </div>           
         </div>      
-        <?php if(!isset($data[0]["id_toko"])){
+        <?php
             require_once 'view/footer.html'; 
-        }
         ?>
     </body>
 </html>

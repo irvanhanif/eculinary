@@ -18,7 +18,7 @@ if(isset($request)){
             $data = (new c_toko())->getMyToko();
             $own = true;
             require_once "./view/toko/pendaftaranpenjual.php";
-            if($data) require "./view/toko/detailToko.php";
+            // if($data) require "./view/menu/penambahanMakanan.php";
             break;
         default:
             http_response_code(404);
