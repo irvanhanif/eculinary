@@ -5,6 +5,7 @@
     /* width: 81px; */
     height: 72px;
     display: flex;
+    cursor: pointer;
     }
 .namaapp{
     margin-left: 42px;
@@ -104,7 +105,7 @@ header {
 </head>
 <header>
     <div class="namaapp">
-        <div class="logo">
+        <div class="logo" onclick="location.href='<?php if(isset($path)) echo $path ?>'">
         <img
             src="https://anima-uploads.s3.amazonaws.com/projects/6273e7409db3428425c9166e/releases/6273e74a86d103405404dfa2/img/fa6-solid-bowl-food@2x.svg"
         />
