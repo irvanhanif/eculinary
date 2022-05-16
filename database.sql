@@ -9,7 +9,8 @@ CREATE TABLE eculinary.user
     jenis_kelamin VARCHAR(15) NULL,
     tanggal_lahir DATE NULL,
     password VARCHAR(255) NOT NULL,
-    token_change_password VARCHAR(4)
+    token_change_password VARCHAR(4),
+    avatar VARCHAR(60),
 );
 
 CREATE TABLE toko
@@ -23,6 +24,7 @@ CREATE TABLE toko
     id_user INT NOT NULL,
     jam_awal TIME,
     jam_akhir TIME,
+    avatar VARCHAR(60),
 
     FOREIGN KEY (id_user) REFERENCES user(id_user)
 );

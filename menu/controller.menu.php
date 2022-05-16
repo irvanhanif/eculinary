@@ -1,11 +1,11 @@
 <?php
 require_once "./config.php";
-require "model.menu.php";
-require "model.komentar.php";
-require "model.rating.php";
-require "model.wishlist.php";
-require "./toko/model.toko.php";
-require "./uploadHandler.php";
+require_once "model.menu.php";
+require_once "model.komentar.php";
+require_once "model.rating.php";
+require_once "model.wishlist.php";
+require_once "./toko/model.toko.php";
+require_once "./uploadHandler.php";
 
 class c_menu{
     private $model;
@@ -21,8 +21,10 @@ class c_menu{
     }
 
     public function createMenu($nama_menu, $harga, $jenis, $kategori, $avatar){
+        echo "hehe";
         if(isset($_SESSION["user-culinary"])){
             $pathAvatar = (new uploadHandler($avatar))->uploadAvatar('menu');
+            echo $pathAvatar;
             $id_toko = (new m_toko())->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"])["id_toko"];
             $this->model->postMenu($nama_menu, $harga, $jenis, $kategori, $id_toko, $pathAvatar);
             $result = $this->model->insertMenu($this->conn);

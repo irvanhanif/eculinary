@@ -58,8 +58,8 @@
                         <?php } ?>
                     </div>
                     <div class="right-content">
-                        <img src="assets/imgs/logo_toko.png" alt="logo-toko">
-                        <label class="pilih-gambar"><input type="file" accept=".jpg,.jpeg,.png"/>Pilih Gambar</label>
+                        <img src="../view/asset/logo_toko.png" alt="logo-toko" id="img-toko">
+                        <label class="pilih-gambar"><input type="file" onchange="readURLToko(this);" accept=".jpg,.jpeg,.png"/>Pilih Gambar</label>
                     </div>
                 </form>
                 <?php if(isset($data[0]["id_toko"])){ 
@@ -69,6 +69,19 @@
         <?php
             require_once 'view/footer.html'; 
         ?>
+        <script>
+            function readURLToko(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        document.getElementById("img-toko").setAttribute('src', e.target.result)
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
     </body>
 </html>
 

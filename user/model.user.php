@@ -35,7 +35,7 @@ class m_user{
         return $result;
     }
 
-    public function dataEdit($username, $nama, $email, $nomorTelepon, $alamat, $jenisKelamin, $tanggalLahir, $id_user){
+    public function dataEdit($username, $nama, $email, $nomorTelepon, $alamat, $jenisKelamin, $tanggalLahir, $avatar, $id_user){
         $this->username = $username;
         $this->nama = $nama;
         $this->email = $email;
@@ -43,11 +43,12 @@ class m_user{
         $this->alamat = $alamat;
         $this->jenisKelamin = $jenisKelamin;
         $this->tanggalLahir = $tanggalLahir;
+        $this->avatar = $avatar;
         $this->id_user = $id_user;
     }
 
     public function editUser($db){
-        $result = $db->query("UPDATE $this->tabel SET username = '$this->username', nama = '$this->nama', email = '$this->email', nomor_telepon = '$this->nomorTelepon', alamat = '$this->alamat', jenis_kelamin = '$this->jenisKelamin', tanggal_lahir = '$this->tanggalLahir' WHERE id_user = '$this->id_user'");
+        $result = $db->query("UPDATE $this->tabel SET username = '$this->username', nama = '$this->nama', email = '$this->email', nomor_telepon = '$this->nomorTelepon', alamat = '$this->alamat', jenis_kelamin = '$this->jenisKelamin', tanggal_lahir = '$this->tanggalLahir', avatar = '$this->avatar' WHERE id_user = '$this->id_user'");
         return $result;
     }
 

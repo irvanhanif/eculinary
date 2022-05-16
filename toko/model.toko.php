@@ -8,12 +8,13 @@ class m_toko{
     private $id_user;
     private $jamAwal;
     private $jamAkhir;
+    private $avatar;
 
     private $id_toko;
 
     private $tabel = "toko";
 
-    public function postToko($namaToko, $alamat, $kota, $email, $nomorTelepon, $id_user, $jamAwal, $jamAkhir){
+    public function postToko($namaToko, $alamat, $kota, $email, $nomorTelepon, $id_user, $jamAwal, $jamAkhir, $avatar){
         $this->namaToko = $namaToko;
         $this->alamat = $alamat;
         $this->kota = $kota;
@@ -22,10 +23,11 @@ class m_toko{
         $this->id_user = $id_user;
         $this->jamAwal = $jamAwal;
         $this->jamAkhir = $jamAkhir;
+        $this->avatar = $avatar;
     }
 
     public function createToko($db) {
-        $result = $db->query("INSERT INTO $this->tabel VALUES('', '$this->namaToko', '$this->alamat', '$this->kota', '$this->email' ,'$this->nomorTelepon', '$this->id_user', '$this->jamAwal', '$this->jamAkhir')");
+        $result = $db->query("INSERT INTO $this->tabel VALUES('', '$this->namaToko', '$this->alamat', '$this->kota', '$this->email' ,'$this->nomorTelepon', '$this->id_user', '$this->jamAwal', '$this->jamAkhir', '$this->avatar')");
         return $result;
     }
 
@@ -39,7 +41,7 @@ class m_toko{
         return $result;
     }
 
-    public function dataUpdate($namaToko, $alamat, $kota, $email, $nomorTelepon, $jamAwal, $jamAkhir, $id_toko){
+    public function dataUpdate($namaToko, $alamat, $kota, $email, $nomorTelepon, $jamAwal, $jamAkhir, $avatar, $id_toko){
         $this->namaToko = $namaToko;
         $this->alamat = $alamat;
         $this->kota = $kota;
@@ -47,11 +49,12 @@ class m_toko{
         $this->nomorTelepon = $nomorTelepon;
         $this->jamAwal = $jamAwal;
         $this->jamAkhir = $jamAkhir;
+        $this->avatar = $avatar;
         $this->id_toko = $id_toko;
     }
 
     public function updateToko($db){
-        $result = $db->query("UPDATE $this->tabel SET nama_toko = '$this->namaToko', alamat = '$this->alamat', kota = '$this->kota', email = '$this->email', nomor_telepon = '$this->nomorTelepon', jam_awal = '$this->jamAwal', jam_akhir = '$this->jamAkhir' WHERE id_toko = $this->id_toko");
+        $result = $db->query("UPDATE $this->tabel SET nama_toko = '$this->namaToko', alamat = '$this->alamat', kota = '$this->kota', email = '$this->email', nomor_telepon = '$this->nomorTelepon', jam_awal = '$this->jamAwal', jam_akhir = '$this->jamAkhir', avatar = '$this->avatar' WHERE id_toko = $this->id_toko");
         return $result;
     }
 

@@ -2,7 +2,7 @@
     <body>
         <div class="menu-wrapper">
             <div class="tambah-menu">
-                <form class="content" action="" method="post">
+                <form class="content" action="" method="post" enctype="multipart/form-data">
                     <div class="left-content">
                         <h1>Menu Toko</h1>
                         <div class="form">
@@ -26,11 +26,11 @@
                             <input id="lain" type="radio" name="jenisMakanan">
                             <label for="lain">Lainnya</label><br>
                         </div>
-                        <input class ="submit" type="submit" name="submit" value="Tambahkan">
+                        <input class ="submit" type="submit" name="submitMenu" value="Tambahkan">
                     </div>
                     <div class="right-content">
-                        <img src="assets/imgs/gambar-makanan.png" alt="gambar">
-                        <label class="pilih-gambar"><input type="file" accept=".jpg,.jpeg,.png"/>Pilih Gambar</label>
+                        <img src="../view/asset/sup.png" alt="gambar" id="img-menu">
+                        <label class="pilih-gambar"><input type="file" onchange="readURL(this);" accept=".jpg,.jpeg,.png" name="avatar"/>Pilih Gambar</label>
                     </div>
                 </form>
             </div>
@@ -41,6 +41,28 @@
                     }
                 ?>
             </div>
+            <?php
+                if(isset($_POST["submitMenu"])){
+                    require_once "menu/controller.menu.php";
+                    $menu = new c_menu();
+                    if($menu->createMenu($_POST["nama-makanan"], $_POST["harga"], $_POST["jenisMakanan"], $_POST["kategori"], $_FILES["avatar"])){
+                        header("Location: own");
+                    }
+                }
+            ?>
+            <script>
+                function readURL(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            document.getElementById("img-menu").setAttribute('src', e.target.result)
+                        };
+
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+            </script>
         </div>
     </body>
 </html>

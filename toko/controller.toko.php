@@ -15,8 +15,9 @@ class c_toko{
 
     public function createToko($namaToko, $alamat, $kota, $email, $nomorTelepon, $jamAwal, $jamAkhir){
         if(isset($_SESSION["user-culinary"])){
+            $pathAvatar = (new uploadHandler($avatar))->uploadAvatar('toko');
             $id_user = $_SESSION["user-culinary"]["id_user"];
-            $this->model->postToko($namaToko, $alamat, $kota, $email, $nomorTelepon, $id_user, $jamAwal, $jamAkhir);
+            $this->model->postToko($namaToko, $alamat, $kota, $email, $nomorTelepon, $id_user, $jamAwal, $jamAkhir, $pathAvatar);
             $result = $this->model->createToko($this->conn);
             return $result;
         }else return false;
@@ -36,7 +37,8 @@ class c_toko{
     public function updateToko($namaToko, $alamat, $kota, $email, $nomorTelepon, $jamAwal, $jamAkhir, $id_toko){
         if(isset($_SESSION["user-culinary"])){
             if($this->model->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"])["id_toko"] === $id_toko){
-                $this->model->dataUpdate($namaToko, $alamat, $kota, $email, $nomorTelepon, $jamAwal, $jamAkhir, $id_toko);
+                $pathAvatar = (new uploadHandler($avatar))->uploadAvatar('toko');
+                $this->model->dataUpdate($namaToko, $alamat, $kota, $email, $nomorTelepon, $jamAwal, $jamAkhir, $pathAvatar, $id_toko);
                 $result = $this->model->updateToko($this->conn);
                 return $result;
             } else return false;
