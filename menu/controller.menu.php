@@ -24,8 +24,7 @@ class c_menu{
         echo "hehe";
         if(isset($_SESSION["user-culinary"])){
             $pathAvatar = (new uploadHandler($avatar))->uploadAvatar('menu');
-            echo $pathAvatar;
-            $id_toko = (new m_toko())->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"])["id_toko"];
+            $id_toko = (new m_toko())->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"])[0]["id_toko"];
             $this->model->postMenu($nama_menu, $harga, $jenis, $kategori, $id_toko, $pathAvatar);
             $result = $this->model->insertMenu($this->conn);
             return $result;
@@ -34,7 +33,7 @@ class c_menu{
 
     public function updateMenu($nama_menu, $harga, $kategori, $jenis, $id_menu){
         if(isset($_SESSION["user-culinary"])){
-            if($this->model->getIdToko($this->conn, $id_menu)["id_toko"] === (new m_toko())->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"])["id_toko"]){
+            if($this->model->getIdToko($this->conn, $id_menu)["id_toko"] === (new m_toko())->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"])[0]["id_toko"]){
                 $pathAvatar = (new uploadHandler($avatar))->uploadAvatar('menu');
                 $this->model->updateDataMenu($nama_menu, $harga, $kategori, $jenis, $id_toko, $id_menu, $pathAvatar);
                 $result = $this->model->updateMenu($this->conn);
@@ -45,7 +44,7 @@ class c_menu{
 
     public function deleteMenu($id_menu){
         if(isset($_SESSION["user-culinary"])){
-            if($this->model->getIdToko($this->conn, $id_menu)["id_toko"] === ((new m_toko())->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"])["id_toko"])){
+            if($this->model->getIdToko($this->conn, $id_menu)["id_toko"] === ((new m_toko())->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"])[0]["id_toko"])){
                 $result = $this->model->deleteMenu($this->conn, $id_menu);
                 return $result;
             }else return false;

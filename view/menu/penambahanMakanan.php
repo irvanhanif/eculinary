@@ -34,22 +34,18 @@
                     </div>
                 </form>
             </div>
+            <?php
+            require_once "menu/controller.menu.php";
+            $daftarMenu = (new c_menu())->getAllMenuToko($data[0]["id_toko"], '', '');
+            // var_dump($daftarMenu);
+            ?>
             <div class="daftar-makanan">
                 <?php 
-                    for ($i = 0; $i <= 10; $i++) {
+                    for ($i = 0; $i < count($daftarMenu); $i++) {
                         require 'makanan.php';
                     }
                 ?>
             </div>
-            <?php
-                if(isset($_POST["submitMenu"])){
-                    require_once "menu/controller.menu.php";
-                    $menu = new c_menu();
-                    if($menu->createMenu($_POST["nama-makanan"], $_POST["harga"], $_POST["jenisMakanan"], $_POST["kategori"], $_FILES["avatar"])){
-                        header("Location: own");
-                    }
-                }
-            ?>
             <script>
                 function readURL(input) {
                     if (input.files && input.files[0]) {

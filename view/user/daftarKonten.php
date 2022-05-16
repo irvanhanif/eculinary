@@ -7,7 +7,7 @@
             <div class="profil">
                 <img src="../view/asset/profile.png" alt="Profil">
                 <div class="hi">
-                    <p><b>Hi, Jong Un!</b></p>
+                    <p><b>Hi, <?php if(isset($data["username"])) echo $data["username"]; else echo 'user' ?>!</b></p>
                     <p>Kota Malang</p>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                 <img src="../view/asset/edit-file.png" alt="tulisArtikel">
                 <a>Tulis Artikel</a>
             </div>
-            <div class="content-option" onclick = "<?php  ?>">
+            <div class="content-option" onclick = "location.href='../view/user/logout.php'">
                 <img src="../view/asset/Logout.png" alt="logout">
                 <a>Logout</a>
             </div>

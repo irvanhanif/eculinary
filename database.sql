@@ -10,7 +10,7 @@ CREATE TABLE eculinary.user
     tanggal_lahir DATE NULL,
     password VARCHAR(255) NOT NULL,
     token_change_password VARCHAR(4),
-    avatar VARCHAR(60),
+    avatar VARCHAR(60)
 );
 
 CREATE TABLE toko

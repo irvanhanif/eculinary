@@ -1,6 +1,7 @@
 <?php
 require_once "./config.php";
 require "model.user.php";
+require_once "./uploadHandler.php";
 class c_user{
     private $model;
     private $conn;
@@ -12,7 +13,7 @@ class c_user{
     }
     public function register($username, $email, $password){
         $this->model->dataLogin($email, $password);
-        $result = $this->model->selectUserWithEmail($this->conn);
+        $result = $this->model->selectUserWithEmail($this->conn)[0];
         if(isset($result["id_user"])) {
             echo "email already exist";
             return false;
@@ -23,7 +24,7 @@ class c_user{
             echo "something wrong when register";
             return false;
         }
-        $result = $this->model->selectUserWithEmail($this->conn);
+        $result = $this->model->selectUserWithEmail($this->conn)[0];
         unset($result["password"]);
         $_SESSION["user-culinary"] = $result;
         return true;
@@ -31,7 +32,7 @@ class c_user{
 
     public function login($email, $password){
         $this->model->dataLogin($email, $password);
-        $result = $this->model->selectUserWithEmail($this->conn);
+        $result = $this->model->selectUserWithEmail($this->conn)[0];
         if(!isset($result["id_user"])) {
             echo "incorrect email";
             return false;
@@ -45,23 +46,24 @@ class c_user{
         return true;
     }
 
-    public function logout(){
-        unset($_SESSION["user-culinary"]);
-        session_destroy();
-    }
+    // public function logout(){
+    //     unset($_SESSION["user-culinary"]);
+    //     session_destroy();
+    // }
 
     public function getDetailAkun(){
         if(isset($this->model)){
             $id_user = $_SESSION["user-culinary"]["id_user"];
-            $result = $this->model->getInfoAkun($this->conn, $id_user);
+            $result = $this->model->getInfoAkun($this->conn, $id_user)[0];
             unset($result["password"]);
             return $result;
         }return false;
     }
 
-    public function updateAkun($username, $nama, $email, $nomorTelepon, $alamat, $jenisKelamin, $tanggalLahir){
+    public function updateAkun($username, $nama, $email, $nomorTelepon, $alamat, $jenisKelamin, $tanggalLahir, $avatar){
         if(isset($this->model)){
             $pathAvatar = (new uploadHandler($avatar))->uploadAvatar('user');
+            // var_dump($pathAvatar);
             $id_user = $_SESSION["user-culinary"]["id_user"];
             $this->model->dataEdit($username, $nama, $email, $nomorTelepon, $alamat, $jenisKelamin, $tanggalLahir, $pathAvatar, $id_user);
             $result = $this->model->editUser($this->conn);

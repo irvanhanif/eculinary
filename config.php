@@ -21,14 +21,14 @@ class database{
         $result = mysqli_query($this->conn, $query);
         // var_dump($result);
         if(!is_bool($result)){
-            if(mysqli_affected_rows($this->conn) > 1){
+            // if(mysqli_affected_rows($this->conn) > 1){
                 while($row = mysqli_fetch_assoc($result)){
                     $data[] = $row;
                 }
                 return $data;
-            }else{
-                return mysqli_fetch_assoc($result);
-            }
+            // }else{
+            //     return mysqli_fetch_assoc($result);
+            // }
         }else{
             return true;
         }

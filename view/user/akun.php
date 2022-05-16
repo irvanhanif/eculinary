@@ -2,7 +2,7 @@
 if(isset($_SESSION["user-culinary"])){
     require "user/controller.user.php";
     $data = (new c_user())->getDetailAkun();
-    var_dump($data);
+    // var_dump($data);
 ?>
 <html>
     <head>
@@ -55,23 +55,36 @@ if(isset($_SESSION["user-culinary"])){
                         <input type="submit" name="submit" value="Simpan"> 
                     </div>
                     <div class="right-content">
-                        <img src="../view/asset/profile.png" alt="foto">
-                        <label class="pilih-gambar"><input type="file" accept=".jpg,.jpeg,.png"/>Pilih Gambar</label>
+                        <img src="<?php if(isset($data["avatar"]) && $data["avatar"]) echo '../' . $data["avatar"]; else echo '../view/asset/profile.png' ?>" id="img-user" alt="foto">
+                        <label class="pilih-gambar"><input type="file" name="userAvatar" onchange="readURLUser(this);" accept=".jpg,.jpeg,.png"/>Pilih Gambar</label>
                     </div>     
                 </form>          
         </div>      
         <?php require_once 'view/footer.html'; ?>
+        <script>
+            function readURLUser(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        document.getElementById("img-user").setAttribute('src', e.target.result)
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
     </body>
 </html>
 
 <?php
     if(isset($_POST["submit"])){
         $user_1 = new c_user();
-        if($user_1->updateAkun($_POST["username"], $_POST["nama"], $_POST["email"], $_POST["telepon"], $_POST["alamat"], $_POST["jenisKelamin"], $_POST["tgl-lahir"])){
+        if($user_1->updateAkun($_POST["username"], $_POST["nama"], $_POST["email"], $_POST["telepon"], $_POST["alamat"], $_POST["jenisKelamin"], $_POST["tgl-lahir"], $_FILES["userAvatar"])){
             $data = (new c_user())->getDetailAkun();
         }
     }
 }else{
-      header("Location: register");
+      header("Location: login");
 }
 ?>

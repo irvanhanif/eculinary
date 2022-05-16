@@ -2,6 +2,7 @@
 require_once "./config.php";
 require "model.toko.php";
 require "./menu/model.menu.php";
+require_once "./uploadHandler.php";
 
 class c_toko{
     private $model;
@@ -30,13 +31,14 @@ class c_toko{
 
     public function getToko($id_toko){
         $detailToko = $this->model->getDetailToko($this->conn, $id_toko);
-        $totalMenu = (new m_menu())->getAllMenuToko($this->conn, $id_toko, '', '');
-        return array($detailToko, $totalMenu);
+        // $totalMenu = (new m_menu())->getAllMenuToko($this->conn, $id_toko, '', '');
+        // return array($detailToko, $totalMenu);
+        return $detailToko;
     }
 
-    public function updateToko($namaToko, $alamat, $kota, $email, $nomorTelepon, $jamAwal, $jamAkhir, $id_toko){
+    public function updateToko($namaToko, $alamat, $kota, $email, $nomorTelepon, $jamAwal, $jamAkhir, $avatar, $id_toko){
         if(isset($_SESSION["user-culinary"])){
-            if($this->model->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"])["id_toko"] === $id_toko){
+            if($this->model->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"])[0]["id_toko"] === $id_toko){
                 $pathAvatar = (new uploadHandler($avatar))->uploadAvatar('toko');
                 $this->model->dataUpdate($namaToko, $alamat, $kota, $email, $nomorTelepon, $jamAwal, $jamAkhir, $pathAvatar, $id_toko);
                 $result = $this->model->updateToko($this->conn);
@@ -63,7 +65,7 @@ class c_toko{
         if(isset($_SESSION["user-culinary"])){
             $id_toko = $this->model->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"]);
             if($id_toko != null){
-                $result = $this->getToko($id_toko["id_toko"]);
+                $result = $this->getToko($id_toko[0]["id_toko"]);
                 return $result;
             }else return false;
         }else return false;
