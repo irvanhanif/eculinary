@@ -45,6 +45,7 @@ CREATE TABLE menu
 CREATE TABLE artikel
 (
     id_artikel INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nama_penulis VARCHAR(60) NOT NULL,
     judul_artikel VARCHAR(60) NOT NULL,
     id_user INT NOT NULL,
     isi_artikel TEXT,

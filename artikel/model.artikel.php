@@ -1,5 +1,6 @@
 <?php
 class m_artikel{
+    private $namaPenulis;
     private $judulArtikel;
     private $id_user;
     private $isiArtikel;
@@ -8,13 +9,15 @@ class m_artikel{
 
     private $tabel = "artikel";
 
-    public function postArtikel($judulArtikel, $id_user, $isiArtikel){
+    public function postArtikel($namaPenulis, $judulArtikel, $id_user, $isiArtikel){
+        $this->namaPenulis = $namaPenulis;
         $this->judulArtikel = $judulArtikel;
         $this->id_user = $id_user;
         $this->isiArtikel = $isiArtikel;
     }
 
-    public function updateData($judulArtikel, $id_user, $isiArtikel, $id_artikel){
+    public function updateData($namaPenulis, $judulArtikel, $id_user, $isiArtikel, $id_artikel){
+        $this->namaPenulis = $namaPenulis;
         $this->judulArtikel = $judulArtikel;
         $this->id_user = $id_user;
         $this->isiArtikel = $isiArtikel;
@@ -22,12 +25,12 @@ class m_artikel{
     }
 
     public function insertArtikel($db){
-        $result = $db->query("INSERT INTO $this->tabel VALUES ('', '$this->judulArtikel', '$this->id_user', '$this->isiArtikel', NOW())");
+        $result = $db->query("INSERT INTO $this->tabel VALUES ('', '$this->namaPenulis', '$this->judulArtikel', '$this->id_user', '$this->isiArtikel', NOW())");
         return $result;
     }
 
     public function updateArtikel($db){
-        $result = $db->query("UPDATE $this->tabel SET judul_artikel = '$this->judulArtikel', id_user = '$this->id_user', isi_artikel = '$this->isiArtikel' WHERE id_artikel = $this->id_artikel");
+        $result = $db->query("UPDATE $this->tabel SET nama_penulis = '$this->namaPenulis' judul_artikel = '$this->judulArtikel', id_user = '$this->id_user', isi_artikel = '$this->isiArtikel' WHERE id_artikel = $this->id_artikel");
         return $result;
     }
 

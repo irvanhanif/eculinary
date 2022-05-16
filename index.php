@@ -21,6 +21,9 @@ switch (explode("/", $request)[0]) {
     case 'menu' :
         require "menu/index.php";
         break;
+    case 'artikel' :
+        require "artikel/index.php";
+        break;
     default:
         http_response_code(404);
         break;

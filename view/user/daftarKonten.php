@@ -11,11 +11,11 @@
                     <p>Kota Malang</p>
                 </div>
             </div>
-            <div class="content-option" onclick = "location.href='<?php if(isset($pathUser)) echo $pathUser ?>setting'">
+            <div class="content-option" onclick = "location.href='../user/setting'">
                 <img src="../view/asset/account.png" alt="akun">
                 <a>Profil</a>
             </div>
-            <div class="content-option" onclick = "location.href='<?php if(isset($pathUser)) echo $pathUser ?>setpw'">
+            <div class="content-option" onclick = "location.href='../user/setpw'">
                 <img src="../view/asset/lock.png" alt="password">
                 <a>Ubah Password</a>
             </div>
@@ -27,7 +27,7 @@
                 <img src="../view/asset/shop.png" alt="toko">
                 <a>Toko</a>
             </div>
-            <div class="content-option">
+            <div class="content-option" onclick = "location.href='../artikel/create'">
                 <img src="../view/asset/edit-file.png" alt="tulisArtikel">
                 <a>Tulis Artikel</a>
             </div>

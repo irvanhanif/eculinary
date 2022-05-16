@@ -18,7 +18,7 @@ if(isset($request)){
             $data = (new c_toko())->getMyToko();
             // var_dump($data);
             $own = true;
-            $pathUser = $path . "user/";
+            // $pathUser = $path . "user/";
             require_once "./view/toko/pendaftaranpenjual.php";
             // if($data) require "./view/menu/penambahanMakanan.php";
             break;

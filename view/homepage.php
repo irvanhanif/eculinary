@@ -95,7 +95,10 @@
     </div>
     <div class="makanan-list">
 <?php 
-for ($i = 0; $i <= 3; $i++) {
+    require_once "menu/controller.menu.php";
+    $menuPopular = (new c_menu())->getAllMenu('', '');
+    // var_dump($daftarMenu);
+for ($i = 0; $i < count($menuPopular) && $i < 4; $i++) {
     require 'view/menu/makanan.php'; 
     }
 ?>

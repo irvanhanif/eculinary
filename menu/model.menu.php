@@ -50,7 +50,7 @@ class m_menu{
             $query = $query . " ORDER BY $order";
             if($flow == 'down') $query = $query . " DESC";
         }
-        $result = $db->query();
+        $result = $db->query($query);
         return $result;
     }
 
