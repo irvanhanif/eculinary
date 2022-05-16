@@ -129,6 +129,7 @@ for ($i = 0; $i <= 3; $i++) {
             ?>  
     </div>
 </div>
+</div>
 <?php require_once './view/footer.html';?>
 <script>
     const slider = document.querySelector('.kategori');

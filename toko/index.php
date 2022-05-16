@@ -17,6 +17,7 @@ if(isset($request)){
         case 'own' :
             $data = (new c_toko())->getMyToko();
             $own = true;
+            $pathUser = $path . "user/";
             require_once "./view/toko/pendaftaranpenjual.php";
             // if($data) require "./view/menu/penambahanMakanan.php";
             break;

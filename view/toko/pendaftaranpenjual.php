@@ -14,12 +14,9 @@
     if(isset($_POST["simpan"])){
         require_once "toko/controller.toko.php";
         $toko = new c_toko();
-        // echo $_POST["nama-toko"], $_POST["alamat"], $_POST["kota"], $_POST["email"], $_POST["telepon"], $_POST["buka"], $_POST["tutup"], $data[0]["id_toko"];
         if($toko->updateToko($_POST["nama-toko"], $_POST["alamat"], $_POST["kota"], $_POST["email"], $_POST["telepon"], $_POST["buka"], $_POST["tutup"], $data[0]["id_toko"])){
-            echo true;
-            // header("Location: own");
+            header("Location: own");
         }
-        echo false;
     }
 ?>
         <?php require_once 'view/header.php'; ?>

@@ -2,6 +2,7 @@
 if(isset($_SESSION["user-culinary"])){
     require "user/controller.user.php";
     $data = (new c_user())->getDetailAkun();
+    var_dump($data);
 ?>
 <html>
     <head>
@@ -66,7 +67,9 @@ if(isset($_SESSION["user-culinary"])){
 <?php
     if(isset($_POST["submit"])){
         $user_1 = new c_user();
-        $user_1->updateAkun($_POST["username"], $_POST["nama"], $_POST["email"], $_POST["telepon"], $_POST["alamat"], $_POST["jenisKelamin"], $_POST["tgl-lahir"]);
+        if($user_1->updateAkun($_POST["username"], $_POST["nama"], $_POST["email"], $_POST["telepon"], $_POST["alamat"], $_POST["jenisKelamin"], $_POST["tgl-lahir"])){
+            $data = (new c_user())->getDetailAkun();
+        }
     }
 }else{
       header("Location: register");

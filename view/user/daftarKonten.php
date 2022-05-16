@@ -11,11 +11,11 @@
                     <p>Kota Malang</p>
                 </div>
             </div>
-            <div class="content-option" onclick = "location.href='setting'">
+            <div class="content-option" onclick = "location.href='<?php if(isset($pathUser)) echo $pathUser ?>setting'">
                 <img src="../view/asset/account.png" alt="akun">
                 <a>Profil</a>
             </div>
-            <div class="content-option" onclick = "location.href='setpw'">
+            <div class="content-option" onclick = "location.href='<?php if(isset($pathUser)) echo $pathUser ?>setpw'">
                 <img src="../view/asset/lock.png" alt="password">
                 <a>Ubah Password</a>
             </div>

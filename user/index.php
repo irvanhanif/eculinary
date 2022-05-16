@@ -10,9 +10,11 @@ if(isset($request)){
             require "./view/user/login.php";
             break;
         case 'setting' :
+            // $path = "";
             require "./view/user/akun.php";
             break;
         case 'setpw' :
+            // $path = "";
             require "./view/user/gantiPassword.php";
             break;
         case 'wishlist' :

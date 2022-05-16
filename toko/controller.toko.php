@@ -35,9 +35,9 @@ class c_toko{
 
     public function updateToko($namaToko, $alamat, $kota, $email, $nomorTelepon, $jamAwal, $jamAkhir, $id_toko){
         if(isset($_SESSION["user-culinary"])){
-            if($this->model->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"]) === $id_toko){
+            if($this->model->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"])["id_toko"] === $id_toko){
                 $this->model->dataUpdate($namaToko, $alamat, $kota, $email, $nomorTelepon, $jamAwal, $jamAkhir, $id_toko);
-                $result = $this->model->createToko($this->conn);
+                $result = $this->model->updateToko($this->conn);
                 return $result;
             } else return false;
         }else return false;
