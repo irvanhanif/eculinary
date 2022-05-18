@@ -30,17 +30,11 @@ class c_user{
         $this->model->dataLogin($email, $password);
         $result = $this->model->selectUserWithEmail($this->conn);
         if(count($result) >= 1) $result = $result[0];
-        if(!isset($result["id_user"])) {
-            echo "incorrect email";
-            return false;
-        }
-        else if($result["password"] !== md5($password)) {
-            echo "incorrect password";
-            return false;
-        }
+        if(!isset($result["id_user"])) return array(false, 1);
+        else if($result["password"] !== md5($password)) return array(false, 0);
         unset($result["password"]);
         $_SESSION["user-culinary"] = $result;
-        return true;
+        return array(true);
     }
 
     // public function logout(){

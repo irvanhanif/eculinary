@@ -16,5 +16,7 @@ if(isset($request)){
             break;
     }
 }else{
-    header("Location: ../");
+    // header("Location: ../");
+    $path = "../";
+    require "../view/menu/daftarmakananminuman.php";
 }

@@ -61,8 +61,12 @@ h3 {
 .total-menu span {
     color: #7e8661;
 }
+
 .filter-wrapper {
-    margin: 48px 0px;
+    /* margin: 48px 0px; */
+    /* margin-top: 0; */
+    margin-bottom: 48px;
+    /* padding-top: 100px; */
     display: flex;
 }
 .filter-wrapper h2 {
@@ -110,6 +114,13 @@ select {
     box-shadow: 2px 2px 20px 0px #00000040;
     padding: 24px;
     cursor: pointer;
+}
+#img-menu{
+    width: 192px;
+    height: 192px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 24px;
 }
 .makanan img {
     margin-bottom: 24px;

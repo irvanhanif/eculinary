@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../view/css/login.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <?php $login = true;
@@ -26,8 +27,17 @@ require_once './view/header.php'; ?>
 if(isset($_POST["masuk"])){
   require "user/controller.user.php";
   $user_1 = new c_user();
-  if($user_1->login($_POST["email"], $_POST["password"])){
+  $callback = $user_1->login($_POST["email"], $_POST["password"]);
+  if($callback[0]){
     header("Location: ../");
+  }else{
+    $msg;
+    if($callback[1]){
+      $msg = 'Incorrect email!';
+    }else{
+      $msg = 'Incorrect password!';
+    }
+    ?> <script>Swal.fire('Incorrect email!')</script> <?php
   }
 }
 require_once './view/footer.html'; 

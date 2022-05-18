@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="view/css/style.css">
+        <link rel="stylesheet" href="<?php if(isset($path)) echo $path ?>view/css/style.css">
     </head>
     <body>
         <div class="makanan-wrapper" >
         <div class="makanan" onclick="location.href='<?php if(isset($path)) echo $path ?>menu/detail/<?php if(isset($daftarMenu)) echo $daftarMenu[$i]['id_menu'] ?>'">
         <!-- < ?php if(isset($path)) echo $path ?>view/asset/makanan.png     -->
-        <img src="
-        <?php 
+        <img src="<?php 
             if(isset($path)) echo $path;
-            if(isset($daftarMenu)) echo $daftarMenu[$i]["avatar"];
+            if(isset($daftarMenu) && $daftarMenu[$i]["avatar"]) echo $daftarMenu[$i]["avatar"];
             else echo 'view/asset/makanan.png';
-        ?>
-        " alt="foto-makanan">
+        ?>" alt="foto-makanan" id="img-menu">
             <h4><b><?php 
                 if(isset($daftarMenu)) echo $daftarMenu[$i]["nama_menu"];
                 else echo 'Mie Iblis';
