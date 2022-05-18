@@ -42,10 +42,8 @@ h3 {
     color: #7e8661;
 } */
 .filter-wrapper {
-    /* margin: 48px 0px; */
-    /* margin-top: 0; */
     margin-bottom: 48px;
-    padding-top: 100px;
+    padding-top: 150px;
     display: flex;
 }
 .filter-wrapper h2 {
@@ -113,3 +111,7 @@ h5 {
     margin: auto;
 } */
 
+.daftar-artikel{
+    display: flex;
+    flex-wrap: wrap;
+}

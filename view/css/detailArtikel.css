@@ -1,6 +1,15 @@
-img {
+body{
+    margin: 0;
+}
+#img-banner{
+    /* width: 100%; */
     height: 432px;
-    margin: 72px;
+    margin: 150px auto 72px;
+    /* padding: 72px; */
+}
+#banner{
+    width: 100%;
+    display: flex;
 }
 
 .author {
@@ -9,10 +18,13 @@ img {
     text-align: center;
     color: #8B8B8B;
     font-weight: 400;
+    justify-content: center;
 }
 
-h3 {
+.judul {
     text-align: center;
+    font-size: 36px;
+    margin-bottom: 0;
 }
 
 .isi {
@@ -31,15 +43,19 @@ color: #000000;
     padding-left: 120px;
     padding-bottom: 72px;
 }
-
+#artikel-box{
+    display: flex;
+}
 .artikel {
-    position: absolute;
+    /* position: absolute; */
 width: 1000px;
-height: 1320px;
+height: fit-content;
 background: #FFFFFF;
 box-shadow: 4px 4px 40px rgba(0, 0, 0, 0.25);
 border-radius: 48px;
-margin-left: 116px;
+/* margin-left: 116px; */
+margin: auto;
+margin-bottom: 50px;
 }
 
 

@@ -53,6 +53,7 @@ class c_artikel{
 
     public function showDetailArtikel($id_artikel){
         $result = $this->model->getAllArtikel($this->conn, 1, $id_artikel);
+        if(count($result) >= 1) $result = $result[0];
         return $result;
     }
 

@@ -63,10 +63,7 @@ h3 {
 }
 
 .filter-wrapper {
-    /* margin: 48px 0px; */
-    /* margin-top: 0; */
     margin-bottom: 48px;
-    /* padding-top: 100px; */
     display: flex;
 }
 .filter-wrapper h2 {

@@ -15,7 +15,7 @@
 }
 
 .gambar-artikel {
-    width: 400px;
+    width: 100%;
 }
 
 .judul-artikel {
@@ -36,5 +36,5 @@ line-height: 20px;
 display: flex;
 align-items: center;
 color: black;
-margin-top: -20px;
+/* margin-top: -20px; */
 }

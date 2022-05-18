@@ -9,14 +9,19 @@ if(isset($request)){
             break;
         case 'detail' :
             $path = $path . "../";
+            // $id = 1;
             $id = explode("/", $request)[1];
             // echo $id;
-            require "./view/menu/detailmakanan.php";
+            require_once "artikel/controller.artikel.php";
+            $data = (new c_artikel())->showDetailArtikel($id);
+            // var_dump($data);
+            require "./view/artikel/DetailArtikel.php";
             break;
         default:
             http_response_code(404);
             break;
     }
 }else{
-    header("Location: ../");
+    // header("Location: ../");
+    require "../view/artikel/daftarArtikel.php";
 }

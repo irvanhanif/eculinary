@@ -6,15 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../view/css/daftarmakananminuman.css">
     <title>Document</title>
-    <style>
-        .filter-wrapper {
-            /* margin: 48px 0px; */
-            margin-top: 0;
-            margin-bottom: 48px;
-            padding-top: 100px;
-            display: flex;
-        }
-    </style>
 </head>
 <body>
 <?php 
@@ -38,6 +29,9 @@ require_once '../view/header.php';
                 require 'makanan.php';
             }
         ?>
-        </div>
+        </div>  
+        <?php
+            require_once '../view/footer.html'; 
+        ?>
 </body>
 

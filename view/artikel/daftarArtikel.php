@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/daftarmakananminuman.css">
+    <link rel="stylesheet" href="../view/css/daftarmakananminuman.css">
     <title>Document</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
                 <input type="button" name="terbaru" value="Terbaru">
             </form>
         </div>
-        <div>
+        <div class="daftar-artikel">
         <?php 
             for ($i = 0; $i <= 2; $i++) {
                 require 'artikel.php';
