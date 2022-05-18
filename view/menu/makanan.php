@@ -1,5 +1,5 @@
 <?php 
-if(isset($path)) require_once $path . "menu/controller.menu.php";
+if(isset($pathMenu)) require_once $pathMenu . "menu/controller.menu.php";
 else require_once "menu/controller.menu.php";
 $dataKomentar = (new c_menu())->getAllKomentar($daftarMenu[$i]["id_menu"]);
 ?>
@@ -7,6 +7,31 @@ $dataKomentar = (new c_menu())->getAllKomentar($daftarMenu[$i]["id_menu"]);
 <html>
     <head>
         <link rel="stylesheet" href="<?php if(isset($path)) echo $path ?>view/css/style.css">
+        <style>
+            /* .fa-star{
+                color: #FFAB65;
+            } */
+            .rating {
+                display: inline-block;
+                position: relative;
+                line-height: 1em;
+            }
+            
+            .rating__overlay {
+                color: #FFAB65;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: <?php echo (2.5/5)*112 ?>%;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            .rating__base {
+                color: #ccc;
+                white-space: nowrap;
+            }
+        </style>
     </head>
     <body>
         <div class="makanan-wrapper" >
@@ -34,7 +59,20 @@ $dataKomentar = (new c_menu())->getAllKomentar($daftarMenu[$i]["id_menu"]);
             <div class="informasi-makanan">
                 <h4 style="color:#8b8b8b"><?php if(isset($data[0]["kota"])) echo $data[0]["kota"]; else echo 'Malang' ?></h4>
                 <div class="rating">
-                    <img src="<?php if(isset($path)) echo $path ?>view/asset/bintang.png" alt="star">
+                    <div class="rating__overlay">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="rating__base">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
                 </div>
             </div>
         </div>

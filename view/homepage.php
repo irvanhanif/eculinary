@@ -112,10 +112,10 @@ for ($i = 0; $i < count($daftarMenu) && $i < 4; $i++) {
     </div>
     <div class="makanan-list">
 <?php 
-for ($i = 0; $i <= 3; $i++) {
-                require 'menu/makanan.php';
-            }
-            ?>  
+    for ($i = 0; $i < count($daftarMenu) && $i < 4; $i++) {
+        require 'view/menu/makanan.php'; 
+    }
+?>  
     </div>
 </div>
 
@@ -126,8 +126,11 @@ for ($i = 0; $i <= 3; $i++) {
     </div>
     <div class="makanan-list">
 <?php 
-for ($i = 0; $i <= 3; $i++) {
-                require 'menu/makanan.php';
+require_once "artikel/controller.artikel.php";
+$data = (new c_artikel())->showArtikel();
+// var_dump($data);
+for ($i = 0; $i < count($data); $i++) {
+                require 'artikel/artikel.php';
             }
             ?>  
     </div>

@@ -19,6 +19,7 @@ if(isset($request)){
 }else{
     // header("Location: ../");
     if (!isset($_SESSION)) session_start();
+    $pathMenu = "../";
     $path = "../";
     $url = "../user/";
     require "../view/menu/daftarmakananminuman.php";
