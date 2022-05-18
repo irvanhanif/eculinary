@@ -1,3 +1,8 @@
+<?php
+require_once "../artikel/controller.artikel.php";
+$data = (new c_artikel())->showArtikel();
+// var_dump($data);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +13,9 @@
     <title>Document</title>
 </head>
 <body>
+<?php 
+require_once '../view/header.php'; 
+?>
 <div class="filter-wrapper">
             <h2>Urutkan Berdasarkan</h2>
             <form action="">
@@ -16,10 +24,13 @@
         </div>
         <div class="daftar-artikel">
         <?php 
-            for ($i = 0; $i <= 2; $i++) {
+            for ($i = 0; $i < count($data); $i++) {
                 require 'artikel.php';
             }
         ?>
         </div>
+        <?php
+            require_once '../view/footer.html'; 
+        ?>
 </body>
-
+</html>

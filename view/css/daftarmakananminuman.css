@@ -114,4 +114,5 @@ h5 {
 .daftar-artikel{
     display: flex;
     flex-wrap: wrap;
+    padding: 0 25px 50px;
 }

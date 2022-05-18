@@ -61,7 +61,7 @@
             $value = $dataKomentar[$i];
             // var_dump($value);
     ?>
-    <div class="comment"><img class="account"src="../../<?php if(isset($value["avatar"])) echo $value["avatar"]; else echo 'view/asset/profil1.png' ?>" alt="profil">
+    <div class="comment"><img class="account"src="../../<?php if(isset($value["avatar"]) && $value["avatar"]) echo $value["avatar"]; else echo 'view/asset/profil1.png' ?>" alt="profil">
     <p class="komentar1"><?php echo $value["isi_komentar"] ?></p></div>
     <?php
         }
@@ -102,7 +102,7 @@
                 <p class="hari">Tutup</p>
                 <p class="jam-weekend"><?php echo $data[0]["jam_akhir"] ?></p>
             </div>
-            <input class="lihat" type="button" name="detailToko" value="Lihat Detail Toko" onclick="location.href='../toko/detail'">
+            <input class="lihat" type="button" name="detailToko" value="Lihat Detail Toko" onclick="location.href='../../toko/detail/<?php echo $data[0]['id_toko'] ?>'">
         </div> 
     </div>
     </div>

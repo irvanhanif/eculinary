@@ -3,6 +3,14 @@ if(isset($_SESSION["user-culinary"])){
     require "user/controller.user.php";
     $data = (new c_user())->getDetailAkun();
     // var_dump($data);
+
+    if(isset($_POST["submit"])){
+        $user_1 = new c_user();
+        if($user_1->updateAkun($_POST["username"], $_POST["nama"], $_POST["email"], $_POST["telepon"], $_POST["alamat"], $_POST["jenisKelamin"], $_POST["tgl-lahir"], $_FILES["userAvatar"])){
+            $data = (new c_user())->getDetailAkun();
+            header("Location: setting");
+        }
+    }
 ?>
 <html>
     <head>
@@ -78,12 +86,6 @@ if(isset($_SESSION["user-culinary"])){
 </html>
 
 <?php
-    if(isset($_POST["submit"])){
-        $user_1 = new c_user();
-        if($user_1->updateAkun($_POST["username"], $_POST["nama"], $_POST["email"], $_POST["telepon"], $_POST["alamat"], $_POST["jenisKelamin"], $_POST["tgl-lahir"], $_FILES["userAvatar"])){
-            $data = (new c_user())->getDetailAkun();
-        }
-    }
 }else{
       header("Location: login");
 }

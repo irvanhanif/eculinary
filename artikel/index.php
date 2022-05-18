@@ -23,5 +23,9 @@ if(isset($request)){
     }
 }else{
     // header("Location: ../");
+    if (!isset($_SESSION)) session_start();
+    $artikelPath = true;
+    $path = "../";
+    $url = "../user/";
     require "../view/artikel/daftarArtikel.php";
 }

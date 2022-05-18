@@ -9,6 +9,7 @@ if(isset($request)){
             // echo $id;
             require_once "menu/controller.menu.php";
             $data = (new c_menu())->getMenu($id);
+            if(!$data) header("Location: ../");
             require "./view/menu/detailmakanan.php";
             break;
         default:

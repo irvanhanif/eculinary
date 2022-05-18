@@ -1,11 +1,17 @@
 <?php
-require_once "./config.php";
+if(isset($menuPath) && $menuPath){
+    require_once "../config.php";
+    require_once "../toko/model.toko.php";
+    require_once "../uploadHandler.php";
+}else{
+    require_once "./config.php";
+    require_once "./toko/model.toko.php";
+    require_once "./uploadHandler.php";
+}
 require_once "model.menu.php";
 require_once "model.komentar.php";
 require_once "model.rating.php";
 require_once "model.wishlist.php";
-require_once "./toko/model.toko.php";
-require_once "./uploadHandler.php";
 
 class c_menu{
     private $model;

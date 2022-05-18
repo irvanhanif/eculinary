@@ -1,7 +1,12 @@
 <?php
-require_once "./config.php";
+if(isset($artikelPath) && $artikelPath){
+    require_once "../config.php";
+    require_once "../uploadHandler.php";
+}else{
+    require_once "./config.php";
+    require_once "./uploadHandler.php";
+}
 require "model.artikel.php";
-require_once "./uploadHandler.php";
 
 class c_artikel{
     private $model;
@@ -47,13 +52,13 @@ class c_artikel{
     }
 
     public function showArtikel(){
-        $result = $this->model->getAllArtikel($this->conn,'','');
+        $result = (new m_artikel())->getAllArtikel((new database()),'','');
         return $result;
     }
 
     public function showDetailArtikel($id_artikel){
-        $result = $this->model->getAllArtikel($this->conn, 1, $id_artikel);
-        if(count($result) >= 1) $result = $result[0];
+        $result = (new m_artikel())->getAllArtikel((new database()), 1, $id_artikel);
+        if(count($result) == 1) $result = $result[0];
         return $result;
     }
 

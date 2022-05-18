@@ -14,13 +14,13 @@ class c_user{
     public function register($username, $email, $password){
         $this->model->dataLogin($email, $password);
         $result = $this->model->selectUserWithEmail($this->conn);
-        if(count($result) >= 1) $result = $result[0];
+        if(count($result) == 1) $result = $result[0];
         if(isset($result["id_user"])) return array(false, 1);
         $this->model->postUser($username, $email, $password);
         $result = $this->model->insertUser($this->conn);
         if(!$result) return array(false, 0);
         $result = $this->model->selectUserWithEmail($this->conn);
-        if(count($result) >= 1) $result = $result[0];
+        if(count($result) == 1) $result = $result[0];
         unset($result["password"]);
         $_SESSION["user-culinary"] = $result;
         return array(true);
@@ -29,7 +29,7 @@ class c_user{
     public function login($email, $password){
         $this->model->dataLogin($email, $password);
         $result = $this->model->selectUserWithEmail($this->conn);
-        if(count($result) >= 1) $result = $result[0];
+        if(count($result) == 1) $result = $result[0];
         if(!isset($result["id_user"])) return array(false, 1);
         else if($result["password"] !== md5($password)) return array(false, 0);
         unset($result["password"]);
@@ -46,7 +46,7 @@ class c_user{
         if(isset($this->model)){
             $id_user = $_SESSION["user-culinary"]["id_user"];
             $result = $this->model->getInfoAkun($this->conn, $id_user);
-            if(count($result) >= 1) $result = $result[0];
+            if(count($result) == 1) $result = $result[0];
             unset($result["password"]);
             return $result;
         }return false;

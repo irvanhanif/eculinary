@@ -9,6 +9,10 @@
 </head>
 <body>
 <?php 
+$menuPath = true;
+require_once "../menu/controller.menu.php";
+$daftarMenu = (new c_menu())->getAllMenu('', '');
+// var_dump($daftarMenu);
 require_once '../view/header.php'; 
 ?>
 <div class="filter-wrapper">
@@ -25,7 +29,7 @@ require_once '../view/header.php';
         </div>
         <div class="daftar-makanan">
         <?php 
-            for ($i = 0; $i <= 10; $i++) {
+            for ($i = 0; $i < count($daftarMenu); $i++) {
                 require 'makanan.php';
             }
         ?>

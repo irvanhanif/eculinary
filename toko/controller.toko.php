@@ -31,9 +31,10 @@ class c_toko{
 
     public function getToko($id_toko){
         $detailToko = $this->model->getDetailToko($this->conn, $id_toko);
-        // $totalMenu = (new m_menu())->getAllMenuToko($this->conn, $id_toko, '', '');
-        // return array($detailToko, $totalMenu);
-        return $detailToko;
+        if(count($detailToko) == 1) $detailToko = $detailToko[0];
+        $totalMenu = (new m_menu())->getAllMenuToko($this->conn, $id_toko, '', '');
+        return array($detailToko, count($totalMenu));
+        // return $detailToko;
     }
 
     public function updateToko($namaToko, $alamat, $kota, $email, $nomorTelepon, $jamAwal, $jamAkhir, $avatar, $id_toko){
@@ -64,8 +65,9 @@ class c_toko{
     public function getMyToko(){
         if(isset($_SESSION["user-culinary"])){
             $id_toko = $this->model->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"]);
-            if($id_toko != null){
-                $result = $this->getToko($id_toko[0]["id_toko"]);
+            if(count($id_toko) == 1) $id_toko = $id_toko[0];
+            if($id_toko){
+                $result = $this->getToko($id_toko["id_toko"]);
                 return $result;
             }else return false;
         }else return false;

@@ -118,7 +118,7 @@ header {
         </div>
         <div class="akun">
             <a href="<?php if(isset($path)) echo $path ?>menu">Makanan & Minuman</a>
-            <a href="">Artikel</a>           
+            <a href="<?php if(isset($path)) echo $path ?>artikel">Artikel</a>           
         <?php if(isset($_SESSION["user-culinary"])){ ?>
             <img src="<?php if(isset($path)) echo $path ?>view/asset/wishlist.png" alt="wishlist" 
             onclick="location.href='<?php if(isset($path)) echo $path ?>user/wishlist'" class="imgbtn">

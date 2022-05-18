@@ -36,7 +36,7 @@
             </div>
             <?php
             require_once "menu/controller.menu.php";
-            $daftarMenu = (new c_menu())->getAllMenuToko($data[0]["id_toko"], '', '');
+            $daftarMenu = (new c_menu())->getAllMenuToko($data["id_toko"], '', '');
             // var_dump($daftarMenu);
             ?>
             <div class="daftar-makanan">

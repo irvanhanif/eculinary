@@ -1,3 +1,8 @@
+<?php 
+if(isset($path)) require_once $path . "menu/controller.menu.php";
+else require_once "menu/controller.menu.php";
+$dataKomentar = (new c_menu())->getAllKomentar($daftarMenu[$i]["id_menu"]);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,14 +27,14 @@
                     else echo "10.000" ;
                 ?></h4>
                 <div class="komentar">
-                    <img src="view/asset/chat.png" alt="chat">
-                    <h5>1rb</h5>
+                    <img src="<?php if(isset($path)) echo $path ?>view/asset/chat.png" alt="chat">
+                    <h5><?php echo count($dataKomentar) ?></h5>
                 </div>
             </div>
             <div class="informasi-makanan">
-                <h4 style="color:#8b8b8b"><?php if(isset($data[0][0]["kota"])) echo $data[0][0]["kota"]; else echo 'Malang' ?></h4>
+                <h4 style="color:#8b8b8b"><?php if(isset($data[0]["kota"])) echo $data[0]["kota"]; else echo 'Malang' ?></h4>
                 <div class="rating">
-                    <img src="view/asset/bintang.png" alt="star">
+                    <img src="<?php if(isset($path)) echo $path ?>view/asset/bintang.png" alt="star">
                 </div>
             </div>
         </div>

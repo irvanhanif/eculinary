@@ -29,6 +29,7 @@ input[type=button]:active, select:active, input[type=submit]:active, .pilih-gamb
     display: flex;
     padding: 48px 77px;
     margin-top: 100px;
+    margin-bottom: 50px;
 }
 h1 {
     font-size: 24px;

@@ -10,14 +10,16 @@ if(isset($request)){
         case 'detail' :
             $id = explode("/", $request)[1];
             $data = (new c_toko())->getToko($id);
+            $menu = $data[1];
+            $data = $data[0];
             // var_dump($data);
             $path = $path . "../";
             require "./view/toko/detailToko.php";
             break;
         case 'own' :
-            $data = (new c_toko())->getMyToko();
+            $data = (new c_toko())->getMyToko()[0];
             // var_dump($data);
-            $own = true;
+            // $own = true;
             // $pathUser = $path . "user/";
             require_once "./view/toko/pendaftaranpenjual.php";
             // if($data) require "./view/menu/penambahanMakanan.php";
