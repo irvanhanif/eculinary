@@ -1,5 +1,6 @@
 <?php
 if(isset($_SESSION["user-culinary"])){
+    $data["username"] = $_SESSION["user-culinary"]["username"];
     ?>
 <html>
     <head>
@@ -28,6 +29,7 @@ if(isset($_SESSION["user-culinary"])){
         if($menu->createMenu($_POST["nama-makanan"], $_POST["harga"], $_POST["jenisMakanan"], $_POST["kategori"], $_FILES["avatar"])){
             header("Location: own");
         }
+        // echo $_POST["nama-makanan"], $_POST["harga"], $_POST["jenisMakanan"], $_POST["kategori"];
     }
 ?>
         <?php require_once 'view/header.php'; ?>

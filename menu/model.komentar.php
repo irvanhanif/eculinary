@@ -16,12 +16,17 @@ class m_komentar{
     }
 
     public function insertKomentar($db){
-        $result = $db->query("INSERT INTO $this->tabel VALUES ($this->id_user, $this->id_menu, '$this->isi_komentar', $this->id_komentar)");
+        $result = $db->query("INSERT INTO $this->tabel VALUES ('', $this->id_user, $this->id_menu, '$this->isi_komentar', null, NOW())");
         return $result;
     }
 
     public function deleteKomentar($db, $id_user, $id_menu){
         $result = $db->query("DELETE FROM $this->tabel WHERE id_user = $id_user AND id_menu = $id_menu");
+        return $result;
+    }
+
+    public function getKomentar($db, $id_menu){
+        $result = $db->query("SELECT k.*, u.avatar FROM $this->tabel k JOIN user u ON k.id_user = u.id_user WHERE id_menu = $id_menu");
         return $result;
     }
 }

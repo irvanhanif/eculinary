@@ -49,6 +49,7 @@ CREATE TABLE artikel
     judul_artikel VARCHAR(60) NOT NULL,
     id_user INT NOT NULL,
     isi_artikel TEXT,
+    image VARCHAR(60),
     time_create_artikel TIMESTAMP NOT NULL,
 
     FOREIGN KEY (id_user) REFERENCES user(id_user)

@@ -44,6 +44,11 @@ class m_menu{
         return $result;
     }
 
+    public function getMenu($db, $id_menu){
+        $result = $db->query("SELECT m.*, t.jam_awal, t.jam_akhir FROM $this->tabel m JOIN toko t ON m.id_toko = t.id_toko WHERE id_menu = $id_menu");
+        return $result;
+    }
+
     public function getAllMenu($db, $order, $flow){
         $query = "SELECT * FROM $this->tabel";
         if($order){

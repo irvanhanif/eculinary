@@ -5,14 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../view/css/register.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <?php
 if(isset($_POST["daftar"])){
   require "user/controller.user.php";
   $user = new c_user();
-  if($user->register($_POST["username"], $_POST["email"], $_POST["password"])){
+  $callback = $user->register($_POST["username"], $_POST["email"], $_POST["password"]);
+  if($callback[0]){
     header("Location: ../");
+  }else{
+    if($callback[1]){
+      ?> <script>Swal.fire('Email already exist!')</script> <?php
+    }else{
+      ?> <script>Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something wrong when register!'
+      })</script> <?php
+    }
   }
 } 
 $register = true;

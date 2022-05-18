@@ -7,7 +7,7 @@
 if(isset($_POST["submit"])){
     require "artikel/controller.artikel.php";
     $artikel_1 = new c_artikel();
-    if($artikel_1->postArtikel($_POST["namapenulis"], $_POST["judul"], $_POST["isi"])){
+    if($artikel_1->postArtikel($_POST["namapenulis"], $_POST["judul"], $_POST["isi"], $_FILES["image"])){
       header("Location: ../");
     }
   }
@@ -15,7 +15,7 @@ if(isset($_POST["submit"])){
         <?php require_once 'view/header.php'; ?>
         <div class="wrapper">
             <?php include 'view/user/daftarKonten.php'; ?>
-                <form class="content" action="" method="post">
+                <form class="content" action="" method="post" enctype="multipart/form-data">
                     <div class="left-content">
                         <h1>Tulis Artikel</h1>
                         <div class="form">
@@ -33,12 +33,26 @@ if(isset($_POST["submit"])){
                         <input type="submit" name="submit" value="Unggah"> 
                     </div>
                     <div class="right-content">
-                        <img src="../view/asset/edit-file.png" alt="gambar">
-                        <label class="pilih-gambar"><input type="file" accept=".jpg,.jpeg,.png"/>Pilih Gambar</label>
+                        <img src="../view/asset/edit-file.png" id="img-artikel" alt="gambar">
+                        <label class="pilih-gambar"><input type="file" onchange="readURLArtikel(this);" name="image" accept=".jpg,.jpeg,.png"/>Pilih Gambar</label>
                     </div>     
                 </form>          
         </div>      
         <?php require_once 'view/footer.html'; ?>
+        
+        <script>
+            function readURLArtikel(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        document.getElementById("img-artikel").setAttribute('src', e.target.result)
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
     </body>
 </html>
 

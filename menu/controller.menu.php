@@ -51,6 +51,11 @@ class c_menu{
         }else return false;
     }
 
+    public function getMenu($id_menu){
+        $result = $this->model->getMenu($this->conn, $id_menu);
+        return $result;
+    }
+
     public function getAllMenu($order, $flow){
         if($order) $result = $this->model->getAllMenu($this->conn, $order, $flow);
         else $result = $this->model->getAllMenu($this->conn, '', '');
@@ -85,10 +90,16 @@ class c_menu{
         if(isset($_SESSION["user-culinary"])){
             $this->komentar = new m_komentar();
             $id_user = $_SESSION["user-culinary"]["id_user"];
-            $this->komentar->postKomentar($id_user, $id_menu, $isiKomentar);
+            $this->komentar->postKomentar($id_user, $id_menu, $isiKomentar, '');
             $result = $this->komentar->insertKomentar($this->conn);
             return $result;
         }else return false;
+    }
+
+    public function getAllKomentar($id_menu){
+        $this->komentar = new m_komentar();
+        $result = $this->komentar->getKomentar($this->conn, $id_menu);
+        return $result;
     }
 
     public function createRating($id_menu, $bintang){

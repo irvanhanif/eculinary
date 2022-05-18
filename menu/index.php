@@ -7,6 +7,8 @@ if(isset($request)){
             $path = $path . "../";
             $id = explode("/", $request)[1];
             // echo $id;
+            require_once "menu/controller.menu.php";
+            $data = (new c_menu())->getMenu($id);
             require "./view/menu/detailmakanan.php";
             break;
         default:

@@ -13,26 +13,23 @@ class c_user{
     }
     public function register($username, $email, $password){
         $this->model->dataLogin($email, $password);
-        $result = $this->model->selectUserWithEmail($this->conn)[0];
-        if(isset($result["id_user"])) {
-            echo "email already exist";
-            return false;
-        }
+        $result = $this->model->selectUserWithEmail($this->conn);
+        if(count($result) >= 1) $result = $result[0];
+        if(isset($result["id_user"])) return array(false, 1);
         $this->model->postUser($username, $email, $password);
         $result = $this->model->insertUser($this->conn);
-        if(!$result) {
-            echo "something wrong when register";
-            return false;
-        }
-        $result = $this->model->selectUserWithEmail($this->conn)[0];
+        if(!$result) return array(false, 0);
+        $result = $this->model->selectUserWithEmail($this->conn);
+        if(count($result) >= 1) $result = $result[0];
         unset($result["password"]);
         $_SESSION["user-culinary"] = $result;
-        return true;
+        return array(true);
     }
 
     public function login($email, $password){
         $this->model->dataLogin($email, $password);
-        $result = $this->model->selectUserWithEmail($this->conn)[0];
+        $result = $this->model->selectUserWithEmail($this->conn);
+        if(count($result) >= 1) $result = $result[0];
         if(!isset($result["id_user"])) {
             echo "incorrect email";
             return false;
@@ -54,7 +51,8 @@ class c_user{
     public function getDetailAkun(){
         if(isset($this->model)){
             $id_user = $_SESSION["user-culinary"]["id_user"];
-            $result = $this->model->getInfoAkun($this->conn, $id_user)[0];
+            $result = $this->model->getInfoAkun($this->conn, $id_user);
+            if(count($result) >= 1) $result = $result[0];
             unset($result["password"]);
             return $result;
         }return false;

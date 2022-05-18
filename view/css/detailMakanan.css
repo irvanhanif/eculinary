@@ -77,7 +77,7 @@ line-height: 22px;
 height: 60px;
 }
 
-.button-submit{
+#form-komen{
     display: flex;
     border-bottom: 2.5px grey solid;
 }
@@ -93,13 +93,17 @@ height: 60px;
     display: flex;
 }
 
-.button-submit input[type=button] {
+.button-submit {
     background-image: url(../asset/plus.png);
     border: none;
     background-color: transparent;
     height: 48px;
     width: 48px;
+    cursor: pointer;
 }
+/* #btn-submit{
+    display: none;
+} */
 
 .comment {
     width: 450px;
@@ -197,12 +201,15 @@ padding-top: 37px;
 .hari {
     margin-top: 0px;
     margin-left: 92px;
+    width: 50px;
     color: black;
 }
 
 .jam-weekday {
     margin-top: 0px;
-    margin-left: 46px;
+    /* margin-left: 46px; */
+    text-align: right;
+    width: 100px;
     color: black;
 }
 
@@ -212,7 +219,9 @@ padding-top: 37px;
 
 .jam-weekend {
     margin-top: 0px;
-    margin-left: 34px;
+    /* margin-left: 34px; */
+    text-align: right;
+    width: 100px;
     color: black;
 }
 

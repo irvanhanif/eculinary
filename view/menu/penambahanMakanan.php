@@ -19,11 +19,11 @@
                         </div>
                         <div class="form">
                             <p>Jenis</p>
-                            <input id="makanan" type="radio" name="jenisMakanan">
+                            <input id="makanan" type="radio" name="jenisMakanan" value="makanan">
                             <label for="makanan">Makanan</label>
-                            <input id="minuman" type="radio" name="jenisMakanan">
+                            <input id="minuman" type="radio" name="jenisMakanan" value="minuman">
                             <label for="minuman">Minuman</label>
-                            <input id="lain" type="radio" name="jenisMakanan">
+                            <input id="lain" type="radio" name="jenisMakanan" value="lainnya">
                             <label for="lain">Lainnya</label><br>
                         </div>
                         <input class ="submit" type="submit" name="submitMenu" value="Tambahkan">

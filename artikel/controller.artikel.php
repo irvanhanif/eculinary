@@ -1,6 +1,7 @@
 <?php
 require_once "./config.php";
 require "model.artikel.php";
+require_once "./uploadHandler.php";
 
 class c_artikel{
     private $model;
@@ -14,10 +15,11 @@ class c_artikel{
         }
     }
 
-    public function postArtikel($namaPenulis, $judulArtikel, $isiArtikel){
+    public function postArtikel($namaPenulis, $judulArtikel, $isiArtikel, $image){
         if(isset($this->model)){
+            $pathArtikel = (new uploadHandler($image))->uploadAvatar('artikel');
             $id_user = $_SESSION["user-culinary"]["id_user"];
-            $this->model->postArtikel($namaPenulis, $judulArtikel, $_SESSION["user-culinary"]["id_user"], $isiArtikel);
+            $this->model->postArtikel($namaPenulis, $judulArtikel, $_SESSION["user-culinary"]["id_user"], $isiArtikel, $pathArtikel);
             $result = $this->model->insertArtikel($this->conn);
             return $result;
         }else return false;

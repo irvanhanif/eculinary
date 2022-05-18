@@ -5,27 +5,22 @@
     </head>
     <body>
         <div class="makanan-wrapper" >
-        <div class="makanan" onclick="location.href='menu/detail/1'">
+        <div class="makanan" onclick="location.href='<?php if(isset($path)) echo $path ?>menu/detail/<?php if(isset($daftarMenu)) echo $daftarMenu[$i]['id_menu'] ?>'">
         <!-- < ?php if(isset($path)) echo $path ?>view/asset/makanan.png     -->
         <img src="
         <?php 
+            if(isset($path)) echo $path;
             if(isset($daftarMenu)) echo $daftarMenu[$i]["avatar"];
-            else if(isset($menuPopular)) echo $menuPopular[$i]["avatar"];
-            else {
-                if(isset($path)) echo $path;
-                echo 'view/asset/makanan.png';
-            };
+            else echo 'view/asset/makanan.png';
         ?>
         " alt="foto-makanan">
             <h4><b><?php 
                 if(isset($daftarMenu)) echo $daftarMenu[$i]["nama_menu"];
-                else if(isset($menuPopular)) echo $menuPopular[$i]["nama_menu"];
                 else echo 'Mie Iblis';
             ?></b></h4>
             <div class="informasi-makanan">
                 <h4>Rp <?php 
                     if(isset($daftarMenu)) echo $daftarMenu[$i]["harga"]; 
-                    else if (isset($menuPopular)) echo $menuPopular[$i]["harga"];
                     else echo "10.000" ;
                 ?></h4>
                 <div class="komentar">

@@ -11,7 +11,7 @@
         <div class="makanan-wrapper">
         <div class="makanan">
             <div class="menu-wrapper">  
-        <img class="gambar"src="../../view/asset/detailmakanan.png" alt="detailmakanan">
+        <img class="gambar"src="../../<?php if($data[0]["avatar"]) echo $data[0]["avatar"]; else echo 'view/asset/detailmakanan.png' ?>" alt="detailmakanan">
         <div class="text">
         <p>Silakan berikan bintang!</p>
     <img src="../../view/asset/bintang.png" alt="rating">
@@ -19,12 +19,12 @@
         </div>
         <div class="detail-wrapper">
         <div class="menu">
-    <p class="detail"><b>Es Campur Dempo</b></p>
+    <p class="detail"><b><?php echo $data[0]["nama_menu"] ?></b></p>
     <p class="detail">Malang</p>
     </div>
     <div class="ratingHarga">
     <img class="rating"src="../../view/asset/bintang.png" alt="rating">
-    <p class="harga">Rp 10.000</p>
+    <p class="harga">Rp <?php echo $data[0]["harga"] ?></p>
     </div>
         </div>
         </div>
@@ -39,27 +39,49 @@
         <p class="komen">Komentar</p>
         <div class="isi">
         <img class="profil"src="../../view/asset/profile.png" alt="profil">
-        <form class="button-submit" action="">
+        <form action="" method="post" id="form-komen">
             <input class="kolom" type="text" name="komentar" placeholder="Tambahkan komentar...">
-            <input type="button" name="submit">
+            <input type="submit" name="btnsubmit" value="" class="button-submit">
         </form>
+        <?php 
+        // var_dump($data);
+        if(isset($_POST["btnsubmit"])){
+            // echo $data[0]["id_menu"], $_POST["komentar"];
+            require_once "menu/controller.menu.php";
+            $komentar = new c_menu();
+            $komentar->createKomentar($data[0]["id_menu"], $_POST["komentar"]);
+        }
+        ?>
         </div>
+    <?php
+        require_once "menu/controller.menu.php";
+        $dataKomentar = (new c_menu())->getAllKomentar($data[0]["id_menu"]);
+        // var_dump($dataKomentar);
+        for ($i=count($dataKomentar)-1; $i >=0  ; $i--) {
+            $value = $dataKomentar[$i];
+            // var_dump($value);
+    ?>
+    <div class="comment"><img class="account"src="../../<?php if(isset($value["avatar"])) echo $value["avatar"]; else echo 'view/asset/profil1.png' ?>" alt="profil">
+    <p class="komentar1"><?php echo $value["isi_komentar"] ?></p></div>
+    <?php
+        }
+    ?>
 
-    <div class="comment"><img class="account"src="../../view/asset/profil1.png" alt="profil">
-    <p class="komentar1">Enak banget, pasti bakal kesinii lagii</p></div>
+    <!-- <div class="comment"><img class="account"src="../../view/asset/profil1.png" alt="profil">
+    <p class="komentar1">Enak banget, pasti bakal kesinii lagii</p></div> -->
+    
+    <!-- <div class="comment"><img class="account" src="../../view/asset/profil1.png" alt="profil">
+        <p class="komentar1">Esnya Segerrr</p></div> -->
 
-    <div class="comment"><img class="account" src="../../view/asset/profil1.png" alt="profil">
-        <p class="komentar1">Esnya Segerrr</p></div>
-
-    <div class="comment"><img class="account" src="../../view/asset/profil1.png" alt="profil">
+    <!-- <div class="comment"><img class="account" src="../../view/asset/profil1.png" alt="profil">
         <p class="komentar1">Enak banget, pasti bakal kesinii lagii</p></div>
 
     <div class="comment"><img class="account" src="../../view/asset/profil1.png" alt="profil">
-        <p class="komentar1">Esnya Segerrr</p></div>
-        <a href="">
+        <p class="komentar1">Esnya Segerrr</p></div> -->
+        <!-- <a href="">
          <img class="lanjut"alt="arrow-down" src="../../view/asset/arrow-down.png"
          width=30>
-</a>
+</a> -->
     </div>
     </div>
     <div class="kolom-tersedia">
@@ -67,19 +89,20 @@
         <div class="tersedia">
             <p class="kategori">Kategori</p>
             <div class="konten">
-                <p>Minuman</p>
-                <p>Es Krim</p>
+                <!-- <p>Minuman</p>
+                <p>Es Krim</p> -->
+                <p><?php echo $data[0]["kategori"] ?></p>
             </div>
             <p class="jamOperasional">Jam Operasional</p>
             <div class="weekday">
-                <p class="hari">Senin-Jumat</p>
-                <p class="jam-weekday">08.00-21.00</p>
+                <p class="hari">Buka</p>
+                <p class="jam-weekday"><?php echo $data[0]["jam_awal"] ?></p>
             </div>
             <div class="weekend">
-                <p class="hari">Sabtu-Minggu</p>
-                <p class="jam-weekend">10.00-23.00</p>
+                <p class="hari">Tutup</p>
+                <p class="jam-weekend"><?php echo $data[0]["jam_akhir"] ?></p>
             </div>
-            <input class="lihat" type="button" name="detailToko" value="Lihat Detail Toko">
+            <input class="lihat" type="button" name="detailToko" value="Lihat Detail Toko" onclick="location.href='../toko/detail'">
         </div> 
     </div>
     </div>
