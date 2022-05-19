@@ -1,7 +1,7 @@
 <?php 
 if(isset($pathMenu)) require_once $pathMenu . "menu/controller.menu.php";
 else require_once "menu/controller.menu.php";
-$dataKomentar = (new c_menu())->getAllKomentar($daftarMenu[$i]["id_menu"]);
+if(isset($daftarMenu)) $dataKomentar = (new c_menu())->getAllKomentar($daftarMenu[$i]["id_menu"]);
 ?>
 <!DOCTYPE html>
 <html>
@@ -53,7 +53,7 @@ $dataKomentar = (new c_menu())->getAllKomentar($daftarMenu[$i]["id_menu"]);
                 ?></h4>
                 <div class="komentar">
                     <img src="<?php if(isset($path)) echo $path ?>view/asset/chat.png" alt="chat">
-                    <h5><?php echo count($dataKomentar) ?></h5>
+                    <h5><?php if(isset($dataKomentar)) echo count($dataKomentar); else echo '1rb' ?></h5>
                 </div>
             </div>
             <div class="informasi-makanan">

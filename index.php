@@ -12,6 +12,9 @@ switch (explode("/", $request)[0]) {
     case 'home' :
         require "view/homepage.php";
         break;
+    case 'search' :
+        require "view/hasilpencarian.php";
+        break;
     case 'user' :
         require "user/index.php";
         break;

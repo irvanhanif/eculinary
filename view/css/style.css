@@ -96,7 +96,9 @@ select {
 /* Makanan */
 .makanan-wrapper {
     /* float: left; */
-    width: 25%;
+    /* width: 25%; */
+    /* width: fit-content; */
+    margin: auto;
     margin-bottom: 48px;
 }
 .daftar-makanan {
@@ -335,9 +337,9 @@ input[type=submit] {
     margin-top: 48px;
     /* width: 810px; */
 }
-.menu-wrapper .makanan-wrapper {
+/* .menu-wrapper .makanan-wrapper {
     width: 33%;
-}
+} */
 
 /* Ganti Password */
 .password-wrapper {

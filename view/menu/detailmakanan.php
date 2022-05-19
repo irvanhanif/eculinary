@@ -11,7 +11,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: <?php echo (2.5/5)*112 ?>%;
+            width: <?php echo (2.5/5)*100 ?>%;
             white-space: nowrap;
             overflow: hidden;
         }

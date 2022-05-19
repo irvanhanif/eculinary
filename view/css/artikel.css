@@ -1,12 +1,14 @@
 .artikel-wrapper {
     /* float: left; */
     /* width: 30%; */
-    width: 33.3%;
+    /* width: 33.3%; */
+    /* width: fit-content; */
+    margin: auto;
     /* margin-bottom: 48px; */
 }
 
 .artikel {
-    margin: auto;
+    margin: 25px auto;
     height: auto;
     width: 400px;
     border-radius: 24px;

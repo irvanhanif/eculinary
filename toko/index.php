@@ -17,7 +17,8 @@ if(isset($request)){
             require "./view/toko/detailToko.php";
             break;
         case 'own' :
-            $data = (new c_toko())->getMyToko()[0];
+            $data = (new c_toko())->getMyToko();
+            if($data) $data = $data[0];
             // var_dump($data);
             // $own = true;
             // $pathUser = $path . "user/";
