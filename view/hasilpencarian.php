@@ -7,6 +7,12 @@
   <link rel="stylesheet" href="view/css/style.css">
   <link rel="stylesheet" href="view/css/daftarmakananminuman.css">
   <title>Hasil Penelurusan</title>
+  <style>
+    .text{
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
 </head>
 <body>
 <?php require_once 'view/header.php'; ?>
@@ -24,16 +30,43 @@
     </form>
   </div>
   <div class="menu-wrapper">
-  <p>Makanan & Minuman</p>
+    <div class="text">
+        <h2>Rekomendasi Makanan & Minuman</h2>
+        <h2 class="liat">Lihat Semua</h2>
+    </div>
+    <div class="daftar-makanan">
   <?php
-    require "view/menu/makanan.php"; 
+    require_once "menu/controller.menu.php";
+    $key = explode("=", $request)[1];
+    // echo $key;
+    $daftarMenu = (new c_menu())->searchMenu("$key", '', '');
+    // var_dump($daftarMenu);
+    if(count($daftarMenu) > 0){
+      for($i = 0; $i < count($daftarMenu); $i++){
+        require "view/menu/makanan.php"; 
+      }
+    }else{
+      ?> <p><strong>Makanan tidak ditemukan</strong></p> <?php
+    }
   ?>
+    </div>
   </div>
-  <p>Artikel</p>
-  <div class="artikel">
-  <img src="makanan.png" alt="makanan">
-  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-  <p>Isi Artikel</p>
+  <div class="menu-wrapper">
+    <div class="text">
+        <h2>Artikel</h2>
+        <h2 class="liat">Lihat Semua</h2>
+    </div>
+    <div class="daftar-artikel">
+  <?php
+    require_once "artikel/controller.artikel.php";
+    $data = (new c_artikel())->showArtikel();
+
+    for($i = 0; $i < count($data); $i++){
+      require "view/artikel/artikel.php"; 
+    }
+  ?>
+    </div>
+  </div>
 </body>
 </html>
 </div>

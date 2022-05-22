@@ -45,12 +45,14 @@ class m_menu{
     }
 
     public function getMenu($db, $id_menu){
-        $result = $db->query("SELECT m.*, t.jam_awal, t.jam_akhir FROM $this->tabel m JOIN toko t ON m.id_toko = t.id_toko WHERE id_menu = $id_menu");
+        $result = $db->query("SELECT m.*, t.jam_awal, t.jam_akhir, 
+        (SELECT AVG(bintang) FROM rating WHERE id_menu = $id_menu) as bintang
+        FROM $this->tabel m JOIN toko t ON m.id_toko = t.id_toko WHERE m.id_menu = $id_menu");
         return $result;
     }
 
     public function getAllMenu($db, $order, $flow){
-        $query = "SELECT * FROM $this->tabel";
+        $query = "SELECT M.*, R.bintang FROM $this->tabel M LEFT JOIN rating R ON M.id_menu = R.id_menu ";
         if($order){
             $query = $query . " ORDER BY $order";
             if($flow == 'down') $query = $query . " DESC";

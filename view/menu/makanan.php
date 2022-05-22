@@ -22,7 +22,6 @@ if(isset($daftarMenu)) $dataKomentar = (new c_menu())->getAllKomentar($daftarMen
                 position: absolute;
                 top: 0;
                 left: 0;
-                width: <?php echo (2.5/5)*112 ?>%;
                 white-space: nowrap;
                 overflow: hidden;
             }
@@ -59,7 +58,7 @@ if(isset($daftarMenu)) $dataKomentar = (new c_menu())->getAllKomentar($daftarMen
             <div class="informasi-makanan">
                 <h4 style="color:#8b8b8b"><?php if(isset($data[0]["kota"])) echo $data[0]["kota"]; else echo 'Malang' ?></h4>
                 <div class="rating">
-                    <div class="rating__overlay">
+                    <div class="rating__overlay" style='width: <?php if(isset($daftarMenu)) echo ($daftarMenu[$i]["bintang"]/5)*112; else echo 0 ?>%'>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>

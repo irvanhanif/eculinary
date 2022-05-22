@@ -6,10 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../view/css/daftarmakananminuman.css">
     <title>Document</title>
+    <style>
+        /* .makanan-wrapper {
+            width: 25%;
+        } */
+    </style>
 </head>
 <body>
 <?php 
-$menuPath = true;
+$menuPath = "../";
 require_once "../menu/controller.menu.php";
 $daftarMenu = (new c_menu())->getAllMenu('', '');
 // var_dump($daftarMenu);

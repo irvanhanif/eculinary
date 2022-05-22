@@ -11,7 +11,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: <?php echo (2.5/5)*100 ?>%;
+            width: <?php if($data[0]["bintang"]) echo ($data[0]["bintang"]/5)*100; else echo 0 ?>%;
             white-space: nowrap;
             overflow: hidden;
         }
@@ -22,11 +22,10 @@
 <?php require_once 'view/header.php'; ?>
         <div class="makanan-wrapper">
         <div class="makanan">
-            <div class="menu-wrapper">  
+            <div class="menu-wrapper">
         <img class="gambar"src="../../<?php if($data[0]["avatar"]) echo $data[0]["avatar"]; else echo 'view/asset/detailmakanan.png' ?>" alt="detailmakanan">
         <div class="text">
         <p>Silakan berikan bintang!</p>
-    <!-- <img src="../../view/asset/bintang.png" alt="rating"> -->
             <div class="ratingInput">
                 <i class="fas fa-star" onclick="clickBintang(1)"></i>
                 <i class="fas fa-star" onclick="clickBintang(2)"></i>
@@ -42,6 +41,7 @@
                     for($k = 0; $k < $id; $k++){
                         document.getElementsByClassName("ratingInput")[0].getElementsByTagName("i")[$k].style.color = "#FFAB65";
                     }
+                    sendRating($id);
                 }
             </script>
         </div>
@@ -52,7 +52,6 @@
     <p class="detail">Malang</p>
     </div>
     <div class="ratingHarga">
-    <!-- <img class="rating"src="../../view/asset/bintang.png" alt="rating"> -->
     <div class="rating">
         <div class="rating__overlay">
             <i class="fas fa-star"></i>
@@ -69,6 +68,20 @@
             <i class="fas fa-star"></i>
         </div>
     </div>
+    <script>
+        function sendRating(star){
+            console.log(star);
+            const formData = new FormData();
+            formData.append('bintang', star);
+            formData.append('id_menu', <?php echo $data[0]["id_menu"] ?>);
+            fetch("http://localhost:8080/eculinary2/view/menu/sendRating.php",{
+                method: "POST",
+                body: formData
+            })
+            .then(res => res.text())
+            .then(data => console.log(data));
+        }
+    </script>
     <p class="harga">Rp <?php echo $data[0]["harga"] ?></p>
     </div>
         </div>
@@ -85,45 +98,67 @@
         <div class="isi">
         <img class="profil"src="../../view/asset/profile.png" alt="profil">
         <form action="" method="post" id="form-komen">
-            <input class="kolom" type="text" name="komentar" placeholder="Tambahkan komentar...">
-            <input type="submit" name="btnsubmit" value="" class="button-submit">
+            <input class="kolom" type="text" placeholder="Tambahkan komentar...">
+            <input type="button" value="" onclick="komen()" class="button-submit">
         </form>
-        <?php 
-        // var_dump($data);
-        if(isset($_POST["btnsubmit"])){
-            // echo $data[0]["id_menu"], $_POST["komentar"];
-            require_once "menu/controller.menu.php";
-            $komentar = new c_menu();
-            $komentar->createKomentar($data[0]["id_menu"], $_POST["komentar"]);
-        }
-        ?>
+        <script>
+            function komen(){
+                const komentar = document.querySelector('.kolom').value;
+                const formData = new FormData();
+                formData.append('komentar', komentar);
+                formData.append('id_menu', <?php echo $data[0]["id_menu"] ?>);
+                fetch("http://localhost:8080/eculinary2/view/menu/sendKomentar.php",{
+                    method: "POST",
+                    body: formData
+                });
+            }
+        </script>
         </div>
         <div class="baris-komentar">
-    <?php
-        require_once "menu/controller.menu.php";
-        $dataKomentar = (new c_menu())->getAllKomentar($data[0]["id_menu"]);
-        // var_dump($dataKomentar);
-        for ($i=count($dataKomentar)-1; $i >=0  ; $i--) {
-            $value = $dataKomentar[$i];
-            // var_dump($value);
-    ?>
-    <div class="comment"><img class="account"src="../../<?php if(isset($value["avatar"]) && $value["avatar"]) echo $value["avatar"]; else echo 'view/asset/profil1.png' ?>" alt="profil">
-    <p class="komentar1"><?php echo $value["isi_komentar"] ?></p></div>
-    <?php
+    <script>
+        getKomen();
+        function getKomen(){
+            const komentar = document.querySelector('.kolom').value;
+            fetch("http://localhost:8080/eculinary2/view/menu/readKomentar.php?id_menu=<?php echo $data[0]["id_menu"] ?>")
+            .then(res => res.text())
+            .then(data => {
+                data = data.split("{" && "},");
+                let komentar = [];
+                for(let i = 0; i < data.length-1; i++){
+                    komentar[i] = data[i].split("|");
+                    komentarDetail = [];
+                    for (let j = 0; j < komentar[i].length-1; j++) {
+                        komentarDetail[j] = komentar[i][j].split("=");
+                    }
+                    komentar[i] = komentarDetail;
+                }
+                document.querySelector(".baris-komentar").innerHTML = "";
+                for (let i = 0; i < komentar.length; i++) {
+                    let comment = document.createElement("div");
+                    comment.setAttribute("class", "comment");
+                    let avatar = document.createElement("img");
+                    avatar.setAttribute("class", "account");
+                    if(komentar[i][6][1] != ""){
+                        avatar.setAttribute("src", "../../"+komentar[i][6][1]);
+                    }else{
+                        avatar.setAttribute("src", "../../view/asset/profil1.png");
+                    }
+                    avatar.setAttribute("alt", "profil");
+                    comment.appendChild(avatar);
+                    let isiKomen = document.createElement("p");
+                    isiKomen.setAttribute("class", "komentar1");
+                    isiKomen.appendChild(document.createTextNode(komentar[i][3][1]));
+                    comment.appendChild(isiKomen);
+                    document.querySelector(".baris-komentar").appendChild(comment);
+                }
+            });    
+            setTimeout(getKomen, 100);
         }
-    ?>
+    </script>
 </div>
     <!-- <div class="comment"><img class="account"src="../../view/asset/profil1.png" alt="profil">
     <p class="komentar1">Enak banget, pasti bakal kesinii lagii</p></div> -->
     
-    <!-- <div class="comment"><img class="account" src="../../view/asset/profil1.png" alt="profil">
-        <p class="komentar1">Esnya Segerrr</p></div> -->
-
-    <!-- <div class="comment"><img class="account" src="../../view/asset/profil1.png" alt="profil">
-        <p class="komentar1">Enak banget, pasti bakal kesinii lagii</p></div>
-
-    <div class="comment"><img class="account" src="../../view/asset/profil1.png" alt="profil">
-        <p class="komentar1">Esnya Segerrr</p></div> -->
         <!-- <a href="">
          <img class="lanjut"alt="arrow-down" src="../../view/asset/arrow-down.png"
          width=30>
@@ -135,8 +170,6 @@
         <div class="tersedia">
             <p class="kategori">Kategori</p>
             <div class="konten">
-                <!-- <p>Minuman</p>
-                <p>Es Krim</p> -->
                 <p><?php echo $data[0]["kategori"] ?></p>
             </div>
             <p class="jamOperasional">Jam Operasional</p>

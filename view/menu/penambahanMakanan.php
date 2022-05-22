@@ -1,4 +1,11 @@
 <html>
+    <head>
+        <style>
+            /* .makanan-wrapper {
+                width: 33.3%;
+            } */
+        </style>
+    </head>
     <body>
         <div class="menu-wrapper">
             <div class="tambah-menu">

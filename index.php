@@ -12,9 +12,6 @@ switch (explode("/", $request)[0]) {
     case 'home' :
         require "view/homepage.php";
         break;
-    case 'search' :
-        require "view/hasilpencarian.php";
-        break;
     case 'user' :
         require "user/index.php";
         break;
@@ -28,6 +25,11 @@ switch (explode("/", $request)[0]) {
         require "artikel/index.php";
         break;
     default:
-        http_response_code(404);
+        if(substr($request, 0, 11) === "search?key="){
+            $path = "./";
+            require "view/hasilpencarian.php";
+        }else{
+            http_response_code(404);
+        }
         break;
 }

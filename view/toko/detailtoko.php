@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php if(isset($path)) echo $path ?>view/css/style.css">
     <title>Document</title>
+    <style>
+        /* .makanan-wrapper {
+            width: fitc;
+        } */
+    </style>
 </head>
 <body>
 <?php require_once 'view/header.php'; ?> 

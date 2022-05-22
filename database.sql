@@ -10,7 +10,7 @@ CREATE TABLE eculinary.user
     tanggal_lahir DATE NULL,
     password VARCHAR(255) NOT NULL,
     token_change_password VARCHAR(4),
-    avatar VARCHAR(60)
+    avatar VARCHAR(250)
 );
 
 CREATE TABLE toko
@@ -24,7 +24,7 @@ CREATE TABLE toko
     id_user INT NOT NULL,
     jam_awal TIME,
     jam_akhir TIME,
-    avatar VARCHAR(60),
+    avatar VARCHAR(250),
 
     FOREIGN KEY (id_user) REFERENCES user(id_user)
 );
@@ -37,7 +37,7 @@ CREATE TABLE menu
     jenis VARCHAR(60) NOT NULL,
     kategori VARCHAR(60) NOT NULL,
     id_toko INT NOT NULL,
-    avatar VARCHAR(60),
+    avatar VARCHAR(250),
 
     FOREIGN KEY (id_toko) REFERENCES toko(id_toko)
 );
@@ -72,7 +72,7 @@ CREATE TABLE komentar
 
 CREATE TABLE rating
 (
-    bintang INT NOT NULL,
+    bintang FLOAT NOT NULL,
     id_user INT NOT NULL,
     id_menu INT NOT NULL,
 

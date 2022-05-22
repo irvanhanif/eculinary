@@ -114,7 +114,7 @@ header {
         <?php if(!isset($login) && !isset($register)){ ?>
         <div class="search">
             <input type="text" id="searchbox" placeholder="Cari disini">
-            <div class="searchbtn"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div class="searchbtn" onclick='location.href="<?php if(isset($path)) echo $path ?>search?key="+document.getElementById("searchbox").value'><i class="fa-solid fa-magnifying-glass"></i></div>
         </div>
         <div class="akun">
             <a href="<?php if(isset($path)) echo $path ?>menu">Makanan & Minuman</a>

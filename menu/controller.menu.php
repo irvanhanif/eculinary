@@ -1,8 +1,8 @@
 <?php
-if(isset($menuPath) && $menuPath){
-    require_once "../config.php";
-    require_once "../toko/model.toko.php";
-    require_once "../uploadHandler.php";
+if(isset($menuPath)){
+    require_once $menuPath . "config.php";
+    require_once $menuPath . "toko/model.toko.php";
+    require_once $menuPath . "uploadHandler.php";
 }else{
     require_once "./config.php";
     require_once "./toko/model.toko.php";
@@ -113,7 +113,10 @@ class c_menu{
             $this->rating = new m_rating();
             $id_user = $_SESSION["user-culinary"]["id_user"];
             $this->rating->postRating($id_user, $id_menu, $bintang);
-            $result = $this->komentar->insertRating($this->conn);
+            if(count($this->rating->checkRating($this->conn)) > 0){
+                $this->rating->deleteRating($this->conn);
+            }
+            $result = $this->rating->insertRating($this->conn);
             return $result;
         }else return false;
     }
