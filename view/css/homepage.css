@@ -63,3 +63,7 @@ a {
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+.liat{
+    cursor: pointer;
+}

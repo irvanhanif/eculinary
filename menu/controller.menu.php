@@ -75,8 +75,7 @@ class c_menu{
     }
 
     public function searchMenu($keyword, $order, $flow){
-        if($order) $result = $this->model->searchEngine($this->conn, $keyword, $order, $flow);
-        else $result = $this->model->searchEngine($this->conn, $keyword, '', '');
+        $result = $this->model->searchEngine($this->conn, $keyword, $order, $flow);
         return $result;
     }
 
@@ -126,7 +125,22 @@ class c_menu{
             $this->wishlist = new m_wishlist();
             $id_user = $_SESSION["user-culinary"]["id_user"];
             $this->wishlist->postWishlist($id_user, $id_menu);
-            $result = $this->wishlist->insertWishlist($this->conn);
+            $cek = $this->wishlist->checkWishlist($this->conn);
+            if($cek){
+                $result = $this->wishlist->deleteWishlist($this->conn);
+            }else{
+                $result = $this->wishlist->insertWishlist($this->conn);
+            }
+            return $result;
+        }else return false;
+    }
+
+    public function checkMyWishlist($id_menu){
+        if(isset($_SESSION["user-culinary"])){
+            $this->wishlist = new m_wishlist();
+            $id_user = $_SESSION["user-culinary"]["id_user"];
+            $this->wishlist->postWishlist($id_user, $id_menu);
+            $result = $this->wishlist->checkWishlist($this->conn);
             return $result;
         }else return false;
     }

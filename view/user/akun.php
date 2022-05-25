@@ -49,7 +49,7 @@ if(isset($_SESSION["user-culinary"])){
                         </div>
                         <div class="form">
                             <p>Jenis Kelamin</p>
-                            <input id="laki" type="radio" name="jenisKelamin" value="Laki-Laki" <?php if($data["jenis_kelamin"] == 'Laki-Laki') echo 'checked' ?>>
+                            <input id="laki" type="radio" name="jenisKelamin" value="Laki-laki" <?php if($data["jenis_kelamin"] == 'Laki-laki') echo 'checked' ?>>
                             <label for="laki">Laki-laki</label>
                             <input id="perempuan" type="radio" name="jenisKelamin" value="Perempuan" <?php if($data["jenis_kelamin"] == 'Perempuan') echo 'checked' ?>>
                             <label for="perempuan">Perempuan</label>

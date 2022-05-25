@@ -19,7 +19,8 @@
     </style>
 </head>
 <body>
-<?php require_once 'view/header.php'; ?>
+<?php require_once 'view/header.php'; 
+$dataWishlist = (new c_menu())->checkMyWishlist($id)?>
         <div class="makanan-wrapper">
         <div class="makanan">
             <div class="menu-wrapper">
@@ -45,6 +46,19 @@
                 }
             </script>
         </div>
+        <div class="wishlist-btn"><i onclick="wishlistBtn()" class="<?php if($dataWishlist) echo "aktif " ?>fa-solid fa-heart"></i></div>
+        <script>
+            function wishlistBtn(){
+                document.querySelector(".wishlist-btn i").classList.toggle("aktif");
+                fetch("http://localhost:8080/eculinary2/view/menu/addWishlist.php",{
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: "id_menu=<?php echo $data[0]["id_menu"] ?>"
+                })
+            }
+        </script>
         </div>
         <div class="detail-wrapper">
         <div class="menu">
@@ -70,7 +84,7 @@
     </div>
     <script>
         function sendRating(star){
-            console.log(star);
+            // console.log(star);
             const formData = new FormData();
             formData.append('bintang', star);
             formData.append('id_menu', <?php echo $data[0]["id_menu"] ?>);

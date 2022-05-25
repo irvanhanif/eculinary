@@ -15,13 +15,18 @@ class m_wishlist{
         return $result;
     }
 
-    public function deleteWishlist($db, $id_user, $id_menu){
-        $result = $db->query("DELETE FROM $this->tabel WHERE id_user = $id_user AND id_menu = $id_menu");
+    public function deleteWishlist($db){
+        $result = $db->query("DELETE FROM $this->tabel WHERE id_user = $this->id_user AND id_menu = $this->id_menu");
         return $result;
     }
 
     public function deleteAllWishlist($db, $id_user){
         $result = $db->query("DELETE FROM $this->tabel WHERE id_user = $id_user");
+        return $result;
+    }
+
+    public function checkWishlist($db){
+        $result = $db->query("SELECT * FROM $this->tabel WHERE id_user = $this->id_user AND id_menu = $this->id_menu");
         return $result;
     }
 

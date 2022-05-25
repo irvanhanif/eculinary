@@ -278,3 +278,16 @@ padding-top: 37px;
     cursor: pointer;
     font-size: 24px;
 }
+
+.wishlist-btn{
+    margin-top: 100px;
+    margin-left: 120px;
+}
+.wishlist-btn i{
+    cursor: pointer;
+    font-size: 36px;
+    color: black;
+}
+.wishlist-btn i.aktif{
+    color: rgb(180, 0, 0);
+}

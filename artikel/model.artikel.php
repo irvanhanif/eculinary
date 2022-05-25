@@ -42,6 +42,16 @@ class m_artikel{
         return $result;
     }
 
+    public function searchEngine($db, $keyword, $order, $flow){
+        $query = "SELECT * FROM $this->tabel WHERE judul_artikel LIKE '%$keyword%'";
+        if($order){
+            $query = $query . " ORDER BY $order";
+            if($flow == 'down') $query = $query . " DESC";
+        }
+        $result = $db->query($query);
+        return $result;
+    }
+
     public function getAllArtikel($db, $option, $id){
         $sql = "SELECT * FROM $this->tabel";
         if($option){

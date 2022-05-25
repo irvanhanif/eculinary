@@ -59,7 +59,7 @@
     <div class="daftar-artikel">
   <?php
     require_once "artikel/controller.artikel.php";
-    $data = (new c_artikel())->showArtikel();
+    $data = (new c_artikel())->searchArtikel("$key", '', '');
 
     for($i = 0; $i < count($data); $i++){
       require "view/artikel/artikel.php"; 

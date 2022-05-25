@@ -62,6 +62,11 @@ class c_artikel{
         return $result;
     }
 
+    public function searchArtikel($keyword, $order, $flow){
+        $result = $this->model->searchEngine($this->conn, $keyword, $order, $flow);
+        return $result;
+    }
+
     public function getMyArtikel(){
         if(isset($this->model)){
             $id_user = $_SESSION["user-culinary"]["id_user"];
