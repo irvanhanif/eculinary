@@ -66,6 +66,7 @@ if(isset($_SESSION["user-culinary"])){
                         </div>
                         <?php if(isset($data["id_toko"])){ ?>
                             <input class ="submit" type="submit" name="simpan" value="Simpan">
+                            <p id="deleteAkun" onclick="deleteAkun()">Hapus Toko</p>
                         <?php }else{ ?>
                             <input class ="submit" type="submit" name="submit" value="Daftar">
                         <?php } ?>

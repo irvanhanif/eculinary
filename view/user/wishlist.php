@@ -21,6 +21,7 @@ if(isset($_SESSION["user-culinary"])){
                 <h2>Wishlist</h2>
                 <div class="daftarMakanan">
                     <?php 
+                    // var_dump($daftarMenu);
                     for($i = 0; $i<count($daftarMenu); $i++){
                         require 'view/menu/makanan.php';
                     }

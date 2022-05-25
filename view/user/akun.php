@@ -60,7 +60,31 @@ if(isset($_SESSION["user-culinary"])){
                             <p>Tanggal Lahir</p>
                             <input id="tgl-lahir" type="date" name="tgl-lahir" value = '<?php echo $data["tanggal_lahir"] ?>'>
                         </div>
-                        <input type="submit" name="submit" value="Simpan"> 
+                        <div class="tombol">
+                            <input type="submit" name="submit" value="Simpan"> 
+                            <p id="deleteAkun" onclick="deleteAkun()">Hapus Akun</p>
+                        </div>
+                        <script>
+                            function deleteAkun(){
+                                Swal.fire({
+                                title: 'Are you sure?',
+                                text: "You won't be able to revert this!",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Yes, delete this account!'
+                                }).then((result) => {
+                                if (result.isConfirmed) {
+                                    Swal.fire(
+                                    'Deleted!',
+                                    'Your Account has been deleted.',
+                                    'success'
+                                    )
+                                }
+                                })
+                            }
+                        </script>
                     </div>
                     <div class="right-content">
                         <img src="<?php if(isset($data["avatar"]) && $data["avatar"]) echo '../' . $data["avatar"]; else echo '../view/asset/profile.png' ?>" id="img-user" alt="foto">

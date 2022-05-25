@@ -31,7 +31,7 @@ class m_wishlist{
     }
 
     public function getMyWishlist($db, $id_user){
-        $result = $db->query("SELECT * FROM $this->tabel w JOIN menu m ON w.id_menu = m.id_menu WHERE id_user = $id_user");
+        $result = $db->query("SELECT w.*, m.*, AVG(R.bintang) as bintang FROM $this->tabel w JOIN menu m ON w.id_menu = m.id_menu LEFT JOIN rating R ON m.id_menu = R.id_menu WHERE w.id_user = $id_user GROUP BY m.id_menu");
         return $result;
     }
 

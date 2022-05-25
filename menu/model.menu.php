@@ -52,7 +52,7 @@ class m_menu{
     }
 
     public function getAllMenu($db, $order, $flow){
-        $query = "SELECT M.*, R.bintang FROM $this->tabel M LEFT JOIN rating R ON M.id_menu = R.id_menu ";
+        $query = "SELECT M.*, AVG(R.bintang) as bintang FROM $this->tabel M LEFT JOIN rating R ON M.id_menu = R.id_menu GROUP BY M.id_menu";
         if($order){
             $query = $query . " ORDER BY $order";
             if($flow == 'down') $query = $query . " DESC";
@@ -62,7 +62,7 @@ class m_menu{
     }
 
     public function getAllMenuToko($db, $id_toko, $order, $flow){
-        $query = "SELECT * FROM $this->tabel WHERE id_toko = $id_toko";
+        $query = "SELECT M.*, AVG(R.bintang) as bintang FROM $this->tabel M LEFT JOIN rating R ON M.id_menu = R.id_menu WHERE M.id_toko = $id_toko GROUP BY M.id_menu";
         if($order){
             $query = $query . " ORDER BY $order";
             if($flow == 'down') $query = $query . " DESC";
@@ -72,7 +72,7 @@ class m_menu{
     }
 
     public function searchEngine($db, $keyword, $order, $flow){
-        $query = "SELECT * FROM $this->tabel WHERE nama_menu LIKE '%$keyword%'";
+        $query = "SELECT M.*, AVG(R.bintang) as bintang FROM $this->tabel M LEFT JOIN rating R ON M.id_menu = R.id_menu WHERE M.nama_menu LIKE '%$keyword%' GROUP BY M.id_menu";
         if($order){
             $query = $query . " ORDER BY $order";
             if($flow == 'down') $query = $query . " DESC";
