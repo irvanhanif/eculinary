@@ -30,7 +30,7 @@ if(isset($_POST["submit"])){
                             <p>Isi</p>
                             <textarea name="isi" id="isi-artikel" cols="30" rows="10" placeholder="Tuliskan isi artikel disini"></textarea>
                         </div>
-                        <input type="submit" name="submit" value="Unggah"> 
+                        <input type="submit" name="submit" class="submit-btn" value="Unggah"> 
                     </div>
                     <div class="right-content">
                         <img src="../view/asset/edit-file.png" id="img-artikel" alt="gambar">

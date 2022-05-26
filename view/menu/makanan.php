@@ -30,10 +30,20 @@ if(isset($daftarMenu)) $dataKomentar = (new c_menu())->getAllKomentar($daftarMen
                 color: #ccc;
                 white-space: nowrap;
             }
+            <?php if(isset($data["id_toko"]) && isset($id_toko) && $id_toko === $data["id_toko"]){ ?>
+            .makanan{
+                border-radius: 24px 24px 0 24px;
+            }
+            <?php } ?>
         </style>
     </head>
     <body>
-        <div class="makanan-wrapper" >
+        <div class="makanan-wrapper">
+        <?php if(isset($data["id_toko"]) && isset($id_toko) && $id_toko === $data["id_toko"]){ ?>
+            <div class="setting" onclick="location.href='?id=<?php echo $daftarMenu[$i]['id_menu'] ?>'">
+                <i class="fa-solid fa-sliders"></i>
+            </div>
+        <?php } ?>
         <div class="makanan" onclick="location.href='<?php if(isset($path)) echo $path ?>menu/detail/<?php if(isset($daftarMenu)) echo $daftarMenu[$i]['id_menu'] ?>'">
         <!-- < ?php if(isset($path)) echo $path ?>view/asset/makanan.png     -->
         <img src="<?php 

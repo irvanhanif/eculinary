@@ -36,12 +36,12 @@ class c_menu{
             return $result;
         }else return false;
     }
-
-    public function updateMenu($nama_menu, $harga, $kategori, $jenis, $id_menu){
+    
+    public function updateMenu($nama_menu, $harga, $kategori, $jenis, $avatar, $id_menu){
         if(isset($_SESSION["user-culinary"])){
-            if($this->model->getIdToko($this->conn, $id_menu)["id_toko"] === (new m_toko())->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"])[0]["id_toko"]){
+            if($this->model->getIdToko($this->conn, $id_menu)[0]["id_toko"] === (new m_toko())->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"])[0]["id_toko"]){
                 $pathAvatar = (new uploadHandler($avatar))->uploadAvatar('menu');
-                $this->model->updateDataMenu($nama_menu, $harga, $kategori, $jenis, $id_toko, $id_menu, $pathAvatar);
+                $this->model->updateDataMenu($nama_menu, $harga, $kategori, $jenis, $id_menu, $pathAvatar);
                 $result = $this->model->updateMenu($this->conn);
                 return $result;    
             }else return false;
@@ -50,7 +50,7 @@ class c_menu{
 
     public function deleteMenu($id_menu){
         if(isset($_SESSION["user-culinary"])){
-            if($this->model->getIdToko($this->conn, $id_menu)["id_toko"] === ((new m_toko())->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"])[0]["id_toko"])){
+            if($this->model->getIdToko($this->conn, $id_menu)[0]["id_toko"] === ((new m_toko())->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"])[0]["id_toko"])){
                 $result = $this->model->deleteMenu($this->conn, $id_menu);
                 return $result;
             }else return false;
@@ -116,6 +116,16 @@ class c_menu{
                 $this->rating->deleteRating($this->conn);
             }
             $result = $this->rating->insertRating($this->conn);
+            return $result;
+        }else return false;
+    }
+
+    public function getRating($id_menu){
+        if(isset($_SESSION["user-culinary"])){
+            $this->rating = new m_rating();
+            $id_user = $_SESSION["user-culinary"]["id_user"];
+            $this->rating->postRating($id_user, $id_menu, '');
+            $result = $this->rating->checkRating($this->conn);
             return $result;
         }else return false;
     }

@@ -25,7 +25,7 @@ class m_menu{
         return $result;
     }
 
-    public function updateDataMenu($nama_menu, $harga, $kategori, $jenis, $id_toko, $id_menu, $avatar){
+    public function updateDataMenu($nama_menu, $harga, $kategori, $jenis, $id_menu, $avatar){
         $this->nama_menu = $nama_menu;
         $this->harga = $harga;
         $this->kategori = $kategori;

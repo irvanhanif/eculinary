@@ -26,7 +26,17 @@ if(isset($request)){
             // if($data) require "./view/menu/penambahanMakanan.php";
             break;
         default:
-            http_response_code(404);
+            if(substr($request, 0, 3) === "own" && substr($request, 3, 4) === "?id="){
+                $data = (new c_toko())->getMyToko();
+                if($data) $data = $data[0];
+                require_once "menu/controller.menu.php";
+                $dataMakanan = (new c_menu())->getMenu(substr($request, 7, strlen($request)-4));
+                if(count($dataMakanan) == 1) $dataMakanan = $dataMakanan[0];
+                require_once "./view/toko/pendaftaranpenjual.php";
+                // var_dump($dataMakanan);
+            }else{
+                http_response_code(404);
+            }
             break;
     }
 }else{

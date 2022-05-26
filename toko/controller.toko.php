@@ -1,8 +1,15 @@
 <?php
-require_once "./config.php";
-require "model.toko.php";
-require "./menu/model.menu.php";
-require_once "./uploadHandler.php";
+if(isset($menuPath)){
+    require_once $menuPath . "config.php";
+    require_once $menuPath . "toko/model.toko.php";
+    require_once $menuPath . "uploadHandler.php";
+    require_once $menuPath . "menu/model.menu.php";
+}else{
+    require_once "./config.php";
+    require "model.toko.php";
+    require_once "./uploadHandler.php";
+    require "./menu/model.menu.php";
+}
 
 class c_toko{
     private $model;
@@ -14,7 +21,7 @@ class c_toko{
         $this->conn = new database();
     }
 
-    public function createToko($namaToko, $alamat, $kota, $email, $nomorTelepon, $jamAwal, $jamAkhir){
+    public function createToko($namaToko, $alamat, $kota, $email, $nomorTelepon, $jamAwal, $jamAkhir, $avatar){
         if(isset($_SESSION["user-culinary"])){
             $pathAvatar = (new uploadHandler($avatar))->uploadAvatar('toko');
             $id_user = $_SESSION["user-culinary"]["id_user"];
@@ -50,7 +57,7 @@ class c_toko{
 
     public function deleteToko($id_toko){
         if(isset($_SESSION["user-culinary"])){
-            if($this->model->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"]) === $id_toko){
+            if($this->model->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"])[0]["id_toko"] === $id_toko){
                 $result = $this->model->deleteToko($this->conn, $id_toko);
                 return $result;
             } else return false;
@@ -70,6 +77,14 @@ class c_toko{
                 $result = $this->getToko($id_toko["id_toko"]);
                 return $result;
             }else return false;
+        }else return false;
+    }
+
+    public function getIdToko(){
+        if(isset($_SESSION["user-culinary"])){
+            $result = $this->model->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"]);
+            if(count($result) == 1) $result = $result[0]["id_toko"];
+            return $result;
         }else return false;
     }
 }

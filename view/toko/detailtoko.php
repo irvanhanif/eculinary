@@ -17,7 +17,7 @@
     <div class="content-wrapper">
         <div class="detail-toko">
             <div class="logo">
-                <img src="../../<?php if(isset($data["avatar"])) echo $data["avatar"]; else echo "view/asset/logo_toko.png" ?>" alt="foto-toko">
+                <img src="../../<?php if(isset($data["avatar"]) && $data["avatar"]) echo $data["avatar"]; else echo "view/asset/logo_toko.png" ?>" alt="foto-toko">
             </div>
             <div class="informasi">
                 <h1><?php echo $data["nama_toko"] ?></h1>

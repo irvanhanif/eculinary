@@ -61,27 +61,33 @@ if(isset($_SESSION["user-culinary"])){
                             <input id="tgl-lahir" type="date" name="tgl-lahir" value = '<?php echo $data["tanggal_lahir"] ?>'>
                         </div>
                         <div class="tombol">
-                            <input type="submit" name="submit" value="Simpan"> 
+                            <input type="submit" class="submit-btn" name="submit" value="Simpan"> 
                             <p id="deleteAkun" onclick="deleteAkun()">Hapus Akun</p>
                         </div>
                         <script>
                             function deleteAkun(){
                                 Swal.fire({
-                                title: 'Are you sure?',
-                                text: "You won't be able to revert this!",
-                                icon: 'warning',
+                                title: 'Apakah kamu yakin?',
+                                text: "Kamu tidak dapat mengembalikannya ke semula!",
+                                icon: 'Peringatan',
                                 showCancelButton: true,
                                 confirmButtonColor: '#3085d6',
                                 cancelButtonColor: '#d33',
-                                confirmButtonText: 'Yes, delete this account!'
+                                confirmButtonText: 'Ya, hapus akun ini!'
                                 }).then((result) => {
-                                if (result.isConfirmed) {
+                                    if (result.isConfirmed) {
+                                    fetch("http://localhost:8080/eculinary2/view/user/deleteUser.php")
+                                    .then(res => res.text())
+                                    .then(data => console.log(data))
                                     Swal.fire(
-                                    'Deleted!',
-                                    'Your Account has been deleted.',
-                                    'success'
-                                    )
-                                }
+                                        'Berhasil dihapus!',
+                                        'akun anda telah dihapus.',
+                                        'sukses'
+                                    ).then((result) => {
+                                    if (result.isConfirmed) {
+                                            location.href="../";
+                                        }});
+                                    }
                                 })
                             }
                         </script>

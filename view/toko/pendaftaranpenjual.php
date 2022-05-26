@@ -5,13 +5,14 @@ if(isset($_SESSION["user-culinary"])){
 <html>
     <head>
         <link rel="stylesheet" href="../view/css/style.css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body>
 <?php
     if(isset($_POST["submit"])){
         require_once "toko/controller.toko.php";
         $toko = new c_toko();
-        if($toko->createToko($_POST["nama-toko"], $_POST["alamat"], $_POST["kota"], $_POST["email"], $_POST["telepon"], $_POST["buka"], $_POST["tutup"])){
+        if($toko->createToko($_POST["nama-toko"], $_POST["alamat"], $_POST["kota"], $_POST["email"], $_POST["telepon"], $_POST["buka"], $_POST["tutup"],  $_FILES["avatar"])){
             header("Location: own");
         }
     }
@@ -26,10 +27,16 @@ if(isset($_SESSION["user-culinary"])){
     if(isset($_POST["submitMenu"])){
         require_once "menu/controller.menu.php";
         $menu = new c_menu();
-        if($menu->createMenu($_POST["nama-makanan"], $_POST["harga"], $_POST["jenisMakanan"], $_POST["kategori"], $_FILES["avatar"])){
+        if($menu->createMenu($_POST["nama-makanan"], $_POST["harga"], $_POST["kategori"], $_POST["jenisMakanan"], $_FILES["avatar"])){
             header("Location: own");
         }
-        // echo $_POST["nama-makanan"], $_POST["harga"], $_POST["jenisMakanan"], $_POST["kategori"];
+    }
+    if(isset($_POST["simpanMenu"])){
+        require_once "menu/controller.menu.php";
+        $menu = new c_menu();
+        if($menu->updateMenu($_POST["nama-makanan"], $_POST["harga"], $_POST["kategori"], $_POST["jenisMakanan"], $_FILES["avatar"], $dataMakanan["id_menu"])){
+            header("Location: ");
+        }
     }
 ?>
         <?php require_once 'view/header.php'; ?>
@@ -65,10 +72,10 @@ if(isset($_SESSION["user-culinary"])){
                             <input id="tutup" type="time" name="tutup" required="required" value="<?php if(isset($data["jam_akhir"])) echo $data["jam_akhir"] ?>"><br>
                         </div>
                         <?php if(isset($data["id_toko"])){ ?>
-                            <input class ="submit" type="submit" name="simpan" value="Simpan">
-                            <p id="deleteAkun" onclick="deleteAkun()">Hapus Toko</p>
+                            <input class ="submit-btn" type="submit" name="simpan" value="Simpan">
+                            <p id="deleteAkun" onclick="deleteToko()">Hapus Toko</p>
                         <?php }else{ ?>
-                            <input class ="submit" type="submit" name="submit" value="Daftar">
+                            <input class ="submit-btn" type="submit" name="submit" value="Daftar">
                         <?php } ?>
                     </div>
                     <div class="right-content">
@@ -76,6 +83,39 @@ if(isset($_SESSION["user-culinary"])){
                         <label class="pilih-gambar"><input type="file" onchange="readURLToko(this);" name="avatar" accept=".jpg,.jpeg,.png"/>Pilih Gambar</label>
                     </div>
                 </form>
+                <script>
+                    function deleteToko(){
+                        Swal.fire({
+                        title: 'Apakah kamu yakin?',
+                        text: "Kamu tidak dapat mengembalikannya ke semula!",
+                        icon: 'Peringatan',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Ya, hapus toko ini!'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                            fetch("http://localhost:8080/eculinary2/view/toko/deleteToko.php",{
+                                method: "POST",
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded',
+                                },
+                                body: "id_toko=<?php if(isset($data["id_toko"])) echo $data["id_toko"]; else echo 0 ?>"
+                            })
+                            .then(res => res.text())
+                            .then(data => console.log(data))
+                            Swal.fire(
+                                'Berhasil dihapus!',
+                                'toko anda telah dihapus.',
+                                'sukses'
+                            ).then((result) => {
+                            if (result.isConfirmed) {
+                                    location.href="own";
+                                }});
+                            }
+                        })
+                    }
+                </script>
                 <?php if(isset($data["id_toko"])){ 
                     require "view/menu/penambahanMakanan.php"; }?>
                 </div>           

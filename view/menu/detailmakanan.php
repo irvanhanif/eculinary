@@ -20,7 +20,8 @@
 </head>
 <body>
 <?php require_once 'view/header.php'; 
-$dataWishlist = (new c_menu())->checkMyWishlist($id)?>
+$dataWishlist = (new c_menu())->checkMyWishlist($id);
+$rating = (new c_menu())->getRating($id); ?>
         <div class="makanan-wrapper">
         <div class="makanan">
             <div class="menu-wrapper">
@@ -28,11 +29,11 @@ $dataWishlist = (new c_menu())->checkMyWishlist($id)?>
         <div class="text">
         <p>Silakan berikan bintang!</p>
             <div class="ratingInput">
-                <i class="fas fa-star" onclick="clickBintang(1)"></i>
-                <i class="fas fa-star" onclick="clickBintang(2)"></i>
-                <i class="fas fa-star" onclick="clickBintang(3)"></i>
-                <i class="fas fa-star" onclick="clickBintang(4)"></i>
-                <i class="fas fa-star" onclick="clickBintang(5)"></i>
+                <i class="fas fa-star" <?php if(isset($rating[0]["bintang"]) && $rating[0]["bintang"] > 0) echo 'style="color: #FFAB65"' ?> onclick="clickBintang(1)"></i>
+                <i class="fas fa-star" <?php if(isset($rating[0]["bintang"]) && $rating[0]["bintang"] > 1) echo 'style="color: #FFAB65"' ?> onclick="clickBintang(2)"></i>
+                <i class="fas fa-star" <?php if(isset($rating[0]["bintang"]) && $rating[0]["bintang"] > 2) echo 'style="color: #FFAB65"' ?> onclick="clickBintang(3)"></i>
+                <i class="fas fa-star" <?php if(isset($rating[0]["bintang"]) && $rating[0]["bintang"] > 3) echo 'style="color: #FFAB65"' ?> onclick="clickBintang(4)"></i>
+                <i class="fas fa-star" <?php if(isset($rating[0]["bintang"]) && $rating[0]["bintang"] > 4) echo 'style="color: #FFAB65"' ?> onclick="clickBintang(5)"></i>
             </div>
             <script>
                 function clickBintang($id){
@@ -146,25 +147,14 @@ $dataWishlist = (new c_menu())->checkMyWishlist($id)?>
                     }
                     komentar[i] = komentarDetail;
                 }
-                document.querySelector(".baris-komentar").innerHTML = "";
+                let komen = '';
                 for (let i = 0; i < komentar.length; i++) {
-                    let comment = document.createElement("div");
-                    comment.setAttribute("class", "comment");
-                    let avatar = document.createElement("img");
-                    avatar.setAttribute("class", "account");
-                    if(komentar[i][6][1] != ""){
-                        avatar.setAttribute("src", "../../"+komentar[i][6][1]);
-                    }else{
-                        avatar.setAttribute("src", "../../view/asset/profil1.png");
-                    }
-                    avatar.setAttribute("alt", "profil");
-                    comment.appendChild(avatar);
-                    let isiKomen = document.createElement("p");
-                    isiKomen.setAttribute("class", "komentar1");
-                    isiKomen.appendChild(document.createTextNode(komentar[i][3][1]));
-                    comment.appendChild(isiKomen);
-                    document.querySelector(".baris-komentar").appendChild(comment);
+                    komen += "<div class='comment'><img class='account'src='../../"
+                    if(komentar[i][6][1] != "") komen += komentar[i][6][1]
+                    else komen += "view/asset/profil1.png"
+                    komen += "' alt='profil'><p class='komentar1'>"+ komentar[i][3][1] +"</p></div>"
                 }
+                document.querySelector(".baris-komentar").innerHTML = komen;
             });    
             setTimeout(getKomen, 100);
         }

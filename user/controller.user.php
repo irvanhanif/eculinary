@@ -1,7 +1,12 @@
 <?php
-require_once "./config.php";
+if(isset($menuPath)){
+    require_once $menuPath . "config.php";
+    require_once $menuPath . "uploadHandler.php";
+}else{
+    require_once "./config.php";
+    require_once "./uploadHandler.php";
+}
 require "model.user.php";
-require_once "./uploadHandler.php";
 class c_user{
     private $model;
     private $conn;
