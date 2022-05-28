@@ -37,7 +37,7 @@ if(isset($_POST["masuk"])){
     }else{
       $msg = 'Incorrect password!';
     }
-    ?> <script>Swal.fire('Incorrect email!')</script> <?php
+    ?> <script>Swal.fire('<?php $msg ?>')</script> <?php
   }
 }
 require_once './view/footer.html'; 

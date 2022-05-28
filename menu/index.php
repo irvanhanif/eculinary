@@ -6,6 +6,7 @@ if(isset($request)){
         case 'detail' :
             $path = $path . "../";
             $id = explode("/", $request)[1];
+            $url = "../../user/";
             // echo $id;
             require_once "menu/controller.menu.php";
             $data = (new c_menu())->getMenu($id);

@@ -17,10 +17,10 @@ $data = (new c_artikel())->showArtikel();
 require_once '../view/header.php'; 
 ?>
 <div class="filter-wrapper">
-            <h2>Urutkan Berdasarkan</h2>
+            <!-- <h2>Urutkan Berdasarkan</h2>
             <form action="">
                 <input type="button" name="terbaru" value="Terbaru">
-            </form>
+            </form> -->
         </div>
         <div class="daftar-artikel">
         <?php 

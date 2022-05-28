@@ -63,7 +63,7 @@ class c_artikel{
     }
 
     public function searchArtikel($keyword, $order, $flow){
-        $result = $this->model->searchEngine($this->conn, $keyword, $order, $flow);
+        $result = (new m_artikel())->searchEngine((new database()), $keyword, $order, $flow);
         return $result;
     }
 

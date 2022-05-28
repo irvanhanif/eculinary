@@ -30,7 +30,8 @@ if(isset($request)){
                 $data = (new c_toko())->getMyToko();
                 if($data) $data = $data[0];
                 require_once "menu/controller.menu.php";
-                $dataMakanan = (new c_menu())->getMenu(substr($request, 7, strlen($request)-4));
+                // substr($request, 7, strlen($request)-4)
+                $dataMakanan = (new c_menu())->getMenu($_GET["id"]);
                 if(count($dataMakanan) == 1) $dataMakanan = $dataMakanan[0];
                 require_once "./view/toko/pendaftaranpenjual.php";
                 // var_dump($dataMakanan);

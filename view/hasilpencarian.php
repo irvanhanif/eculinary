@@ -17,55 +17,102 @@
 <body>
 <?php require_once 'view/header.php'; ?>
   
-  <div class="filter-wrapper">
+  <div class="filter-wrapper" id="filter">
     <h2>Urutkan Berdasarkan</h2>
-    <form action="">
-      <input type="button" name="terbaru" value="Terbaru">
-      <input type="button" name="populer" value="Populer">
-      <select name="harga">
+    <!-- <form action=""> -->
+      <input type="button" name="terbaru" onclick="filterNew()" value="Terbaru">
+      <input type="button" name="populer" onclick="filterPopuler()" value="Populer">
+      <select name="harga" onChange="filterSelect()">
           <option value disabled selected>Harga</option>
           <option value="rendah">Harga : Rendah ke Tinggi</option>
           <option value="tinggi">Harga : Tinggi ke Rendah</option>
       </select>
-    </form>
+    <!-- </form> -->
   </div>
-  <div class="menu-wrapper">
-    <div class="text">
-        <h2>Rekomendasi Makanan & Minuman</h2>
-        <h2 class="liat">Lihat Semua</h2>
-    </div>
-    <div class="daftar-makanan">
-  <?php
-    require_once "menu/controller.menu.php";
-    $key = explode("=", $request)[1];
-    // echo $key;
-    $daftarMenu = (new c_menu())->searchMenu("$key", '', '');
-    // var_dump($daftarMenu);
-    if(count($daftarMenu) > 0){
-      for($i = 0; $i < count($daftarMenu); $i++){
-        require "view/menu/makanan.php"; 
+  <script>
+    function filterNew(){
+      fetch("http://localhost:8080/eculinary2/view/menu/searchMenu.php?key=<?php echo $_GET["key"] ?>&faktor=id_menu&urut=down")
+      .then(res => res.text())
+      .then(data => {
+        // console.log(data)
+        document.querySelector(".daftar-makanan").innerHTML = data;
+      });
+    }
+    function filterPopuler(){
+      fetch("http://localhost:8080/eculinary2/view/menu/searchMenu.php?key=<?php echo $_GET["key"] ?>&faktor=bintang&urut=down")
+      .then(res => res.text())
+      .then(data => {
+        // console.log(data)
+        document.querySelector(".daftar-makanan").innerHTML = data;
+      });
+    }
+    function filterSelect(){
+      if(document.getElementById("filter").getElementsByTagName("select")[0].getElementsByTagName("option")[1].selected){
+        fetch("http://localhost:8080/eculinary2/view/menu/searchMenu.php?key=<?php echo $_GET["key"] ?>&faktor=harga&urut=up")
+        .then(res => res.text())
+        .then(data => {
+          // console.log(data)
+          document.querySelector(".daftar-makanan").innerHTML = data;
+        });
+      }else if(document.getElementById("filter").getElementsByTagName("select")[0].getElementsByTagName("option")[2].selected){
+        fetch("http://localhost:8080/eculinary2/view/menu/searchMenu.php?key=<?php echo $_GET["key"] ?>&faktor=harga&urut=down")
+        .then(res => res.text())
+        .then(data => {
+          // console.log(data)
+          document.querySelector(".daftar-makanan").innerHTML = data;
+        });
       }
-    }else{
-      ?> <p><strong>Makanan tidak ditemukan</strong></p> <?php
     }
-  ?>
+  </script>
+  <div class="pencarian-wrapper">
+    <div class="menu-wrapper">
+      <div class="text">
+          <h2>Rekomendasi Makanan & Minuman</h2>
+          <h2 class="liat" onclick="location.href='./menu'">Lihat Semua</h2>
+      </div>
+      <div class="daftar-makanan">
+        <?php
+          require_once "menu/controller.menu.php";
+          if(isset($_GET["kategori"])) {
+            $daftarMenu = (new c_menu())->filterKategori($_GET["kategori"], '', '');
+          }else {
+            $key = $_GET["key"];;
+            // echo $key;
+            $daftarMenu = (new c_menu())->searchMenu("$key", '', '');
+          }
+          // var_dump($daftarMenu);
+          if(count($daftarMenu) > 0){
+            for($i = 0; $i < count($daftarMenu); $i++){
+              require "view/menu/makanan.php"; 
+            }
+          }else{
+            ?> <p><strong>Makanan tidak ditemukan</strong></p> <?php
+          }
+        ?>
+      </div>
     </div>
-  </div>
-  <div class="menu-wrapper">
-    <div class="text">
-        <h2>Artikel</h2>
-        <h2 class="liat">Lihat Semua</h2>
-    </div>
-    <div class="daftar-artikel">
-  <?php
-    require_once "artikel/controller.artikel.php";
-    $data = (new c_artikel())->searchArtikel("$key", '', '');
+    <?php if(isset($key)){ ?>
+    <div class="menu-wrapper">
+      <div class="text">
+          <h2>Artikel</h2>
+          <h2 class="liat" onclick="location.href='./artikel'">Lihat Semua</h2>
+      </div>
+      <div class="daftar-artikel">
+        <?php
+          require_once "artikel/controller.artikel.php";
+          $data = (new c_artikel())->searchArtikel("$key", '', '');
 
-    for($i = 0; $i < count($data); $i++){
-      require "view/artikel/artikel.php"; 
-    }
-  ?>
+          if(count($daftarMenu) > 0){
+            for($i = 0; $i < count($data); $i++){
+              require "view/artikel/artikel.php"; 
+            }
+          }else{
+            echo '<p><strong>Artikel tidak ditemukan</strong></p>';
+          }
+        ?>
+      </div>
     </div>
+    <?php } ?>
   </div>
 </body>
 </html>

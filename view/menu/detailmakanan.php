@@ -58,8 +58,14 @@ $rating = (new c_menu())->getRating($id); ?>
                     },
                     body: "id_menu=<?php echo $data[0]["id_menu"] ?>"
                 })
+                .then(res => res.text())
+                .then(data => 
+                        data = "i"
+                        // document.getElementById("scriptlogin").innerHTML = data;
+                )
             }
         </script>
+        <div id="scriptlogin"></div>
         </div>
         <div class="detail-wrapper">
         <div class="menu">
@@ -125,7 +131,8 @@ $rating = (new c_menu())->getRating($id); ?>
                 fetch("http://localhost:8080/eculinary2/view/menu/sendKomentar.php",{
                     method: "POST",
                     body: formData
-                });
+                })
+                .then(res => document.querySelector('.kolom').value = "");
             }
         </script>
         </div>
@@ -137,24 +144,7 @@ $rating = (new c_menu())->getRating($id); ?>
             fetch("http://localhost:8080/eculinary2/view/menu/readKomentar.php?id_menu=<?php echo $data[0]["id_menu"] ?>")
             .then(res => res.text())
             .then(data => {
-                data = data.split("{" && "},");
-                let komentar = [];
-                for(let i = 0; i < data.length-1; i++){
-                    komentar[i] = data[i].split("|");
-                    komentarDetail = [];
-                    for (let j = 0; j < komentar[i].length-1; j++) {
-                        komentarDetail[j] = komentar[i][j].split("=");
-                    }
-                    komentar[i] = komentarDetail;
-                }
-                let komen = '';
-                for (let i = 0; i < komentar.length; i++) {
-                    komen += "<div class='comment'><img class='account'src='../../"
-                    if(komentar[i][6][1] != "") komen += komentar[i][6][1]
-                    else komen += "view/asset/profil1.png"
-                    komen += "' alt='profil'><p class='komentar1'>"+ komentar[i][3][1] +"</p></div>"
-                }
-                document.querySelector(".baris-komentar").innerHTML = komen;
+                document.querySelector(".baris-komentar").innerHTML = data;
             });    
             setTimeout(getKomen, 100);
         }
@@ -174,7 +164,7 @@ $rating = (new c_menu())->getRating($id); ?>
         <div class="tersedia">
             <p class="kategori">Kategori</p>
             <div class="konten">
-                <p><?php echo $data[0]["kategori"] ?></p>
+                <a style="color: black; text-decoration: none" href="../../search?kategori=<?php echo $data[0]["kategori"] ?>"><?php echo $data[0]["kategori"] ?></a>
             </div>
             <p class="jamOperasional">Jam Operasional</p>
             <div class="weekday">

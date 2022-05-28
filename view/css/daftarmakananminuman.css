@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Nunito&display=swap');
 * {
     box-sizing: border-box;
+    font-family: "nunito";
 }
 body {
-    font-family: "roboto";
+    font-family: "nunito";
+    /* font-family: "roboto"; */
     background-color: #f5f5f5;
     margin: 0;
 }
@@ -52,7 +55,8 @@ h3 {
 }
 input[type=button], select {
     margin-left: 24px;
-    font-family: "roboto";
+    font-family: "nunito";
+    /* font-family: "roboto"; */
     font-size: 20px;
     font-weight: bold;
     height: 48px;
@@ -112,7 +116,15 @@ h5 {
 } */
 
 .daftar-artikel{
+    margin-top: 48px;
     display: flex;
     flex-wrap: wrap;
-    padding: 0 25px 50px;
+    justify-content: space-around;
+}
+.pencarian-wrapper{
+    padding: 0 25px 25px;
+}
+
+.liat{
+    cursor: pointer;
 }

@@ -9,6 +9,7 @@ if(isset($request)){
             break;
         case 'detail' :
             $path = $path . "../";
+            $url = "../../user/";
             // $id = 1;
             $id = explode("/", $request)[1];
             // echo $id;

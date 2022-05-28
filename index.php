@@ -25,7 +25,7 @@ switch (explode("/", $request)[0]) {
         require "artikel/index.php";
         break;
     default:
-        if(substr($request, 0, 11) === "search?key="){
+        if(substr($request, 0, 11) === "search?key=" || substr($request, 0, 16) === "search?kategori="){
             $path = "./";
             require "view/hasilpencarian.php";
         }else{

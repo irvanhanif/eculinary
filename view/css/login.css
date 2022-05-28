@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Nunito&display=swap');
 html{
     display: flex;
 }
 body{
     margin: 0;
+    font-family: "nunito";
     padding: 0;
     width: 100%;
 }
