@@ -82,7 +82,7 @@ class m_menu{
     }
 
     public function filterMenubyKategori($db, $kategori, $order, $flow){
-        $query = "SELECT * FROM $this->tabel WHERE kategori = '$kategori'";
+        $query = "SELECT M.*, AVG(R.bintang) as bintang FROM $this->tabel M LEFT JOIN rating R ON M.id_menu = R.id_menu WHERE kategori = '$kategori' GROUP BY M.id_menu";
         if($order){
             $query = $query . " ORDER BY $order";
             if($flow == 'down') $query = $query . " DESC";

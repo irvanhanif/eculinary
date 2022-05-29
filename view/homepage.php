@@ -96,7 +96,7 @@
 <div class="menu-wrapper">
     <div class="text">
     <h2>Makanan & Minuman Populer</h2>
-    <h2 class="liat" onclick="location.href='./menu'">Lihat Semua</h2>
+    <h2 class="liat" onclick="location.href='./menu/?faktor=populer'">Lihat Semua</h2>
     </div>
     <div class="makanan-list">
 <?php 

@@ -31,7 +31,7 @@
   </div>
   <script>
     function filterNew(){
-      fetch("http://localhost:8080/eculinary2/view/menu/searchMenu.php?key=<?php echo $_GET["key"] ?>&faktor=id_menu&urut=down")
+      fetch("http://localhost:8080/eculinary2/view/menu/searchMenu.php?<?php if(isset($_GET["key"])) echo "key=". $_GET["key"]; else if(isset($_GET["kategori"])) echo "kategori=". $_GET["kategori"];?>&faktor=id_menu&urut=down")
       .then(res => res.text())
       .then(data => {
         // console.log(data)
@@ -39,7 +39,7 @@
       });
     }
     function filterPopuler(){
-      fetch("http://localhost:8080/eculinary2/view/menu/searchMenu.php?key=<?php echo $_GET["key"] ?>&faktor=bintang&urut=down")
+      fetch("http://localhost:8080/eculinary2/view/menu/searchMenu.php?<?php if(isset($_GET["key"])) echo "key=". $_GET["key"]; else if(isset($_GET["kategori"])) echo "kategori=". $_GET["kategori"];?>&faktor=bintang&urut=down")
       .then(res => res.text())
       .then(data => {
         // console.log(data)
@@ -48,14 +48,14 @@
     }
     function filterSelect(){
       if(document.getElementById("filter").getElementsByTagName("select")[0].getElementsByTagName("option")[1].selected){
-        fetch("http://localhost:8080/eculinary2/view/menu/searchMenu.php?key=<?php echo $_GET["key"] ?>&faktor=harga&urut=up")
+        fetch("http://localhost:8080/eculinary2/view/menu/searchMenu.php?<?php if(isset($_GET["key"])) echo "key=". $_GET["key"]; else if(isset($_GET["kategori"])) echo "kategori=". $_GET["kategori"];?>&faktor=harga&urut=up")
         .then(res => res.text())
         .then(data => {
           // console.log(data)
           document.querySelector(".daftar-makanan").innerHTML = data;
         });
       }else if(document.getElementById("filter").getElementsByTagName("select")[0].getElementsByTagName("option")[2].selected){
-        fetch("http://localhost:8080/eculinary2/view/menu/searchMenu.php?key=<?php echo $_GET["key"] ?>&faktor=harga&urut=down")
+        fetch("http://localhost:8080/eculinary2/view/menu/searchMenu.php?<?php if(isset($_GET["key"])) echo "key=". $_GET["key"]; else if(isset($_GET["kategori"])) echo "kategori=". $_GET["kategori"];?>&faktor=harga&urut=down")
         .then(res => res.text())
         .then(data => {
           // console.log(data)

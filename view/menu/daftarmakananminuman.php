@@ -16,7 +16,12 @@
 <?php 
 $menuPath = "../";
 require_once "../menu/controller.menu.php";
-$daftarMenu = (new c_menu())->getAllMenu('', '');
+$faktor = ''; $flow = '';
+if(isset($_GET["faktor"]) && $_GET["faktor"] == "populer") {
+    $faktor = 'bintang';
+    $flow = 'down';
+}
+$daftarMenu = (new c_menu())->getAllMenu("$faktor", "$flow");
 // var_dump($daftarMenu);
 require_once '../view/header.php'; 
 ?>

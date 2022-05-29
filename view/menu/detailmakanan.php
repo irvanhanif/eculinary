@@ -50,7 +50,6 @@ $rating = (new c_menu())->getRating($id); ?>
         <div class="wishlist-btn"><i onclick="wishlistBtn()" class="<?php if($dataWishlist) echo "aktif " ?>fa-solid fa-heart"></i></div>
         <script>
             function wishlistBtn(){
-                document.querySelector(".wishlist-btn i").classList.toggle("aktif");
                 fetch("http://localhost:8080/eculinary2/view/menu/addWishlist.php",{
                     method: "POST",
                     headers: {
@@ -59,10 +58,11 @@ $rating = (new c_menu())->getRating($id); ?>
                     body: "id_menu=<?php echo $data[0]["id_menu"] ?>"
                 })
                 .then(res => res.text())
-                .then(data => 
-                        data = "i"
-                        // document.getElementById("scriptlogin").innerHTML = data;
-                )
+                .then(data =>{
+                    // console.log(data)
+                    if(!data) mustIn()
+                    else document.querySelector(".wishlist-btn i").classList.toggle("aktif");
+                })
             }
         </script>
         <div id="scriptlogin"></div>
@@ -100,7 +100,14 @@ $rating = (new c_menu())->getRating($id); ?>
                 body: formData
             })
             .then(res => res.text())
-            .then(data => console.log(data));
+            .then(data => {
+                if(!data) {
+                    mustIn();
+                    for($k = 0; $k < 5; $k++){
+                        document.getElementsByClassName("ratingInput")[0].getElementsByTagName("i")[$k].style.color = "black";
+                    }
+                }
+            });
         }
     </script>
     <p class="harga">Rp <?php echo $data[0]["harga"] ?></p>
@@ -132,7 +139,12 @@ $rating = (new c_menu())->getRating($id); ?>
                     method: "POST",
                     body: formData
                 })
-                .then(res => document.querySelector('.kolom').value = "");
+                .then(res => res.text())
+                .then(data =>{
+                    // console.log(data)
+                    if(!data) mustIn()
+                    else document.querySelector('.kolom').value = "";
+                })
             }
         </script>
         </div>
@@ -180,6 +192,22 @@ $rating = (new c_menu())->getRating($id); ?>
     </div>
     </div>
     <?php require_once 'view/footer.html'; ?>
-
+    <script>
+        function mustIn(){
+            Swal.fire({
+                title: 'Kamu belum Log In',
+                text: "Kamu perlu login terlebih dahulu untuk menggunakannya!",
+                icon: 'Peringatan',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    location.href = "../../user/login"
+                }
+            })
+        }
+    </script>
 </body>
 </html>
