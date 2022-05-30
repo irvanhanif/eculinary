@@ -64,12 +64,12 @@ $rating = (new c_menu())->getRating($id); ?>
                 })
             }
         </script>
-        <div id="scriptlogin"></div>
+        <!-- <div id="scriptlogin"></div> -->
         </div>
         <div class="detail-wrapper">
         <div class="menu">
     <p class="detail"><b><?php echo $data[0]["nama_menu"] ?></b></p>
-    <p class="detail">Malang</p>
+    <p class="detail"><?php echo $data[0]["kota"] ?></p>
     </div>
     <div class="ratingHarga">
     <div class="rating">

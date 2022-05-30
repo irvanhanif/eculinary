@@ -45,7 +45,7 @@ class m_menu{
     }
 
     public function getMenu($db, $id_menu){
-        $result = $db->query("SELECT m.*, t.jam_awal, t.jam_akhir, 
+        $result = $db->query("SELECT m.*, t.jam_awal, t.jam_akhir, t.kota,
         (SELECT AVG(bintang) FROM rating WHERE id_menu = $id_menu) as bintang
         FROM $this->tabel m JOIN toko t ON m.id_toko = t.id_toko WHERE m.id_menu = $id_menu");
         return $result;

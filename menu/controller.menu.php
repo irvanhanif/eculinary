@@ -27,7 +27,7 @@ class c_menu{
     }
 
     public function createMenu($nama_menu, $harga, $jenis, $kategori, $avatar){
-        echo "hehe";
+        // echo "hehe";
         if(isset($_SESSION["user-culinary"])){
             $pathAvatar = (new uploadHandler($avatar))->uploadAvatar('menu');
             $id_toko = (new m_toko())->getIdToko($this->conn, $_SESSION["user-culinary"]["id_user"])[0]["id_toko"];
