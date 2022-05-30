@@ -27,6 +27,12 @@
           <option value="rendah">Harga : Rendah ke Tinggi</option>
           <option value="tinggi">Harga : Tinggi ke Rendah</option>
       </select>
+      <select onChange="filterKota()">
+          <option value disabled selected>Pilih Kota</option>
+          <option value="Malang">Malang</option>
+          <option value="Bikini Bottom">Bikini Bottom</option>
+          <option value="Konoha">Konoha</option>
+      </select>
     <!-- </form> -->
   </div>
   <script>
@@ -63,6 +69,37 @@
         });
       }
     }
+    function filterKota(){
+      // let url = "http://localhost:8080/eculinary2/view/menu/searchMenu.php?<?php 
+        // if(isset($_GET["key"])) echo "key=". $_GET["key"]; else if(isset($_GET["kategori"])) echo "kategori=". $_GET["kategori"];
+        ?>";
+      // let filter = document.getElementById("filter").getElementsByTagName("select")[1];
+      // if(filter.getElementsByTagName("option")[1].selected) url = url + "&filter=kota&value=Malang";
+      // else if(filter.getElementsByTagName("option")[2].selected) url = url + "&filter=kota&value=Bikini Bottom";
+      // if()
+      if(document.getElementById("filter").getElementsByTagName("select")[1].getElementsByTagName("option")[1].selected){
+        fetch("http://localhost:8080/eculinary2/view/menu/searchMenu.php?<?php if(isset($_GET["key"])) echo "key=". $_GET["key"]; else if(isset($_GET["kategori"])) echo "kategori=". $_GET["kategori"];?>&filter=kota&value=Malang")
+        .then(res => res.text())
+        .then(data => {
+          // console.log(data)
+          document.querySelector(".daftar-makanan").innerHTML = data;
+        });
+      }else if(document.getElementById("filter").getElementsByTagName("select")[1].getElementsByTagName("option")[2].selected){
+        fetch("http://localhost:8080/eculinary2/view/menu/searchMenu.php?<?php if(isset($_GET["key"])) echo "key=". $_GET["key"]; else if(isset($_GET["kategori"])) echo "kategori=". $_GET["kategori"];?>&filter=kota&value=Bikini Bottom")
+        .then(res => res.text())
+        .then(data => {
+          // console.log(data)
+          document.querySelector(".daftar-makanan").innerHTML = data;
+        });
+      }else if(document.getElementById("filter").getElementsByTagName("select")[1].getElementsByTagName("option")[3].selected){
+        fetch("http://localhost:8080/eculinary2/view/menu/searchMenu.php?<?php if(isset($_GET["key"])) echo "key=". $_GET["key"]; else if(isset($_GET["kategori"])) echo "kategori=". $_GET["kategori"];?>&filter=kota&value=Konoha")
+        .then(res => res.text())
+        .then(data => {
+          // console.log(data)
+          document.querySelector(".daftar-makanan").innerHTML = data;
+        });
+      }
+    }
   </script>
   <div class="pencarian-wrapper">
     <div class="menu-wrapper">
@@ -74,11 +111,11 @@
         <?php
           require_once "menu/controller.menu.php";
           if(isset($_GET["kategori"])) {
-            $daftarMenu = (new c_menu())->filterKategori($_GET["kategori"], '', '');
+            $daftarMenu = (new c_menu())->filterKategori($_GET["kategori"], '', '', '', '');
           }else {
             $key = $_GET["key"];;
             // echo $key;
-            $daftarMenu = (new c_menu())->searchMenu("$key", '', '');
+            $daftarMenu = (new c_menu())->searchMenu("$key", '', '', '', '');
           }
           // var_dump($daftarMenu);
           if(count($daftarMenu) > 0){

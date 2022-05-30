@@ -51,8 +51,12 @@ class m_menu{
         return $result;
     }
 
-    public function getAllMenu($db, $order, $flow){
-        $query = "SELECT M.*, AVG(R.bintang) as bintang FROM $this->tabel M LEFT JOIN rating R ON M.id_menu = R.id_menu GROUP BY M.id_menu";
+    public function getAllMenu($db, $filter, $value, $order, $flow){
+        $query = "SELECT M.*, AVG(R.bintang) as bintang, t.kota FROM $this->tabel M LEFT JOIN rating R ON M.id_menu = R.id_menu LEFT JOIN toko t ON t.id_toko = M.id_toko";
+        if($filter){
+            $query = $query . " WHERE " . $filter . " = '" . $value . "' ";
+        }
+        $query = $query . " GROUP BY M.id_menu ";
         if($order){
             $query = $query . " ORDER BY $order";
             if($flow == 'down') $query = $query . " DESC";
@@ -71,8 +75,12 @@ class m_menu{
         return $result;
     }
 
-    public function searchEngine($db, $keyword, $order, $flow){
-        $query = "SELECT M.*, AVG(R.bintang) as bintang FROM $this->tabel M LEFT JOIN rating R ON M.id_menu = R.id_menu WHERE M.nama_menu LIKE '%$keyword%' GROUP BY M.id_menu";
+    public function searchEngine($db, $keyword, $filter, $value, $order, $flow){
+        $query = "SELECT M.*, AVG(R.bintang) as bintang, t.kota FROM $this->tabel M LEFT JOIN rating R ON M.id_menu = R.id_menu LEFT JOIN toko t ON t.id_toko = M.id_toko WHERE M.nama_menu LIKE '%$keyword%' ";
+        if($filter){
+            $query = $query . " AND " . $filter . " = '" . $value . "' ";
+        }
+        $query = $query . " GROUP BY M.id_menu ";
         if($order){
             $query = $query . " ORDER BY $order";
             if($flow == 'down') $query = $query . " DESC";
@@ -81,8 +89,17 @@ class m_menu{
         return $result;
     }
 
-    public function filterMenubyKategori($db, $kategori, $order, $flow){
-        $query = "SELECT M.*, AVG(R.bintang) as bintang FROM $this->tabel M LEFT JOIN rating R ON M.id_menu = R.id_menu WHERE kategori = '$kategori' GROUP BY M.id_menu";
+    public function filterMenubyKategori($db, $kategori, $filter, $value, $order, $flow){
+        $query = "SELECT M.*, AVG(R.bintang) as bintang, t.kota FROM $this->tabel M LEFT JOIN rating R ON M.id_menu = R.id_menu LEFT JOIN toko t ON t.id_toko = M.id_toko WHERE kategori = '$kategori' ";
+        // if(count($filter) > 0){
+        //     for ($i=0; $i < count($filter); $i++) { 
+        //         $query = $query . " AND " . $filter->key . " " . $filter->value;
+        //     }
+        // }
+        if($filter){
+            $query = $query . " AND " . $filter . " = '" . $value . "' ";
+        }
+        $query = $query . " GROUP BY M.id_menu ";
         if($order){
             $query = $query . " ORDER BY $order";
             if($flow == 'down') $query = $query . " DESC";
@@ -90,6 +107,16 @@ class m_menu{
         $result = $db->query($query);
         return $result;
     }
+
+    // public function filterMenubyKota($db, $kota){
+    //     $query = "SELECT M.*, AVG(R.bintang) as bintang FROM $this->tabel M LEFT JOIN rating R ON M.id_menu = R.id_menu WHERE kategori = '$kategori' GROUP BY M.id_menu";
+    //     if($order){
+    //         $query = $query . " ORDER BY $order";
+    //         if($flow == 'down') $query = $query . " DESC";
+    //     }
+    //     $result = $db->query($query);
+    //     return $result;
+    // }
     
     public function filterMenubyJenis($db, $jenis, $order, $flow){
         $query = "SELECT * FROM $this->tabel WHERE jenis = '$jenis'";

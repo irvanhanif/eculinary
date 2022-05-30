@@ -17,7 +17,7 @@ require_once './view/header.php'; ?>
   <p>Kata Sandi</p>
   <input class="kolom" type="password" name="password" placeholder="Masukan Kata Sandi" required><br>
   <input class="submit" type="submit" value="Masuk" name="masuk">
-  <div class="kembali" onclick="location.href='../'">
+  <div class="kembali" onclick="location.href='localhost:8080<?php echo $_COOKIE['request'] ?>'">
       <p class="back">Kembali</p>
   </div>
   <p class="forget">Lupa kata sandi?</p>
@@ -37,7 +37,7 @@ if(isset($_POST["masuk"])){
     }else{
       $msg = 'Incorrect password!';
     }
-    ?> <script>Swal.fire('<?php $msg ?>')</script> <?php
+    ?> <script>Swal.fire('<?php echo $msg ?>')</script> <?php
   }
 }
 require_once './view/footer.html'; 

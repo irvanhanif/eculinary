@@ -101,7 +101,7 @@
     <div class="makanan-list">
 <?php 
     require_once "menu/controller.menu.php";
-    $daftarMenu = (new c_menu())->getAllMenu('bintang', 'down');
+    $daftarMenu = (new c_menu())->getAllMenu('', '', 'bintang', 'down');
     // var_dump($daftarMenu);
 for ($i = 0; $i < count($daftarMenu) && $i < 4; $i++) {
     require 'view/menu/makanan.php'; 
@@ -117,7 +117,7 @@ for ($i = 0; $i < count($daftarMenu) && $i < 4; $i++) {
     </div>
     <div class="makanan-list">
 <?php 
-    $daftarMenu = (new c_menu())->getAllMenu('', '');
+    $daftarMenu = (new c_menu())->getAllMenu('', '', '', '');
     for ($i = 0; $i < count($daftarMenu) && $i < 4; $i++) {
         require 'view/menu/makanan.php'; 
     }

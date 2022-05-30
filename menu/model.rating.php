@@ -18,8 +18,13 @@ class m_rating{
     }
 
     public function checkRating($db){
-        echo "SELECT * FROM $this->tabel WHERE id_user = $this->id_user AND id_menu = $this->id_menu";
+        // echo "SELECT * FROM $this->tabel WHERE id_user = $this->id_user AND id_menu = $this->id_menu";
         $result = $db->query("SELECT * FROM $this->tabel WHERE id_user = $this->id_user AND id_menu = $this->id_menu");
+        return $result;
+    }
+
+    public function getRating($db){
+        $result = $db->query("SELECT AVG(bintang) as bintang FROM $this->tabel WHERE id_menu = $this->id_menu");
         return $result;
     }
 

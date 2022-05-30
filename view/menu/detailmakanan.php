@@ -11,7 +11,6 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: <?php if($data[0]["bintang"]) echo ($data[0]["bintang"]/5)*100; else echo 0 ?>%;
             white-space: nowrap;
             overflow: hidden;
         }
@@ -207,6 +206,17 @@ $rating = (new c_menu())->getRating($id); ?>
                     location.href = "../../user/login"
                 }
             })
+        }
+        getBintang();
+        function getBintang(){
+            // let rating = document.querySelector('.rating__overlay').style.width;
+            fetch("http://localhost:8080/eculinary2/view/menu/readReview.php?id_menu=<?php echo $data[0]["id_menu"] ?>")
+            .then(res => res.text())
+            .then(data => {
+                // console.log(((data/5)*100) + "%")
+                document.querySelector('.rating__overlay').style.width = ((data/5)*100) + "%" ;
+            });    
+            setTimeout(getBintang, 100);
         }
     </script>
 </body>

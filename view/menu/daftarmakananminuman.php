@@ -21,7 +21,7 @@ if(isset($_GET["faktor"]) && $_GET["faktor"] == "populer") {
     $faktor = 'bintang';
     $flow = 'down';
 }
-$daftarMenu = (new c_menu())->getAllMenu("$faktor", "$flow");
+$daftarMenu = (new c_menu())->getAllMenu('', '', "$faktor", "$flow");
 // var_dump($daftarMenu);
 require_once '../view/header.php'; 
 ?>
@@ -35,6 +35,12 @@ require_once '../view/header.php';
                     <option value disabled selected>Harga</option>
                     <option value="rendah">Harga : Rendah ke Tinggi</option>
                     <option value="tinggi">Harga : Tinggi ke Rendah</option>
+                </select>
+                <select onChange="filterKota()">
+                    <option value disabled selected>Pilih Kota</option>
+                    <option value="Malang">Malang</option>
+                    <option value="Bikini Bottom">Bikini Bottom</option>
+                    <option value="Konoha">Konoha</option>
                 </select>
             <!-- </form> -->
             </div>
@@ -69,6 +75,30 @@ require_once '../view/header.php';
                         .then(data => {
                             // console.log(data)
                             document.querySelector(".daftar-makanan").innerHTML = data;
+                        });
+                    }
+                }
+                function filterKota(){
+                    if(document.getElementById("filter").getElementsByTagName("select")[1].getElementsByTagName("option")[1].selected){
+                        fetch("http://localhost:8080/eculinary2/view/menu/urutMenu.php?filter=kota&value=Malang")
+                        .then(res => res.text())
+                        .then(data => {
+                        // console.log(data)
+                        document.querySelector(".daftar-makanan").innerHTML = data;
+                        });
+                    }else if(document.getElementById("filter").getElementsByTagName("select")[1].getElementsByTagName("option")[2].selected){
+                        fetch("http://localhost:8080/eculinary2/view/menu/urutMenu.php?filter=kota&value=Bikini Bottom")
+                        .then(res => res.text())
+                        .then(data => {
+                        // console.log(data)
+                        document.querySelector(".daftar-makanan").innerHTML = data;
+                        });
+                    }else if(document.getElementById("filter").getElementsByTagName("select")[1].getElementsByTagName("option")[3].selected){
+                        fetch("http://localhost:8080/eculinary2/view/menu/urutMenu.php?filter=kota&value=Konoha")
+                        .then(res => res.text())
+                        .then(data => {
+                        // console.log(data)
+                        document.querySelector(".daftar-makanan").innerHTML = data;
                         });
                     }
                 }

@@ -62,32 +62,33 @@ class c_menu{
         return $result;
     }
 
-    public function getAllMenu($order, $flow){
-        if($order) $result = $this->model->getAllMenu($this->conn, $order, $flow);
-        else $result = $this->model->getAllMenu($this->conn, '', '');
+    public function getAllMenu($filter, $value, $order, $flow){
+        $result = $this->model->getAllMenu($this->conn, $filter, $value, $order, $flow);
         return $result;
     }
 
     public function getAllMenuToko($id_toko, $order, $flow){
-        if($order) $result = $this->model->getAllMenuToko($this->conn, $id_toko, $order, $flow);
-        else $result = $this->model->getAllMenuToko($this->conn, $id_toko, '', '');
+        $result = $this->model->getAllMenuToko($this->conn, $id_toko, $order, $flow);
         return $result;
     }
 
-    public function searchMenu($keyword, $order, $flow){
-        $result = $this->model->searchEngine($this->conn, $keyword, $order, $flow);
+    public function searchMenu($keyword, $filter, $value, $order, $flow){
+        $result = $this->model->searchEngine($this->conn, $keyword, $filter, $value, $order, $flow);
         return $result;
     }
 
     public function filterJenis($jenis, $order, $flow){
-        if($order) $result = $this->model->filterMenubyJenis($this->conn, $jenis, $order, $flow);
-        else $result = $this->model->filterMenubyJenis($this->conn, $jenis, '', '');
+        $result = $this->model->filterMenubyJenis($this->conn, $jenis, $order, $flow);
         return $result;
     }
 
-    public function filterKategori($kategori, $order, $flow){
-        if($order) $result = $this->model->filterMenubyKategori($this->conn, $kategori, $order, $flow);
-        else $result = $this->model->filterMenubyKategori($this->conn, $kategori, '', '');
+    public function filterKategori($kategori, $filter, $value, $order, $flow){
+        $result = $this->model->filterMenubyKategori($this->conn, $kategori, $filter, $value, $order, $flow);
+        return $result;
+    }
+
+    public function filterKota($kota, $order, $flow){
+        $result = $this->model->filterMenubyKategori($this->conn, $kategori, $order, $flow);
         return $result;
     }
 
@@ -118,6 +119,14 @@ class c_menu{
             $result = $this->rating->insertRating($this->conn);
             return $result;
         }else return false;
+    }
+
+    public function getBintang($id_menu){
+        $this->rating = new m_rating();
+        $this->rating->postRating('', $id_menu, '');
+        $result = $this->rating->getRating($this->conn);
+        if(count($result) > 0) $result = $result[0];
+        return $result;
     }
 
     public function getRating($id_menu){
